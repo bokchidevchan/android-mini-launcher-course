@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 고정 앱 16개의 아이콘을 읽으려면 이 앱들을 보겠다고 미리 적어야 합니다 (패키지 공개 범위, 3일차에 자세히) -->
+    <queries>
+        <package android:name="com.google.android.calendar" />
+        <package android:name="com.android.camera2" />
+        <package android:name="com.android.chrome" />
+        <package android:name="com.google.android.deskclock" />
+        <package android:name="com.google.android.contacts" />
+        <package android:name="com.google.android.apps.docs" />
+        <package android:name="com.google.android.documentsui" />
+        <package android:name="com.google.android.gm" />
+        <package android:name="com.google.android.googlequicksearchbox" />
+        <package android:name="com.google.android.apps.maps" />
+        <package android:name="com.google.android.apps.messaging" />
+        <package android:name="com.google.android.dialer" />
+        <package android:name="com.google.android.apps.photos" />
+        <package android:name="com.android.settings" />
+        <package android:name="com.google.android.youtube" />
+        <package android:name="com.google.android.apps.youtube.music" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MiniLauncher">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+
+        <!-- 2일차 실험 화면. 앱 서랍에 "실험실" 아이콘이 따로 생깁니다 -->
+        <activity
+            android:name=".lab.LabActivity"
+            android:exported="true"
+            android:label="실험실"
+            android:taskAffinity="com.example.minilauncher.lab">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
