@@ -54,6 +54,22 @@ day1_step00_architecture/
 
 검색창에 set을 치면 `HomeScreen` > `HomeViewModel.onQueryChange` > `SearchAppsUseCase` > 새 `HomeUiState` 순서로 흐르고 화면이 다시 그려집니다.
 
+## 안다는 것과 모른다는 것
+
+A가 B를 안다는 것은 A의 코드에 B의 이름이 나온다는 뜻입니다. import 줄을 보면 알 수 있습니다. 아는 쪽은 상대가 바뀌면 같이 고쳐야 하고, 모르는 쪽은 상대가 바뀌어도 그대로입니다.
+
+화면 디자인과 저장 방법은 자주 바뀌고 규칙은 오래 갑니다. 그래서 규칙을 아무것도 모르게 둡니다. 모듈마다 있는 `build.gradle.kts`의 dependencies를 보면 `core/domain`에는 다른 모듈이 하나도 없고, `feature/home`과 `core/data`에는 `core:domain`만 있습니다. 화면 모듈에서 데이터 모듈의 클래스를 쓰려고 하면 빌드 오류가 납니다.
+
+## 왜 인터페이스와 구현을 나누나
+
+`AppRepository`(인터페이스)는 "무엇을 해 달라"는 약속이고, `InstalledAppRepository`(구현)는 "어떻게 하는지"입니다.
+
+- 규칙이 구현을 직접 부르면 규칙이 안드로이드와 데이터 모듈을 알게 됩니다. 약속만 알면 몰라도 됩니다.
+- 구현을 바꿔 끼울 수 있습니다. 테스트에서는 가짜 구현(`GetAppsUseCaseTest`의 `FakeAppRepository`)을 꽂고, 나중에는 서버나 데이터베이스에서 읽는 구현으로 바꿀 수 있습니다.
+- 약속만 먼저 정하면 화면을 만드는 사람과 데이터를 만드는 사람이 동시에 일할 수 있습니다.
+
+C++의 순수 가상 클래스와 그것을 상속한 구현 클래스와 같습니다. 구현 이름은 `InstalledAppRepository`처럼 어떻게 구현했는지를 적거나 끝에 Impl을 붙입니다.
+
 ## 왜 이렇게 나누나
 
 - 화면과 데이터는 규칙을 알고, 규칙은 아무것도 모릅니다. 화면이나 저장소를 바꿔도 규칙은 그대로입니다.
