@@ -25,6 +25,24 @@
 
 `@Composable`이 붙은 함수가 화면 조각입니다. `remember { mutableStateOf() }`로 만든 값이 바뀌면 이 함수가 다시 실행되면서 화면이 바뀝니다. 이것을 Recomposition이라고 합니다.
 
+
+### 1의 2. 화면 조각 10개 바꿔 보기
+
+`practice/ComposePractice.kt`를 열고 Split을 누르면 Preview 10개가 차례로 보입니다. 예제마다 끝에 "바꿔 보기"가 적혀 있고, 값을 바꾸면 Preview가 바로 바뀝니다. 버튼과 입력창은 Preview 이름 오른쪽 ⋮ > Start Interactive Mode로 눌러 봅니다.
+
+| 번호 | 예제 | 배우는 것 |
+|---|---|---|
+| 1 | 글자 | `Text`, 크기(sp), 굵기, 색 |
+| 2 | 세로와 가로 | `Column`, `Row`, 간격 |
+| 3 | 겹쳐 놓기 | `Box`, 동그란 배경 |
+| 4 | Modifier 순서 | 여백과 배경을 적는 순서에 따라 달라지는 모양 |
+| 5 | 버튼과 상태 | `Button`, `remember`, 상태가 바뀌면 다시 그려짐 |
+| 6 | 글자 입력 | `OutlinedTextField`, 입력값을 상태로 들고 있기 |
+| 7 | 스위치와 체크박스 | `Switch`, `Checkbox`, 상태에 따라 다르게 그리기 |
+| 8 | 카드와 아이콘 | `Card`, `Icon` |
+| 9 | 긴 목록 | `LazyColumn` |
+| 10 | 격자와 선택 | `LazyVerticalGrid`, 누른 칸 기억하기 |
+
 ### 2. 런처 화면 코드 읽기
 
 | 파일 | 볼 점 |

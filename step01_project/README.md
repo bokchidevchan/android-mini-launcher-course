@@ -2,40 +2,35 @@
 
 모듈 1-1, 1-2 | [전체 일정으로](../README.md)
 
-Kotlin 문법 세 가지를 테스트 코드로 실행해 보고, 앱을 처음 띄운 뒤 화면 하나가 뜰 때까지 거치는 파일을 따라갑니다.
+Kotlin 문법을 10단계 실습으로 실행해 보고, 앱을 처음 띄운 뒤 화면 하나가 뜰 때까지 거치는 파일을 따라갑니다.
 
 ## 1-1 Kotlin 핵심 (09:00~10:30)
 
-Kotlin을 연습하려고 프로젝트를 따로 만들지 않습니다. 테스트 파일의 함수를 하나씩 실행합니다.
+### Kotlin 문법 실습 10단계
 
-1. `step01_project` 폴더를 엽니다. 오른쪽 아래 진행 표시가 사라져야 코드 옆에 초록 화살표가 생깁니다.
-2. `app/src/test/java/com/example/minilauncher/KotlinBasicsTest.kt`를 엽니다.
-3. `nullSafety` 함수 왼쪽의 초록 화살표를 누르고 Run 'KotlinBasicsTest.nullSafety'를 고릅니다.
+`MainActivity.kt`의 `kotlinPractice(step = 1)`에서 숫자를 1부터 10까지 바꿔 가며 Run 합니다. 결과는 화면이 아니라 Logcat에 찍힙니다. Logcat 검색칸에 `tag:Kotlin`을 넣으면 이 실습이 남긴 줄만 보입니다. 코드는 `practice/KotlinPractice.kt`에 있고, 단계마다 끝에 "바꿔 보기"가 적혀 있습니다.
 
-    <img src="../docs/images/as10_test_run_menu.png" alt="초록 화살표 메뉴" width="520">
-
-4. 아래 Run 창에 `1 test passed`가 나오면 성공입니다.
-
-    <img src="../docs/images/as09_test_passed.png" alt="1 test passed" width="520">
-
-5. `lambda`, `dataClass`도 같은 방법으로 실행합니다.
-
-C++와 비교하며 볼 곳은 세 군데입니다.
-
-| Kotlin | C++에서 비슷한 것 | 볼 점 |
+| 단계 | 실습하는 것 | C++에서 비슷한 것 |
 |---|---|---|
-| `App?`, `?.`, `?:` | 포인터와 null 검사 | null이 될 수 있는 타입은 뒤에 `?`를 붙이고, 컴파일러가 검사를 강제합니다 |
-| `filter { }`, `map { }` | `[](auto& a){ }` 람다 | 마지막 인자가 람다면 괄호 밖으로 뺍니다 |
-| `data class` | `struct` + `operator==` | equals, toString, copy를 컴파일러가 만들어 줍니다 |
+| 1 | `val`, `var`, 문자열 안의 `$변수` | const와 변수, auto, printf 서식 |
+| 2 | `App?`, `?.`, `?:` (null 안전) | 포인터와 null 검사 |
+| 3 | `if`, `when`으로 값 고르기 | 삼항 연산자, switch |
+| 4 | 함수, 기본 인자, 이름 붙인 인자 | 함수와 기본 인자 |
+| 5 | `listOf`, `mutableListOf`, `for` | `std::vector`, 범위 기반 for |
+| 6 | `filter { }`, `map { }` 람다 | `[](auto& a){ }` 람다 |
+| 7 | `data class` (==, copy, 구조 분해) | `struct` + `operator==` |
+| 8 | `class`, 생성자, `private set` | class와 생성자 |
+| 9 | `enum class`와 `when` | enum class와 switch |
+| 10 | 종합: 앱 검색 함수 | (3일차 검색 기능의 축소판) |
 
-```kotlin
-val found: App? = apps.find { it.label == "Maps" }   // 없으면 null
-val name = found?.label ?: "없음"                      // null 이면 "없음"
-val labels = apps.filter { it.label.startsWith("C") }.map { it.label }
-// it 은 인자가 하나인 람다에서 그 인자를 부르는 기본 이름입니다
+1단계를 실행하면 Logcat에 이렇게 찍힙니다.
+
 ```
-
-더 해 보기: `assertEquals`의 기대값을 일부러 틀리게 바꾸고 실행해서, 실패했을 때 나오는 메시지를 읽어 봅니다.
+D/Kotlin: ===== 1단계 =====
+D/Kotlin: 앱 이름: Mini Launcher
+D/Kotlin: 앱 개수: 4
+D/Kotlin: 글자 수: 13, 버전: 1.0
+```
 
 ## 1-2 안드로이드 구조와 프로젝트 구성 (10:30~12:00)
 
@@ -46,7 +41,7 @@ val labels = apps.filter { it.label.startsWith("C") }.map { it.label }
 2. 아래 Logcat 창 검색칸에 `tag:MiniLauncher`를 넣습니다. 앱이 남긴 로그 한 줄이 보입니다.
 
 ```
-D/MiniLauncher: MainActivity onCreate, 프로세스 id=5961
+D/MiniLauncher: MainActivity onCreate, 프로세스 id=6318
 ```
 
 이제 그 화면이 뜰 때까지 거친 파일을 차례로 열어 봅니다.

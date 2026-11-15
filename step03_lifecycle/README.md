@@ -55,6 +55,20 @@ D/Lifecycle: onCreate (복원 데이터 있음)
 
 아이콘을 고르고 상세 보기를 누릅니다. `DetailActivity`가 열리고 앱 이름과 패키지 이름이 보입니다. `MainActivity.kt`에서 `Intent(context, DetailActivity::class.java)`와 `putExtra`를 찾아 보고, `DetailActivity.kt`의 `getStringExtra`가 `putExtra`와 같은 키(`EXTRA_LABEL`, `EXTRA_PACKAGE`)를 쓰는지 봅니다.
 
+## 생명주기는 언제 중요한가
+
+앱은 켜져 있는 동안에도 계속 화면 뒤로 갔다가 돌아옵니다. 앱을 실행해 두고 아래 상황을 차례로 해 보며 Logcat(`tag:Lifecycle`)을 확인합니다.
+
+| 상황 | 찍히는 로그 | 그래서 할 일 |
+|---|---|---|
+| 홈 버튼으로 나감, 화면을 끔, 다른 앱이 위로 옴 | onPause, onStop | 안 보이는 동안은 화면 갱신과 센서를 멈춥니다. 안 멈추면 배터리가 닳습니다 |
+| 다시 돌아옴 | onStart, onResume | 그동안 바뀐 값(시각, 배터리)을 다시 받아 옵니다 |
+| 화면을 돌림 | onPause, onStop, onDestroy, onCreate(복원 데이터 있음), onStart, onResume | 화면이 새로 만들어집니다. 남길 값은 ViewModel이나 rememberSaveable에 둡니다 |
+| 뒤로 가기로 닫음 | onPause, onStop, onDestroy. 다시 열면 onCreate(복원 데이터 없음) | 사용자가 끝낸 것입니다. 처음 상태로 다시 시작합니다 |
+| 뒤에 있는 동안 시스템이 메모리를 비우려고 끝냄 | 로그 없음. 다시 열면 onCreate(복원 데이터 있음)과 LauncherViewModel 생성 | ViewModel의 값은 사라집니다. 작은 값은 rememberSaveable로 돌아오고, 꼭 남길 것은 파일에 저장합니다 |
+
+전화를 받거나 알림을 눌러 다른 화면에 다녀오는 것도 같은 흐름입니다. 쓰던 글자와 보던 위치는 그대로여야 합니다.
+
 ## 막히면
 
 - 브레이크포인트에서 안 멈춤: Run이 아니라 Debug(벌레 모양)로 실행했는지 확인합니다.

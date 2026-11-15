@@ -88,6 +88,10 @@ Android Studio 아래쪽 Logcat 창의 검색칸에 아래처럼 넣습니다.
 | 디스크 부족 | 에뮬레이터 하나가 10GB 안팎을 씁니다. Device Manager에서 쓰지 않는 기기를 지웁니다 |
 | Logcat이 비어 있음 | 위쪽 기기 선택이 지금 실행 중인 에뮬레이터인지, 검색칸 글자가 맞는지 봅니다 |
 
+## 0. 실무 앱 구조 먼저 보기
+
+[step00_architecture](step00_architecture) 폴더에 층과 모듈로 나눈 작은 예제 앱이 있습니다. 1일차 처음에 훑어보고, 3일 동안 만드는 미니 런처가 실무 앱의 어느 부분에 해당하는지 봅니다.
+
 ## 실습 화면 Figma
 
 https://www.figma.com/design/szFZ4g6y6kvu9kJf8WORY0/
