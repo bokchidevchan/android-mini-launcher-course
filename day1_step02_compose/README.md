@@ -94,6 +94,6 @@ Figma에서 내보낸 SVG는 아이콘 모양에 딱 맞게 잘려서 작은 크
 
 ## 더 해 보기
 
-`AppIcon`에 `iconSize` 매개변수를 더해 `AppIconImage(app, iconSize)`로 넘기고, 상세 화면에서는 96dp로 크게 그려 봅니다.
+`AppIcon`에 `iconSize` 매개변수를 더해 `AppIconImage(app, iconSize)`로 넘기고, 선택된 아이콘만 72dp로 크게 그려 봅니다.
 
 다음: [1-4 Activity 생명주기와 화면 이동](../day1_step03_lifecycle)

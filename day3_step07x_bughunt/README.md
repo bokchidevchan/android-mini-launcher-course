@@ -14,7 +14,7 @@
 ## 버그 1: 앱 아이콘을 길게 누르면 앱이 꺼집니다
 
 - 아무 앱이나 길게 눌러 봅니다.
-- Logcat에서 `FATAL EXCEPTION`을 찾습니다. 빨간 줄 가운데 `com.example.minilauncher`가 들어간 첫 줄을 누르면 그 코드로 이동합니다.
+- Logcat에서 `FATAL EXCEPTION`을 찾습니다. Caused by 아래에서 `at com.example.minilauncher`로 시작하는 첫 줄의 파란 글자를 누르면 그 코드로 이동합니다.
 - 찾을 것: 값이 왜 null이었는지. 값을 넣는 쪽과 꺼내는 쪽을 같이 봅니다.
 
 이런 줄이 보이면 제대로 찾은 것입니다.

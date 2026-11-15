@@ -36,7 +36,7 @@
 | 선택한 앱 | `LauncherViewModel`의 StateFlow | 남음 | 사라짐 |
 | 검색어 | `rememberSaveable` | 남음 | 사라짐 |
 | 앱 목록 | `LauncherViewModel` (처음 한 번 불러옴) | 남음 | 다시 불러옴 |
-| 배터리, 네트워크 | 화면이 보이는 동안 등록한 Receiver와 콜백 | 다시 등록 | 해제 |
+| 배터리, 네트워크 | 화면이 있는 동안 등록한 Receiver와 콜백 | 다시 등록 | 해제 |
 | 동기화 진행률 | `SyncService`의 StateFlow | 남음 | Service가 끝날 때까지 남음 |
 | 부팅 시각 | SharedPreferences (`BootReceiver`가 저장) | 남음 | 남음 |
 

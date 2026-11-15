@@ -47,8 +47,7 @@ C++나 다른 언어로 개발해 본 분을 기준으로 만들었습니다. �
 
 | 일차 | 시간 | 모듈 | 폴더 |
 |---|---|---|---|
-| 1일차 | 09:00~10:30 | 1-1 실무 앱 구조 보기, 개발 환경 확인과 C++ 개발자를 위한 Kotlin 핵심 | [day1_step00_architecture](day1_step00_architecture), [day1_step01_project](day1_step01_project) |
-| | 10:30~12:00 | 1-2 안드로이드 구조와 프로젝트 구성 | [day1_step01_project](day1_step01_project) |
+| 1일차 | 09:00~12:00 | 1-1, 1-2 실무 앱 구조, Kotlin 핵심, 안드로이드 구조와 프로젝트 구성 | [day1_step00_architecture](day1_step00_architecture), [day1_step01_project](day1_step01_project) |
 | | 13:00~15:00 | 1-3 Jetpack Compose 기초 | [day1_step02_compose](day1_step02_compose) |
 | | 15:00~17:00 | 1-4 Activity 생명주기와 화면 이동 | [day1_step03_lifecycle](day1_step03_lifecycle) |
 | 2일차 | 09:00~12:00 | 2-1 메인 스레드와 Coroutine, Flow | [day2_step04_coroutine](day2_step04_coroutine) |

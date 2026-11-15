@@ -27,7 +27,6 @@ private const val TAG = "Lifecycle"
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // 브레이크포인트 실습: 이 줄 왼쪽을 눌러 빨간 점을 찍고 Debug 로 실행합니다
         Log.d(TAG, "onCreate (복원 데이터 ${if (savedInstanceState == null) "없음" else "있음"})")
         enableEdgeToEdge()
         setContent {
