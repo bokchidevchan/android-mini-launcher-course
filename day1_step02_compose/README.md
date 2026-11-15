@@ -2,7 +2,7 @@
 
 1일차 13:00~15:00 | [전체 일정으로](../README.md)
 
-`step02_compose` 폴더를 열고 시작합니다.
+`day1_step02_compose` 폴더를 열고 시작합니다.
 
 상태가 바뀌면 화면이 다시 그려지는 Compose의 기본을 익히고, 앱 아이콘 16개를 격자로 보여 주는 첫 런처 화면을 만듭니다. Figma에 있는 아이콘을 앱으로 가져오는 것까지 해 봅니다.
 
@@ -70,7 +70,7 @@ Debug(벌레 모양)로 실행하면 편집기 위에 Live Edit Unsupported가 �
 
 1. [Figma 실습 화면](https://www.figma.com/design/szFZ4g6y6kvu9kJf8WORY0/)의 1일차 페이지에서 "앱 그리드" 화면을 엽니다.
 2. 왼쪽 Layers에서 StatusArea > battery > `Icon / battery_5_bar`를 고릅니다.
-3. 오른쪽 아래 Export 옆 +를 누르고 형식을 SVG로 바꾼 뒤 Export를 누릅니다. Figma에 로그인할 수 없으면 `step02_compose/figma_export/ic_battery.svg`를 씁니다.
+3. 오른쪽 아래 Export 옆 +를 누르고 형식을 SVG로 바꾼 뒤 Export를 누릅니다. Figma에 로그인할 수 없으면 `day1_step02_compose/figma_export/ic_battery.svg`를 씁니다.
 4. Android Studio에서 `app > res`를 오른쪽 클릭하고 New > Vector Asset을 고릅니다.
 5. Asset type을 Local file (SVG, PSD)로 바꾸고, Path에 받은 SVG를 고릅니다. Name은 `ic_battery_my`로 바꿉니다(`ic_battery`는 이미 들어 있습니다). Next > Finish를 누릅니다.
 
@@ -96,4 +96,4 @@ Figma에서 내보낸 SVG는 아이콘 모양에 딱 맞게 잘려서 작은 크
 
 `AppIcon`에 `iconSize` 매개변수를 더해 `AppIconImage(app, iconSize)`로 넘기고, 상세 화면에서는 96dp로 크게 그려 봅니다.
 
-다음: [1-4 Activity 생명주기와 화면 이동](../step03_lifecycle)
+다음: [1-4 Activity 생명주기와 화면 이동](../day1_step03_lifecycle)

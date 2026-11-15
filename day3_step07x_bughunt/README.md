@@ -2,9 +2,9 @@
 
 3일차 13:00~15:00 | [전체 일정으로](../README.md)
 
-`step07x_bughunt` 폴더를 열고 시작합니다.
+`day3_step07x_bughunt` 폴더를 열고 시작합니다.
 
-이 폴더는 [step07_launcher](../step07_launcher)에 버그 세 개를 일부러 넣은 버전입니다. 코드를 먼저 읽지 않고, 앱을 실행해서 Logcat만 보고 원인을 찾습니다.
+이 폴더는 [day3_step07_launcher](../day3_step07_launcher)에 버그 세 개를 일부러 넣은 버전입니다. 코드를 먼저 읽지 않고, 앱을 실행해서 Logcat만 보고 원인을 찾습니다.
 
 ## 준비
 
@@ -45,7 +45,7 @@ E/AndroidRuntime: Caused by: java.lang.NullPointerException
 | 2 | 등록한 Receiver를 화면이 사라질 때 해제합니다 | 화면을 몇 번 돌려도 `leaked`가 더 찍히지 않습니다 |
 | 3 | 메인 스레드에서 하던 읽기를 2-1에서 배운 `withContext(Dispatchers.IO)`로 옮깁니다 | 앱을 다시 실행해도 `DiskReadViolation`이 더 찍히지 않습니다 |
 
-버그 1, 2의 정답은 [step07_launcher](../step07_launcher)의 같은 파일입니다. 버그 3은 step07_launcher에도 같은 읽기가 남아 있어서(StrictMode를 켜지 않아 경고만 안 보일 뿐입니다), `MainActivity.kt`의 부팅 시각 읽기를 아래처럼 바꿉니다.
+버그 1, 2의 정답은 [day3_step07_launcher](../day3_step07_launcher)의 같은 파일입니다. 버그 3은 day3_step07_launcher에도 같은 읽기가 남아 있어서(StrictMode를 켜지 않아 경고만 안 보일 뿐입니다), `MainActivity.kt`의 부팅 시각 읽기를 아래처럼 바꿉니다.
 
 ```kotlin
 // 바꾸기 전: 메인 스레드에서 SharedPreferences 를 읽음
@@ -59,4 +59,4 @@ val boot by produceState<String?>(null) {
 
 import에 `androidx.compose.runtime.produceState`, `kotlinx.coroutines.Dispatchers`, `kotlinx.coroutines.withContext`를 더합니다. 다시 실행하면 `DiskReadViolation`이 더 찍히지 않습니다.
 
-다음: [3-3 미니 런처 완성과 코드 리뷰](../step08_final)
+다음: [3-3 미니 런처 완성과 코드 리뷰](../day3_step08_final)

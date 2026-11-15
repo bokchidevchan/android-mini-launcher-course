@@ -2,7 +2,7 @@
 
 3일차 09:00~12:00 | [전체 일정으로](../README.md)
 
-`step07_launcher` 폴더를 열고 시작합니다.
+`day3_step07_launcher` 폴더를 열고 시작합니다.
 
 고정 목록을 에뮬레이터에 실제로 설치된 앱으로 바꿉니다. 마지막에는 이 앱을 기본 홈 앱으로 등록해서 홈 버튼에 연결합니다.
 
@@ -38,11 +38,11 @@
 
 ## 막히면
 
-- 홈 앱 목록에 Mini Launcher가 없음: 이 단계 코드(step07_launcher)를 실행했는지 확인합니다. 앞 단계에는 HOME 카테고리가 없습니다.
+- 홈 앱 목록에 Mini Launcher가 없음: 이 단계 코드(day3_step07_launcher)를 실행했는지 확인합니다. 앞 단계에는 HOME 카테고리가 없습니다.
 - 홈 화면에서 뒤로 가기가 안 먹음: 런처가 닫히지 않게 `BackHandler`로 막아 둔 것입니다.
 
 ## 더 해 보기
 
 앱이 설치되거나 지워지면(`ACTION_PACKAGE_ADDED`, `ACTION_PACKAGE_REMOVED`) 목록을 다시 불러옵니다.
 
-다음: [3-2 Logcat 로그 분석](../step07x_bughunt)
+다음: [3-2 Logcat 로그 분석](../day3_step07x_bughunt)

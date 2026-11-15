@@ -58,4 +58,4 @@ D/MiniLauncher: MainActivity onCreate, 프로세스 id=6318
 - Run 버튼이 회색: 위쪽 기기 목록에서 에뮬레이터를 고릅니다.
 - 처음 동기화가 오래 걸림: Gradle과 라이브러리를 받는 중입니다. 오른쪽 아래 진행 표시가 끝날 때까지 기다립니다.
 
-다음: [1-3 Jetpack Compose 기초](../step02_compose)
+다음: [1-3 Jetpack Compose 기초](../day1_step02_compose)

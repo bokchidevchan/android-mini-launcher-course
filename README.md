@@ -16,9 +16,9 @@ C++나 다른 언어로 개발해 본 분을 기준으로 만들었습니다. �
 1. 사전 준비 자료(위 링크)의 1부대로 Android Studio Rabbit(2026.2.1 이상)을 설치하고, File > New > New Project > Empty Activity > Finish로 새 프로젝트를 만들어 Run 했을 때 에뮬레이터(Medium Phone)에 Hello World가 뜨는지 확인합니다. 노트북을 준비한 담당자가 이미 해 두었으면 건너뜁니다.
 2. 이 페이지 위쪽 초록색 Code 버튼 > Download ZIP으로 코드를 받습니다.
 3. 한글이 들어가지 않은 경로에 압축을 풉니다. 예: `C:\Users\Public\minilauncher`.
-    Windows 압축 풀기는 폴더를 한 겹 더 만듭니다. 실제로 여는 폴더는 `C:\Users\Public\minilauncher\android-mini-launcher-course-main\step01_project`처럼 step 폴더입니다.
+    Windows 압축 풀기는 폴더를 한 겹 더 만듭니다. 실제로 여는 폴더는 `C:\Users\Public\minilauncher\android-mini-launcher-course-main\day1_step01_project`처럼 step 폴더입니다.
     한글 이름 폴더 아래에서는 빌드가 `Your project path contains non-ASCII characters` 오류로 바로 멈춥니다.
-4. Android Studio에서 File > Open을 누르고 step 폴더 하나를 엽니다(예: `step01_project`).
+4. Android Studio에서 File > Open을 누르고 step 폴더 하나를 엽니다(예: `day1_step01_project`).
 5. 처음 열면 몇 가지 창이 뜹니다.
     - Trust and Open Project 창: Trust Project를 누릅니다.
     - 오른쪽 아래 Project update recommended(AGP 업그레이드) 알림: 누르지 않고 닫습니다. 업그레이드하면 실습 코드와 설정이 달라집니다.
@@ -47,16 +47,16 @@ C++나 다른 언어로 개발해 본 분을 기준으로 만들었습니다. �
 
 | 일차 | 시간 | 모듈 | 폴더 |
 |---|---|---|---|
-| 1일차 | 09:00~10:30 | 1-1 개발 환경 확인과 C++ 개발자를 위한 Kotlin 핵심 | [step01_project](step01_project) |
-| | 10:30~12:00 | 1-2 안드로이드 구조와 프로젝트 구성 | [step01_project](step01_project) |
-| | 13:00~15:00 | 1-3 Jetpack Compose 기초 | [step02_compose](step02_compose) |
-| | 15:00~17:00 | 1-4 Activity 생명주기와 화면 이동 | [step03_lifecycle](step03_lifecycle) |
-| 2일차 | 09:00~12:00 | 2-1 메인 스레드와 Coroutine, Flow | [step04_coroutine](step04_coroutine) |
-| | 13:00~15:00 | 2-2 시스템 이벤트 감지 (BroadcastReceiver) | [step05_receiver](step05_receiver) |
-| | 15:00~17:00 | 2-3 백그라운드 처리 (Service, Notification) | [step06_service](step06_service) |
-| 3일차 | 09:00~12:00 | 3-1 HomeScreen(Launcher) 만들기 | [step07_launcher](step07_launcher) |
-| | 13:00~15:00 | 3-2 Logcat 로그 분석 | [step07x_bughunt](step07x_bughunt) |
-| | 15:00~17:00 | 3-3 미니 런처 완성과 코드 리뷰 | [step08_final](step08_final) |
+| 1일차 | 09:00~10:30 | 1-1 실무 앱 구조 보기, 개발 환경 확인과 C++ 개발자를 위한 Kotlin 핵심 | [day1_step00_architecture](day1_step00_architecture), [day1_step01_project](day1_step01_project) |
+| | 10:30~12:00 | 1-2 안드로이드 구조와 프로젝트 구성 | [day1_step01_project](day1_step01_project) |
+| | 13:00~15:00 | 1-3 Jetpack Compose 기초 | [day1_step02_compose](day1_step02_compose) |
+| | 15:00~17:00 | 1-4 Activity 생명주기와 화면 이동 | [day1_step03_lifecycle](day1_step03_lifecycle) |
+| 2일차 | 09:00~12:00 | 2-1 메인 스레드와 Coroutine, Flow | [day2_step04_coroutine](day2_step04_coroutine) |
+| | 13:00~15:00 | 2-2 시스템 이벤트 감지 (BroadcastReceiver) | [day2_step05_receiver](day2_step05_receiver) |
+| | 15:00~17:00 | 2-3 백그라운드 처리 (Service, Notification) | [day2_step06_service](day2_step06_service) |
+| 3일차 | 09:00~12:00 | 3-1 HomeScreen(Launcher) 만들기 | [day3_step07_launcher](day3_step07_launcher) |
+| | 13:00~15:00 | 3-2 Logcat 로그 분석 | [day3_step07x_bughunt](day3_step07x_bughunt) |
+| | 15:00~17:00 | 3-3 미니 런처 완성과 코드 리뷰 | [day3_step08_final](day3_step08_final) |
 
 점심은 12:00~13:00입니다. 폴더 이름을 누르면 그 모듈의 실습 안내가 나옵니다.
 
@@ -90,13 +90,13 @@ Android Studio 아래쪽 Logcat 창의 검색칸에 아래처럼 넣습니다.
 
 ## 0. 실무 앱 구조 먼저 보기
 
-[step00_architecture](step00_architecture) 폴더에 층과 모듈로 나눈 작은 예제 앱이 있습니다. 1일차 처음에 훑어보고, 3일 동안 만드는 미니 런처가 실무 앱의 어느 부분에 해당하는지 봅니다.
+[day1_step00_architecture](day1_step00_architecture) 폴더에 층과 모듈로 나눈 작은 예제 앱이 있습니다. 1일차 처음에 훑어보고, 3일 동안 만드는 미니 런처가 실무 앱의 어느 부분에 해당하는지 봅니다.
 
 ## 실습 화면 Figma
 
 https://www.figma.com/design/szFZ4g6y6kvu9kJf8WORY0/
 
-모듈별 화면이 1일차, 2일차, 3일차 페이지에 있습니다. 화면은 로그인 없이 볼 수 있습니다. 아이콘 내보내기(1-3)가 안 되면 `step02_compose/figma_export/` 파일을 씁니다.
+모듈별 화면이 1일차, 2일차, 3일차 페이지에 있습니다. 화면은 로그인 없이 볼 수 있습니다. 아이콘 내보내기(1-3)가 안 되면 `day1_step02_compose/figma_export/` 파일을 씁니다.
 
 ## 빌드 환경
 

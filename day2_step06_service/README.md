@@ -2,7 +2,7 @@
 
 2일차 15:00~17:00 | [전체 일정으로](../README.md)
 
-`step06_service` 폴더를 열고 시작합니다.
+`day2_step06_service` 폴더를 열고 시작합니다.
 
 화면이 꺼져도 계속 도는 작업을 Foreground Service로 만들고, 진행률을 알림과 상태 영역에 함께 보여 줍니다.
 
@@ -44,4 +44,4 @@ D/SyncService: onDestroy
 
 동기화 중에 "동기화 시작"을 다시 누르면 어떻게 되는지 로그로 확인하고, 진행 중에는 버튼을 누를 수 없게 바꿉니다.
 
-다음: [3-1 HomeScreen(Launcher) 만들기](../step07_launcher)
+다음: [3-1 HomeScreen(Launcher) 만들기](../day3_step07_launcher)
