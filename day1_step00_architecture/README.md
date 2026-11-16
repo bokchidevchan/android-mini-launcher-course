@@ -51,18 +51,6 @@ day1_step00_architecture/
 
 단위 테스트는 `core/domain`과 `feature/home`의 `src/test`에, E2E 테스트는 `app/src/androidTest`에 있습니다.
 
-## 클린 아키텍처로 설계하는 순서
-
-1. 규칙부터 정합니다. 화면도 저장소도 없이 순수 Kotlin으로 씁니다. (`GetAppsUseCase`, `SearchAppsUseCase`)
-2. 바깥에서 받아 올 것은 인터페이스로만 적어 둡니다. (`AppRepository`)
-3. 데이터 층이 그 인터페이스를 구현합니다. (`InstalledAppRepository`)
-4. 화면은 유스케이스만 부르고 상태를 그립니다. (`HomeViewModel`, `HomeUiState`)
-5. 맨 바깥에서 한 번 조립합니다. (`MainActivity`)
-
-안쪽(규칙)은 바깥(화면, 데이터)을 모르고, 바깥이 안쪽을 압니다. 바뀌기 쉬운 것을 바깥에 두는 설계입니다.
-
-검색창에 set을 치면 `HomeScreen` > `HomeViewModel.onQueryChange` > `SearchAppsUseCase` > 새 `HomeUiState` 순서로 흐르고 화면이 다시 그려집니다.
-
 ## 안다는 것과 모른다는 것
 
 A가 B를 안다는 것은 A의 코드에 B의 이름이 나온다는 뜻입니다. import 줄을 보면 알 수 있습니다. 아는 쪽은 상대가 바뀌면 같이 고쳐야 하고, 모르는 쪽은 상대가 바뀌어도 그대로입니다.

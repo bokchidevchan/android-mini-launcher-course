@@ -1,7 +1,7 @@
 package com.example.minilauncher
 
-import androidx.lifecycle.lifecycleScope
-import com.example.minilauncher.practice.day2Extra
+import com.example.minilauncher.practice.myNotificationPractice
+import com.example.minilauncher.practice.notificationPractice
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -45,7 +45,8 @@ private const val TAG = "Lifecycle"
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        day2Extra(lifecycleScope)   // 시간이 남으면 실습. Logcat 에 tag:Extra
+        notificationPractice(this, step = 1)
+        // myNotificationPractice(this, step = 1)   // 직접 쓴 코드(NotificationPractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다
         Log.d(TAG, "onCreate (복원 데이터 ${if (savedInstanceState == null) "없음" else "있음"})")
         // 2일차 오후부터는 에러 화면이 실습을 방해하지 않게 실패 확률 기본값을 0 으로 둡니다 (오전 실습은 0.3)
         val failRate = intent.getFloatExtra("fail_rate", 0f)

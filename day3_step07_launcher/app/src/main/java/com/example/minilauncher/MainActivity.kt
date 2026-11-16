@@ -1,5 +1,7 @@
 package com.example.minilauncher
 
+import com.example.minilauncher.practice.launcherPractice
+import com.example.minilauncher.practice.myLauncherPractice
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
@@ -43,6 +45,8 @@ private const val TAG = "Lifecycle"
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        launcherPractice(this, step = 1)
+        // myLauncherPractice(this, step = 1)   // 직접 쓴 코드(LauncherPractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다
         Log.d(TAG, "onCreate (복원 데이터 ${if (savedInstanceState == null) "없음" else "있음"})")
         val factory = viewModelFactory { initializer { LauncherViewModel(InstalledAppRepository(applicationContext)) } }
         enableEdgeToEdge()

@@ -1,25 +1,24 @@
-# 3일차 시간이 남으면: 실습 문제
+# 3일차 8교시: 앱 만들어 보기 (앱 룰렛)
 
 [전체 일정으로](../README.md)
 
-3일차 수업이 일찍 끝났을 때 푸는 문제입니다. `day3_step08_final`와 같은 앱에 문제 파일만 더했습니다.
+7교시까지 마치고 시간이 남으면 만드는 앱입니다. 설치된 앱 가운데 하나를 룰렛처럼 뽑아서 열어 주는 앱입니다. 3일 동안 배운 것(상태, 코루틴, 앱 목록, Intent)을 한 화면에 모읍니다. `day3_step08_final`와 같은 프로젝트에 이 앱의 뼈대와 정답을 더했습니다.
 
-## 푸는 방법
+## 요구사항
 
-1. Android Studio에서 File > Open으로 이 폴더를 엽니다.
-2. `app/src/main/java/com/example/minilauncher/practice/Day3Extra.kt`를 엽니다.
-3. `TODO`가 적힌 줄을 고치고 Run 합니다.
-4. Logcat 검색창에 `tag:Extra`를 넣습니다. 문제마다 O, X가 찍힙니다.
+1. 화면이 뜨면 설치된 앱이 몇 개인지 보여 줍니다
+2. 돌리기를 누르면 앱 이름이 빠르게 바뀌다가 하나에서 멈춥니다
+3. 돌아가는 동안에는 버튼이 눌리지 않습니다
+4. 이 앱 열기를 누르면 멈춘 앱이 열립니다
+5. 도전: 멈출수록 천천히 바뀌게 합니다
+6. 도전: 방금 나온 앱은 다음 번에 나오지 않게 합니다
 
-```
-문제 1: O
-문제 2: X  나온 값 [], 기대한 값 [SETTINGS, CAMERA, ...]
-```
+## 만드는 방법
 
-## 파일
+1. Android Studio에서 File > Open으로 이 폴더를 열고 Run 합니다.
+2. 에뮬레이터의 앱 목록(홈 화면을 위로 밀어 올림)에서 아래 표의 연습 아이콘을 누릅니다.
+3. 연습 파일을 고치고 다시 Run 합니다. 막히면 정답 파일을 봅니다.
 
-| 파일 | 내용 |
-|---|---|
-| `practice/Day3Extra.kt` | 문제. 여기만 고칩니다 |
-| `practice/Day3ExtraAnswers.kt` | 정답. 먼저 풀어 보고 엽니다 |
-| `practice/Day3ExtraCheck.kt` | 채점하는 코드. 고치지 않습니다 |
+| 아이콘 | 연습 파일 | 정답 파일 |
+|---|---|---|
+| 앱 룰렛 연습 | `practice/AppRoulette.kt`의 `AppRouletteScreen` | `practice/AppRouletteAnswer.kt` |

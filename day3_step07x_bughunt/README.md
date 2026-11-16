@@ -60,3 +60,7 @@ val boot by produceState<String?>(null) {
 import에 `androidx.compose.runtime.produceState`, `kotlinx.coroutines.Dispatchers`, `kotlinx.coroutines.withContext`를 더합니다. 다시 실행하면 `DiskReadViolation`이 더 찍히지 않습니다.
 
 다음: [3-3 미니 런처 완성과 코드 리뷰](../day3_step08_final)
+
+## 단계별 실습 5단계
+
+`MainActivity.kt`의 `logPractice(step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/LogPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/LogPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.

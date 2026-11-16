@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- XML 로 만드는 화면. 태그 하나가 화면 조각 하나입니다.
+     LinearLayout 은 안에 든 것을 한 줄로 놓습니다 (vertical 은 세로). Compose 의 Column 자리입니다 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- 제목 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘 점심 뭐 먹지?"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- 여기부터 직접 만듭니다. 완성 화면과 요구사항은 교안의 1일차 8교시 장에 있습니다.
+         필요한 것: 뽑힌 메뉴를 크게 보여 줄 TextView, 몇 번째 뽑기인지 보여 줄 TextView, Button 두 개.
+         태그마다 android:layout_width 와 android:layout_height 를 꼭 적습니다 (빼면 실행할 때 앱이 꺼집니다).
+         코드에서 찾아 쓸 것에는 android:id="@+id/이름" 을 붙입니다.
+         막히면 같은 폴더의 activity_lunch_answer.xml 을 봅니다 -->
+</LinearLayout>

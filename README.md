@@ -102,12 +102,12 @@ https://www.figma.com/design/szFZ4g6y6kvu9kJf8WORY0/
 Gradle 9.3.1, Android Gradle Plugin 8.13.2, Kotlin 2.0.21, Compose BOM 2025.06.01, compileSdk 36, minSdk 26.
 Android Studio Rabbit에 Java가 들어 있어서 JDK를 따로 설치하지 않아도 됩니다. 실습 화면과 로그는 Android 16(API 36), Android 17(API 37) 에뮬레이터 기준입니다.
 
-## 시간이 남으면
+## 8교시: 앱 만들어 보기
 
-모듈이 끝날 때마다, 그리고 수업이 일찍 끝났을 때 푸는 연습 문제입니다. 문제 파일의 TODO를 고치고 Run 하면 Logcat의 `tag:Extra`에 문제마다 O, X가 찍힙니다.
+7교시까지 마치고 시간이 남으면 만드는 앱입니다. 폴더마다 요구사항, 뼈대, 정답이 있습니다.
 
-| 폴더 | 내용 |
+| 폴더 | 만드는 앱 |
 |---|---|
-| [day1_extra_practice](day1_extra_practice) | Kotlin 문제 17개, Compose 문제 6개 |
-| [day2_extra_practice](day2_extra_practice) | 코루틴 문제 10개, 시스템 이벤트에 쓰는 함수 5개 |
-| [day3_extra_practice](day3_extra_practice) | 런처에 쓰는 함수 10개, 로그를 읽는 함수 5개 |
+| [day1_extra_practice](day1_extra_practice) | 오늘 점심 뭐 먹지? (XML로 한 번, Compose로 한 번) |
+| [day2_extra_practice](day2_extra_practice) | 반응 속도 게임 (코루틴, StateFlow, ViewModel) |
+| [day3_extra_practice](day3_extra_practice) | 앱 룰렛 (설치된 앱 목록, Intent) |

@@ -1,6 +1,5 @@
 package com.example.minilauncher
 
-import com.example.minilauncher.practice.day1Extra
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -28,7 +27,6 @@ private const val TAG = "Lifecycle"
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        day1Extra()   // 시간이 남으면 실습. Logcat 에 tag:Extra
         Log.d(TAG, "onCreate (복원 데이터 ${if (savedInstanceState == null) "없음" else "있음"})")
         enableEdgeToEdge()
         setContent {

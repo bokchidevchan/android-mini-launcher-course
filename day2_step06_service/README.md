@@ -45,3 +45,7 @@ D/SyncService: onDestroy
 동기화 중에 "동기화 시작"을 다시 누르면 어떻게 되는지 로그로 확인하고, 진행 중에는 버튼을 누를 수 없게 바꿉니다.
 
 다음: [3-1 HomeScreen(Launcher) 만들기](../day3_step07_launcher)
+
+## 단계별 실습 5단계
+
+`MainActivity.kt`의 `notificationPractice(this, step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/NotificationPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/NotificationPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.

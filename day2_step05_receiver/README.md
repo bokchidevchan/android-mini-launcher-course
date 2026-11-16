@@ -56,3 +56,7 @@ D/SystemEvent: 배터리 변경: BatteryInfo(level=15, charging=true)
 배터리가 20% 아래로 내려가는 순간 Toast를 한 번만 띄웁니다. 20% 근처를 오르내릴 때 여러 번 뜨지 않게 합니다.
 
 다음: [2-3 백그라운드 처리](../day2_step06_service)
+
+## 단계별 실습 5단계
+
+`MainActivity.kt`의 `receiverPractice(this, step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/ReceiverPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/ReceiverPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.

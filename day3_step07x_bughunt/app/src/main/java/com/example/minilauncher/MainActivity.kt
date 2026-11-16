@@ -1,5 +1,7 @@
 package com.example.minilauncher
 
+import com.example.minilauncher.practice.logPractice
+import com.example.minilauncher.practice.myLogPractice
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
@@ -44,6 +46,8 @@ private const val TAG = "Lifecycle"
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        logPractice(step = 1)
+        // myLogPractice(step = 1)   // 직접 쓴 코드(LogPractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다
         // 개발 중에만 켜는 검사기. 메인 스레드에서 디스크나 네트워크를 쓰면 Logcat 에 경고를 남깁니다
         StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build())
         Log.d(TAG, "onCreate (복원 데이터 ${if (savedInstanceState == null) "없음" else "있음"})")

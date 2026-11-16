@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- XML 로 만드는 화면. 태그 하나가 화면 조각 하나입니다.
+     LinearLayout 은 안에 든 것을 한 줄로 놓습니다 (vertical 은 세로). Compose 의 Column 자리입니다 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- 제목 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘 점심 뭐 먹지?"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- 뽑힌 메뉴. 코드에서 찾아 바꿀 것이라 id 를 붙입니다 -->
+    <TextView
+        android:id="@+id/menuText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="?"
+        android:textSize="44sp"
+        android:textStyle="bold" />
+
+    <!-- 몇 번째 뽑기인지 -->
+    <TextView
+        android:id="@+id/countText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="아직 안 뽑았어요"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/pickButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="뽑기!" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="처음부터" />
+</LinearLayout>
