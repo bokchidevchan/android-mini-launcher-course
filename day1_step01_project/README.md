@@ -29,7 +29,7 @@ Kotlin 문법을 12단계 실습으로 실행해 보고, XML 화면 실습을 �
 
 ### XML 화면 실습 5단계
 
-`practice/XmlPracticeActivity.kt`의 `STEP` 숫자를 1부터 5까지 바꿔 가며 Run 하고, 에뮬레이터의 앱 목록에서 "XML 연습" 아이콘을 누릅니다. 화면 모양은 `res/layout/xml_step1.xml`부터 `xml_step5.xml`까지에 있습니다. `STEP`을 0으로 두면 직접 써 보는 빈 화면 `res/layout/xml_my.xml`이 뜹니다.
+`practice/XmlPracticeActivity.kt`의 `STEP` 숫자를 1부터 5까지 바꿔 가며 Run 하고, 에뮬레이터의 앱 목록에서 "XML 연습" 아이콘을 누릅니다. 화면 모양은 `res/layout/xml_step1.xml`부터 `xml_step5.xml`까지에 있습니다. 직접 만들어 보는 것은 `practice/XmlPractice_My.kt`와 `res/layout/xml_my.xml`에 하고 "XML 연습 직접" 아이콘으로 확인합니다. 정답은 `practice/XmlPractice_MyAnswer.kt`("XML 연습 정답" 아이콘)입니다.
 
 1단계를 실행하면 Logcat에 이렇게 찍힙니다.
 

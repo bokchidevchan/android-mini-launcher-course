@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- "직접 만들어 보기"의 정답 화면. XmlPracticeActivity.kt 의 STEP 을 6 으로 두면 뜹니다.
+<!-- "직접 만들어 보기"의 정답 화면. 앱 목록의 "XML 연습 정답" 아이콘을 누르면 뜹니다. 동작은 XmlPractice_MyAnswer.kt 에 있습니다.
      먼저 xml_my.xml 에 직접 만들어 보고 엽니다 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"

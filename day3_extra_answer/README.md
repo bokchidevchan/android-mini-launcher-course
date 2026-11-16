@@ -6,5 +6,4 @@
 
 | 파일 | 내용 |
 |---|---|
-| `practice/AppRouletteAnswer.kt` | 앱 목록 읽기, 돌리기(코루틴), 앱 열기 |
-| `practice/RouletteLayout.kt` | 화면 모양 |
+| `practice/AppRouletteAnswer.kt` | 화면과 동작이 모두 든 파일 하나 |

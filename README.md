@@ -104,10 +104,10 @@ Android Studio Rabbit에 Java가 들어 있어서 JDK를 따로 설치하지 않
 
 ## 8교시: 앱 만들어 보기
 
-7교시까지 마치고 시간이 남으면 만드는 앱입니다. 연습 틀 폴더에 요구사항과 뼈대가 있고, 정답은 따로 있는 정답 폴더에 있습니다.
+7교시까지 마치고 시간이 남으면 만드는 앱입니다. 앱마다 채울 파일은 하나이고, 세 군데만 채우면 됩니다. 정답은 따로 있는 정답 폴더에 있습니다.
 
 | 폴더 | 만드는 앱 |
 |---|---|
-| [day1_extra_practice](day1_extra_practice), 정답 [day1_extra_answer](day1_extra_answer) | 오늘 점심 뭐 먹지? (첫 화면은 XML, 둘째 화면은 Compose) |
-| [day2_extra_practice](day2_extra_practice), 정답 [day2_extra_answer](day2_extra_answer) | 반응 속도 게임 (코루틴, StateFlow, ViewModel) |
+| [day1_extra_practice](day1_extra_practice), 정답 [day1_extra_answer](day1_extra_answer) | 오늘 점심 뭐 먹지? (파일 하나, Compose) |
+| [day2_extra_practice](day2_extra_practice), 정답 [day2_extra_answer](day2_extra_answer) | 반응 속도 게임 (파일 하나, 코루틴의 delay) |
 | [day3_extra_practice](day3_extra_practice), 정답 [day3_extra_answer](day3_extra_answer) | 앱 룰렛 (설치된 앱 목록, Intent) |

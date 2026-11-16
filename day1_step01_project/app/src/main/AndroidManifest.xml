@@ -28,5 +28,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- XML 화면을 직접 만들어 보는 화면. 앱 목록에 "XML 연습 직접" 아이콘이 생깁니다 -->
+        <activity
+            android:name=".practice.MyXmlPracticeActivity"
+            android:exported="true"
+            android:label="XML 연습 직접">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 직접 만들어 보기의 정답. 앱 목록에 "XML 연습 정답" 아이콘이 생깁니다 -->
+        <activity
+            android:name=".practice.MyXmlAnswerActivity"
+            android:exported="true"
+            android:label="XML 연습 정답">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

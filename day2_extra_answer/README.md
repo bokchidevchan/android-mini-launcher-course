@@ -6,5 +6,4 @@
 
 | 파일 | 내용 |
 |---|---|
-| `practice/ReactionAnswer.kt` | ViewModel. 기다리기(코루틴), 일찍 누르면 취소, 걸린 시간 재기 |
-| `practice/ReactionScreen.kt` | 상태와 화면. 연습 틀과 같음 |
+| `practice/ReactionGameAnswer.kt` | 화면과 동작이 모두 든 파일 하나 |

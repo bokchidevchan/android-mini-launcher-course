@@ -6,7 +6,4 @@
 
 | 파일 | 내용 |
 |---|---|
-| `res/layout/activity_lunch_answer.xml` | 첫 화면의 모양 (XML) |
-| `practice/LunchPickAnswerActivity.kt` | 첫 화면의 동작. 뽑기, 기록 보기, 처음부터 |
-| `practice/LunchHistoryAnswerActivity.kt` | 둘째 화면 (Compose). 기록 목록 |
-| `practice/LunchAnswerLogic.kt` | 뽑기 함수와 가장 많이 나온 메뉴 함수 |
+| `practice/LunchPickAnswer.kt` | 화면과 동작이 모두 든 파일 하나 |
