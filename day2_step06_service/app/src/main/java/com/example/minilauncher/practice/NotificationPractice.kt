@@ -11,7 +11,7 @@ import androidx.core.app.NotificationManagerCompat
 
 // 2일차 오후 알림 실습 5단계.
 // MainActivity.kt 의 notificationPractice(this, step = 1) 에서 숫자를 1부터 5까지 바꿔 가며 Run 합니다.
-// Logcat 검색창에 tag:Noti 를 넣고, 에뮬레이터 화면 위쪽을 끌어내려 알림을 봅니다.
+// Logcat 검색창에 tag:Noti 를 넣고, Run 하자마자 에뮬레이터 화면 위쪽을 끌어내려 알림을 봅니다.
 // 알림이 안 보이면 앱의 동기화 시작을 한 번 눌러 알림 권한을 허락합니다.
 // 직접 써 보고 싶으면 같은 폴더의 NotificationPractice_My.kt 에 옮겨 적습니다.
 
@@ -75,17 +75,17 @@ private fun step02Notify(context: Context) {
 // 3단계. 같은 번호로 다시 띄우면 그 알림이 바뀝니다
 private fun step03Update(context: Context) {
     val manager = createPracticeChannel(context)
-    manager.notify(PRACTICE_NOTIFICATION, practiceNotification(context, "2초 뒤에 글자가 바뀝니다").build())
+    manager.notify(PRACTICE_NOTIFICATION, practiceNotification(context, "6초 뒤에 글자가 바뀝니다").build())
     show("알림을 띄웠습니다")
     Handler(Looper.getMainLooper()).postDelayed({
         manager.notify(PRACTICE_NOTIFICATION, practiceNotification(context, "바뀌었습니다").build())
         show("같은 번호로 다시 띄워 글자를 바꿨습니다")
-    }, 2000)
+    }, 6000)
     // 바꿔 보기: 두 번째 notify 의 번호를 101 로 바꾸면 알림이 몇 개가 될까요?
 }
 
 // 4단계. 진행 막대가 있는 알림
-// 동기화 Service 의 알림이 이 모양입니다. 0.5초마다 20씩 올리고 끝나면 막대를 없앱니다
+// 동기화 Service 의 알림이 이 모양입니다. 1.5초마다 20씩 올리고 끝나면 막대를 없앱니다
 private fun step04Progress(context: Context) {
     val manager = createPracticeChannel(context)
     val handler = Handler(Looper.getMainLooper())
@@ -99,7 +99,7 @@ private fun step04Progress(context: Context) {
             }
             manager.notify(PRACTICE_NOTIFICATION, builder.build())
             show("진행 $percent%")
-        }, i * 500L)
+        }, i * 1500L)
     }
     // 바꿔 보기: setProgress(100, percent, false) 의 false 를 true 로 바꾸면 막대가 어떻게 보일까요?
 }
@@ -107,11 +107,11 @@ private fun step04Progress(context: Context) {
 // 5단계. 알림 지우기
 private fun step05Cancel(context: Context) {
     val manager = createPracticeChannel(context)
-    manager.notify(PRACTICE_NOTIFICATION, practiceNotification(context, "3초 뒤에 사라집니다").build())
+    manager.notify(PRACTICE_NOTIFICATION, practiceNotification(context, "6초 뒤에 사라집니다").build())
     show("알림을 띄웠습니다")
     Handler(Looper.getMainLooper()).postDelayed({
         manager.cancel(PRACTICE_NOTIFICATION)
         show("알림을 지웠습니다")
-    }, 3000)
+    }, 6000)
     // 바꿔 보기: setOngoing(true) 를 붙이면 사용자가 밀어서 지울 수 없게 됩니다. Foreground Service 의 알림이 그렇습니다
 }

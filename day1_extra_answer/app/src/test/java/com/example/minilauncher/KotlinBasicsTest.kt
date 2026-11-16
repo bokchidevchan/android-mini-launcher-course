@@ -4,7 +4,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
 
-// 1일차 09:00 Kotlin 핵심. 함수 왼쪽 초록 화살표로 하나씩 실행합니다.
+// 1일차 오전 Kotlin 핵심. 함수 왼쪽 초록 화살표로 하나씩 실행합니다.
 // C++ 과 다른 점 세 가지만 봅니다: null 안전, 람다, data class
 
 data class App(val label: String, val packageName: String)

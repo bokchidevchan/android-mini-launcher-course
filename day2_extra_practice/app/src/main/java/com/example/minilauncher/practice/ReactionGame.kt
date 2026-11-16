@@ -54,6 +54,7 @@ class ReactionViewModel : ViewModel() {
     //   지금 상태가 Waiting 이면: 기다리던 코루틴을 취소하고 TooEarly 로 바꿉니다
     //   지금 상태가 Go 면: 초록색이 된 뒤 지금까지 걸린 시간을 재서 Result 로 바꿉니다
     // (힌트) 필요한 것(Job, viewModelScope, launch, delay, Random)은 위에 import 해 두었습니다
+    //        아래 두 줄(private var)은 onTap 함수 밖, 클래스 안에 둡니다
     //        private var job: Job? = null          // 초록색을 기다리는 코루틴
     //        private var goAt = 0L                 // 초록색이 된 시각
     //        job = viewModelScope.launch { delay(Random.nextLong(1000, 4000)); goAt = System.currentTimeMillis(); _state.value = GameState.Go }

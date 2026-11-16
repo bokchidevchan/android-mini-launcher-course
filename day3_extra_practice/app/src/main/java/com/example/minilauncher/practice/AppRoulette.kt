@@ -55,7 +55,9 @@ fun AppRouletteScreen() {
     val current by remember { mutableStateOf<AppInfo?>(null) }              // 지금 보이는 앱
     val spinning by remember { mutableStateOf(false) }                      // 돌아가는 중인지
 
-    // 여기부터 직접 만듭니다. 요구사항은 교안의 3일차 8교시 장에 있습니다. 위의 val 은 값을 바꿀 수 있게 var 로 고칩니다.
+    // 여기부터 직접 만듭니다. 요구사항은 교안의 3일차 8교시 장에 있습니다.
+    // 먼저 위의 val 세 개를 var 로 고칩니다 (값을 바꿀 수 있게).
+    // val context, val scope 두 줄은 아래 RouletteLayout( 바로 위에 둡니다. onSpin, onOpen 의 { } 안에 넣으면 오류가 납니다.
     // 필요한 것(LocalContext, LaunchedEffect, rememberCoroutineScope, launch, delay, InstalledAppRepository, launchApp)은
     // 위에 import 해 두었습니다.
     // 1. 화면이 뜨면 설치된 앱 목록을 읽습니다.

@@ -26,7 +26,7 @@ class LunchPickPracticeActivity : ComponentActivity() {
         // 1. XML 에 넣은 것을 id 로 찾습니다.      val menuText = findViewById<TextView>(R.id.menuText)
         // 2. 버튼이 눌리면 할 일을 적습니다.        findViewById<Button>(R.id.pickButton).setOnClickListener { ... }
         // 3. 목록에서 아무거나 하나 고르고 기록에 넣습니다.   val menu = lunchMenus.random();  history.add(menu)
-        // 4. 화면의 글자를 바꿉니다.                menuText.text = menu,  countText.text = "${history.size}번째 뽑기"
+        // 4. 화면의 글자를 바꿉니다.                menuText.text = menu;  countText.text = "${history.size}번째 뽑기"
         // 5. 기록 보기 버튼: 둘째 화면을 열면서 기록을 같이 넘깁니다.
         //      startActivity(Intent(this, LunchHistoryPracticeActivity::class.java).putStringArrayListExtra(EXTRA_HISTORY, history))
         // 6. 처음부터 버튼: history.clear() 를 하고 글자들을 처음 것으로 되돌립니다

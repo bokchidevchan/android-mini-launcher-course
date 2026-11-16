@@ -11,6 +11,6 @@
     android:orientation="vertical"
     android:padding="24dp">
 
-    <!-- 여기에 만듭니다 -->
+    <!-- 여기에 만듭니다. 가운데로 모으려면 위 LinearLayout 에 android:gravity="center_horizontal" 한 줄을 더합니다 -->
 
 </LinearLayout>

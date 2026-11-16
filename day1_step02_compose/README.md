@@ -26,9 +26,9 @@
 `@Composable`이 붙은 함수가 화면 조각입니다. `remember { mutableStateOf() }`로 만든 값이 바뀌면 이 함수가 다시 실행되면서 화면이 바뀝니다. 이것을 Recomposition이라고 합니다.
 
 
-### 1의 2. 화면 조각 10개 바꿔 보기
+### 1의 2. 화면 조각 11개 바꿔 보기
 
-`practice/ComposePractice.kt`를 열고 Split을 누르면 Preview 10개가 차례로 보입니다. 예제마다 끝에 "바꿔 보기"가 적혀 있고, 값을 바꾸면 Preview가 바로 바뀝니다. 버튼과 입력창은 Preview 이름 오른쪽 ⋮ > Start Interactive Mode로 눌러 봅니다.
+`practice/ComposePractice.kt`를 열고 Split을 누르면 Preview 11개가 차례로 보입니다. 예제마다 끝에 "바꿔 보기"가 적혀 있고, 값을 바꾸면 Preview가 바로 바뀝니다. 버튼과 입력창은 Preview 이름 오른쪽 ⋮ > Start Interactive Mode로 눌러 봅니다.
 
 | 번호 | 예제 | 배우는 것 |
 |---|---|---|

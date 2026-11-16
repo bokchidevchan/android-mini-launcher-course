@@ -49,8 +49,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
 
-// 1일차 13:00 Compose 화면 조각 10개.
-// 오른쪽 위 Split 을 누르면 아래 Preview 10개가 차례로 보입니다. (처음엔 Build & Refresh)
+// 1일차 13:00 Compose 화면 조각 11개.
+// 오른쪽 위 Split 을 누르면 아래 Preview 11개가 차례로 보입니다. (처음엔 Build & Refresh)
 // 버튼이나 입력창은 Preview 이름 오른쪽 ⋮ 메뉴 > Start Interactive Mode 로 눌러 봅니다.
 // 예제마다 끝에 "바꿔 보기"가 있습니다. 값을 바꾸면 Preview 가 바로 바뀝니다.
 
@@ -237,7 +237,7 @@ private fun PlusButton(label: String, onClick: () -> Unit) {
     Button(onClick = onClick) { Text(label) }
 }
 
-// 예제 10개를 한 화면에 모아 봅니다
+// 예제 11개를 한 화면에 모아 봅니다
 @Composable
 fun ComposePracticeGallery() {
     Column(Modifier.verticalScroll(rememberScrollState())) {
@@ -251,6 +251,7 @@ fun ComposePracticeGallery() {
         Example08Card()
         Example09List()
         Example10Grid()
+        Example11Hoisting()
     }
 }
 

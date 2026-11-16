@@ -1,6 +1,7 @@
 package com.example.minilauncher.practice
 
 import android.util.Log
+import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
