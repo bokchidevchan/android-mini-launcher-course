@@ -49,3 +49,12 @@ D/SyncService: onDestroy
 ## 단계별 실습 5단계
 
 `MainActivity.kt`의 `notificationPractice(this, step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/NotificationPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/NotificationPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.
+
+## 앱 만들기: 화면을 나가도 계속 도는 앱 (컵라면 타이머)
+
+시작을 누르고 홈으로 나가도 알림에서 남은 시간이 계속 줄어드는 앱입니다. 화면이 아니라 Foreground Service가 시간을 셉니다. Run 한 뒤 에뮬레이터의 앱 목록에서 "컵라면 타이머" 아이콘을 누릅니다.
+
+| 파일 | 내용 |
+|---|---|
+| `practice/RamenTimer.kt` | 완성본. 위에서부터 읽고 "바꿔 보기"를 해 봅니다 |
+| `practice/RamenTimer_My.kt` | 직접 만들어 보는 파일. `onStartCommand` 안에 1초마다 줄이는 코루틴을 씁니다. "컵라면 타이머 연습" 아이콘으로 확인합니다 |

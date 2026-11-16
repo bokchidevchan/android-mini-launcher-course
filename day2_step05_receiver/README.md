@@ -60,3 +60,12 @@ D/SystemEvent: 배터리 변경: BatteryInfo(level=15, charging=true)
 ## 단계별 실습 5단계
 
 `MainActivity.kt`의 `receiverPractice(this, step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/ReceiverPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/ReceiverPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.
+
+## 앱 만들기: 시스템 이벤트로 움직이는 앱 (배터리 펫)
+
+배터리 값과 충전기 연결에 따라 표정이 바뀌는 앱입니다. 에뮬레이터 옆 Extended Controls > Battery에서 값을 바꿔 봅니다. Run 한 뒤 에뮬레이터의 앱 목록에서 "배터리 펫" 아이콘을 누릅니다.
+
+| 파일 | 내용 |
+|---|---|
+| `practice/BatteryPetApp.kt` | 완성본. 위에서부터 읽고 "바꿔 보기"를 해 봅니다 |
+| `practice/BatteryPetApp_My.kt` | 직접 만들어 보는 파일. `DisposableEffect` 안에 receiver 등록과 해제를 씁니다. "배터리 펫 연습" 아이콘으로 확인합니다 |

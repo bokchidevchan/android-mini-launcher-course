@@ -7,4 +7,4 @@
 | 파일 | 내용 |
 |---|---|
 | `practice/AppRouletteAnswer.kt` | 앱 목록 읽기, 돌리기(코루틴), 앱 열기 |
-| `practice/RouletteLayout.kt` | 화면 모양. 연습 틀과 같음 |
+| `practice/RouletteLayout.kt` | 화면 모양 |

@@ -36,7 +36,7 @@ import com.example.minilauncher.ui.theme.MiniLauncherTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-// 3일차 8교시 앱 '앱 룰렛'의 화면 모양. 고치지 않고 그대로 씁니다
+// 3일차 8교시 앱 '앱 룰렛' 정답의 화면 모양
 
 // 화면 모양. 상태를 갖지 않고, 받은 값을 그리고 눌린 것을 알리기만 합니다
 @Composable

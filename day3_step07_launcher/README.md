@@ -50,3 +50,12 @@
 ## 단계별 실습 8단계
 
 `MainActivity.kt`의 `launcherPractice(this, step = 1)`에서 숫자를 1부터 8까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/LauncherPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/LauncherPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.
+
+## 앱 만들기: 설치된 앱 목록으로 만드는 앱 (즐겨찾기 서랍)
+
+설치된 앱 목록에서 별을 누른 앱을 위쪽 줄에 모으고, 누르면 그 앱을 여는 앱입니다. Mini Launcher를 기본 홈 앱으로 바꾸기 전에 합니다. Run 한 뒤 에뮬레이터의 앱 목록에서 "즐겨찾기 서랍" 아이콘을 누릅니다.
+
+| 파일 | 내용 |
+|---|---|
+| `practice/FavoriteApps.kt` | 완성본. 위에서부터 읽고 "바꿔 보기"를 해 봅니다 |
+| `practice/FavoriteApps_My.kt` | 직접 만들어 보는 파일. 앱 목록 읽기, 별 누르기, 앱 열기 세 군데를 채웁니다. "즐겨찾기 서랍 연습" 아이콘으로 확인합니다 |

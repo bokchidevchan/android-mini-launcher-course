@@ -22,13 +22,8 @@ class LunchPickPracticeActivity : ComponentActivity() {
         // XML 파일을 이 화면의 모양으로 씁니다
         setContentView(R.layout.activity_lunch_practice)
 
-        // 여기부터 직접 만듭니다. (TextView, Button, Intent 는 위에 import 해 두었습니다)
-        // 1. XML 에 넣은 것을 id 로 찾습니다.      val menuText = findViewById<TextView>(R.id.menuText)
-        // 2. 버튼이 눌리면 할 일을 적습니다.        findViewById<Button>(R.id.pickButton).setOnClickListener { ... }
-        // 3. 목록에서 아무거나 하나 고르고 기록에 넣습니다.   val menu = lunchMenus.random();  history.add(menu)
-        // 4. 화면의 글자를 바꿉니다.                menuText.text = menu;  countText.text = "${history.size}번째 뽑기"
-        // 5. 기록 보기 버튼: 둘째 화면을 열면서 기록을 같이 넘깁니다.
-        //      startActivity(Intent(this, LunchHistoryPracticeActivity::class.java).putStringArrayListExtra(EXTRA_HISTORY, history))
-        // 6. 처음부터 버튼: history.clear() 를 하고 글자들을 처음 것으로 되돌립니다
+        // 여기부터 직접 만듭니다. 요구사항은 교안의 1일차 8교시 장에 있습니다.
+        // 할 일: 뽑기 버튼, 기록 보기 버튼(둘째 화면에 history 를 넘김), 처음부터 버튼
+        // 막히면 README.md 의 "막히면 보는 힌트"를 엽니다
     }
 }

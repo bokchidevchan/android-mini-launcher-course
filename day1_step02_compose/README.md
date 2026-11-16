@@ -1,6 +1,6 @@
 # 1-3 Jetpack Compose 기초
 
-1일차 13:00~15:00 | [전체 일정으로](../README.md)
+1일차 14:00~15:30 | [전체 일정으로](../README.md)
 
 `day1_step02_compose` 폴더를 열고 시작합니다.
 
@@ -22,6 +22,8 @@
 4. Preview 안의 +1을 세 번 누릅니다. 숫자가 3이 되면 성공입니다.
 
     <img src="../docs/images/as03_preview_interactive.png" alt="+1을 세 번 누른 결과" width="300">
+
+5. 같이 해 보기: `practice/ComposeBasics_My.kt`를 열고 [1]부터 [4]까지 한 덩어리씩 `MyCounter` 안에 붙이며 Preview가 어떻게 바뀌는지 봅니다.
 
 `@Composable`이 붙은 함수가 화면 조각입니다. `remember { mutableStateOf() }`로 만든 값이 바뀌면 이 함수가 다시 실행되면서 화면이 바뀝니다. 이것을 Recomposition이라고 합니다.
 

@@ -32,8 +32,8 @@ import java.net.URL
 //    - connection.inputStream.bufferedReader().readText() 로 글자를 읽고 parseJokes(글자) 로 목록을 만듭니다
 //    - 끝나면 connection.disconnect()
 suspend fun myFetchJokes(): List<Joke> {
-    // 여기에 씁니다. 지금은 빈 목록을 돌려줍니다
-    return emptyList()
+    // 여기에 씁니다. 다 쓰면 아래 return 줄은 지웁니다
+    return listOf(Joke("아직 1번을 안 채웠어요", "myFetchJokes 를 채웁니다"))
 }
 
 class MyJokeViewModel : ViewModel() {
@@ -43,7 +43,8 @@ class MyJokeViewModel : ViewModel() {
     // 2. 버튼이 눌리면 불립니다
     //    - 먼저 _state.value 를 JokeState.Loading 으로 바꿉니다
     //    - viewModelScope.launch { } 안에서 myFetchJokes() 를 부릅니다
-    //    - 성공하면 JokeState.Success(목록.random()), IOException 이 나면 JokeState.Error("...") 를 넣습니다
+    //    - try { } catch (e: IOException) { } 로 감쌉니다. 성공하면 JokeState.Success(목록.random()),
+    //      실패하면 JokeState.Error("...") 를 _state.value 에 넣습니다
     fun load() {
         // 여기에 씁니다
     }

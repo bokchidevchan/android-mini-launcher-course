@@ -50,17 +50,8 @@ class ReactionViewModel : ViewModel() {
     val best: StateFlow<Long?> = _best.asStateFlow()
 
     // 화면이 눌릴 때마다 불립니다. 여기를 직접 만듭니다. 요구사항은 교안의 2일차 8교시 장에 있습니다.
-    //   지금 상태가 Ready, Result, TooEarly 면: Waiting 으로 바꾸고, 1~4초 가운데 아무 시간이나 기다린 뒤 Go 로 바꿉니다
-    //   지금 상태가 Waiting 이면: 기다리던 코루틴을 취소하고 TooEarly 로 바꿉니다
-    //   지금 상태가 Go 면: 초록색이 된 뒤 지금까지 걸린 시간을 재서 Result 로 바꿉니다
-    // (힌트) 필요한 것(Job, viewModelScope, launch, delay, Random)은 위에 import 해 두었습니다
-    //        아래 두 줄(private var)은 onTap 함수 밖, 클래스 안에 둡니다
-    //        private var job: Job? = null          // 초록색을 기다리는 코루틴
-    //        private var goAt = 0L                 // 초록색이 된 시각
-    //        job = viewModelScope.launch { delay(Random.nextLong(1000, 4000)); goAt = System.currentTimeMillis(); _state.value = GameState.Go }
-    //        job?.cancel()
-    //        걸린 시간은 System.currentTimeMillis() - goAt
-    //        when (_state.value) { GameState.Waiting -> ...; GameState.Go -> ...; else -> ... }
+    // 지금 상태(_state.value)에 따라 할 일이 달라집니다. 필요한 변수는 이 클래스 안에 직접 만듭니다.
+    // 막히면 README.md 의 "막히면 보는 힌트"를 엽니다
     fun onTap() {
     }
 }
