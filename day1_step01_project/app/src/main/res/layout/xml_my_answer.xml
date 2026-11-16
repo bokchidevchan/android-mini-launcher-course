@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "직접 만들어 보기"의 정답 화면. XmlPracticeActivity.kt 의 STEP 을 6 으로 두면 뜹니다.
+     먼저 xml_my.xml 에 직접 만들어 보고 엽니다 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- 이름 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Mini Launcher"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <!-- 한 줄 소개 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="내가 만든 첫 화면"
+        android:textColor="#1565C0"
+        android:textSize="18sp" />
+
+    <!-- 좋아요 수 -->
+    <TextView
+        android:id="@+id/likeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="좋아요 0"
+        android:textSize="28sp" />
+
+    <!-- 버튼 두 개를 가로로 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/likeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="좋아요" />
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="처음으로" />
+    </LinearLayout>
+</LinearLayout>

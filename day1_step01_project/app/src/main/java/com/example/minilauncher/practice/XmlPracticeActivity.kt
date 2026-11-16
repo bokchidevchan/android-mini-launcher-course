@@ -12,7 +12,8 @@ import com.example.minilauncher.R
 // 1일차 XML 화면 실습 5단계.
 // 아래 STEP 숫자를 1부터 5까지 바꿔 가며 Run 하고, 에뮬레이터의 앱 목록에서 "XML 연습" 아이콘을 누릅니다.
 // 화면 모양은 res/layout/xml_step1.xml ~ xml_step5.xml 에 있습니다. 파일을 열고 오른쪽 위 Split 을 누르면 미리 보기가 나옵니다.
-// 0 으로 두면 직접 써 보는 빈 화면 res/layout/xml_my.xml 이 뜹니다.
+// 0 으로 두면 직접 만들어 보는 빈 화면 res/layout/xml_my.xml 이 뜹니다. 완성 화면과 요구사항은 교안에 있습니다.
+// 6 으로 두면 그 정답(res/layout/xml_my_answer.xml)이 뜹니다.
 // XML 방식은 화면 모양을 XML 파일에, 동작을 Kotlin 파일에 나눠 적습니다. 오후에 배우는 Compose 는 둘을 Kotlin 한곳에 적습니다
 private const val STEP = 1
 
@@ -30,7 +31,8 @@ class XmlPracticeActivity : ComponentActivity() {
             3 -> step3Button()
             4 -> step4Input()
             5 -> step5AddViews()
-            else -> setContentView(R.layout.xml_my)      // 직접 써 보는 화면
+            6 -> step6Answer()
+            else -> step0My()
         }
     }
 
@@ -73,5 +75,26 @@ class XmlPracticeActivity : ComponentActivity() {
             listLayout.addView(row)
         }
         Log.d("Xml", "줄 ${names.size}개를 넣었습니다")
+    }
+
+    // 0. 직접 만들어 보기
+    // 화면 모양은 res/layout/xml_my.xml 에 만들고, 버튼이 눌렸을 때 할 일은 여기에 적습니다
+    private fun step0My() {
+        setContentView(R.layout.xml_my)
+        // 여기에 씁니다. 3단계(step3Button)를 보고 만듭니다
+    }
+
+    // 6. 직접 만들어 보기의 정답
+    private fun step6Answer() {
+        setContentView(R.layout.xml_my_answer)
+        val likeText = findViewById<TextView>(R.id.likeText)
+        findViewById<Button>(R.id.likeButton).setOnClickListener {
+            count++
+            likeText.text = "좋아요 $count"
+        }
+        findViewById<Button>(R.id.resetButton).setOnClickListener {
+            count = 0
+            likeText.text = "좋아요 $count"
+        }
     }
 }
