@@ -18,7 +18,8 @@
         android:textStyle="bold" />
 
     <!-- 여기부터 직접 만듭니다. 완성 화면과 요구사항은 교안의 1일차 8교시 장에 있습니다.
-         필요한 것: 뽑힌 메뉴를 크게 보여 줄 TextView, 몇 번째 뽑기인지 보여 줄 TextView, Button 두 개.
+         필요한 것: 뽑힌 메뉴를 크게 보여 줄 TextView, 몇 번째 뽑기인지 보여 줄 TextView,
+                   Button 세 개(뽑기!, 기록 보기, 처음부터).
          태그마다 android:layout_width 와 android:layout_height 를 꼭 적습니다 (빼면 실행할 때 앱이 꺼집니다).
          코드에서 찾아 쓸 것에는 android:id="@+id/이름" 을 붙입니다.
          막히면 같은 폴더의 activity_lunch_answer.xml 을 봅니다 -->

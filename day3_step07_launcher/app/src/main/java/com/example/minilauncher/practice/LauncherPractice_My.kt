@@ -4,6 +4,8 @@ import android.util.Log
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 
 // 직접 써 보는 파일입니다.
 // LauncherPractice.kt 의 단계별 코드를 보고, 같은 단계의 빈 함수 안에 옮겨 적거나 복사해서 붙입니다.
@@ -25,7 +27,10 @@ fun myLauncherPractice(context: Context, step: Int) {
         3 -> myLauncherStep03(context)
         4 -> myLauncherStep04(context)
         5 -> myLauncherStep05(context)
-        else -> show("1부터 5까지의 숫자를 넣어 주세요")
+        6 -> myLauncherStep06(context)
+        7 -> myLauncherStep07(context)
+        8 -> myLauncherStep08(context)
+        else -> show("1부터 8까지의 숫자를 넣어 주세요")
     }
 }
 
@@ -56,5 +61,23 @@ private fun myLauncherStep04(context: Context) {
 // 5단계. 찾은 앱 열기 (LauncherPractice.kt 의 step05Open)
 @Suppress("UNUSED_PARAMETER")
 private fun myLauncherStep05(context: Context) {
+    // 여기에 씁니다
+}
+
+// 6단계. 내 앱의 앱 정보 화면 열기 (LauncherPractice.kt 의 step06AppInfo)
+@Suppress("UNUSED_PARAMETER")
+private fun myLauncherStep06(context: Context) {
+    // 여기에 씁니다
+}
+
+// 7단계. 이 앱이 홈 앱 후보인지 확인하기 (LauncherPractice.kt 의 step07HomeCandidate)
+@Suppress("UNUSED_PARAMETER")
+private fun myLauncherStep07(context: Context) {
+    // 여기에 씁니다
+}
+
+// 8단계. 가장 최근에 설치한 앱 찾기 (LauncherPractice.kt 의 step08Newest)
+@Suppress("UNUSED_PARAMETER")
+private fun myLauncherStep08(context: Context) {
     // 여기에 씁니다
 }

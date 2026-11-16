@@ -108,6 +108,6 @@ Android Studio Rabbit에 Java가 들어 있어서 JDK를 따로 설치하지 않
 
 | 폴더 | 만드는 앱 |
 |---|---|
-| [day1_extra_practice](day1_extra_practice) | 오늘 점심 뭐 먹지? (XML로 한 번, Compose로 한 번) |
+| [day1_extra_practice](day1_extra_practice) | 오늘 점심 뭐 먹지? (첫 화면은 XML, 둘째 화면은 Compose) |
 | [day2_extra_practice](day2_extra_practice) | 반응 속도 게임 (코루틴, StateFlow, ViewModel) |
 | [day3_extra_practice](day3_extra_practice) | 앱 룰렛 (설치된 앱 목록, Intent) |
