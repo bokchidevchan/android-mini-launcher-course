@@ -2,26 +2,34 @@
 
 모듈 1-1, 1-2 | [전체 일정으로](../README.md)
 
-Kotlin 문법을 10단계 실습으로 실행해 보고, 앱을 처음 띄운 뒤 화면 하나가 뜰 때까지 거치는 파일을 따라갑니다.
+Kotlin 문법을 12단계 실습으로 실행해 보고, XML 화면 실습을 한 뒤, 앱을 처음 띄워 화면 하나가 뜰 때까지 거치는 파일을 따라갑니다.
 
 ## 1-1 Kotlin 핵심 (09:00~10:30)
 
-### Kotlin 문법 실습 10단계
+### Kotlin 문법 실습 12단계
 
-`MainActivity.kt`의 `kotlinPractice(step = 1)`에서 숫자를 1부터 10까지 바꿔 가며 Run 합니다. 결과는 화면이 아니라 Logcat에 찍힙니다. Logcat 검색칸에 `tag:Kotlin`을 넣으면 이 실습이 남긴 줄만 보입니다. 코드는 `practice/KotlinPractice.kt`에 있고, 단계마다 끝에 "바꿔 보기"가 적혀 있습니다.
+`MainActivity.kt`의 `kotlinPractice(step = 1)`에서 숫자를 1부터 12까지 바꿔 가며 Run 합니다. 결과는 화면이 아니라 Logcat에 찍힙니다. Logcat 검색칸에 `tag:Kotlin`을 넣으면 이 실습이 남긴 줄만 보입니다. 코드는 `practice/KotlinPractice.kt`에 있고, 단계마다 끝에 "바꿔 보기"가 적혀 있습니다.
 
 | 단계 | 실습하는 것 | C++에서 비슷한 것 |
 |---|---|---|
 | 1 | `val`, `var`, 문자열 안의 `$변수` | const와 변수, auto, printf 서식 |
-| 2 | `App?`, `?.`, `?:` (null 안전) | 포인터와 null 검사 |
-| 3 | `if`, `when`으로 값 고르기 | 삼항 연산자, switch |
-| 4 | 함수, 기본 인자, 이름 붙인 인자 | 함수와 기본 인자 |
-| 5 | `listOf`, `mutableListOf`, `for` | `std::vector`, 범위 기반 for |
-| 6 | `filter { }`, `map { }` 람다 | `[](auto& a){ }` 람다 |
-| 7 | `data class` (==, copy, 구조 분해) | `struct` + `operator==` |
-| 8 | `class`, 생성자, `private set` | class와 생성자 |
-| 9 | `enum class`와 `when` | enum class와 switch |
-| 10 | 종합: 앱 검색 함수 | (3일차 검색 기능의 축소판) |
+| 2 | 숫자 계산: 더하기, 나누기, 나머지, 비교 | 같음 |
+| 3 | 문자열 다루기: 길이, 대소문자, 들어 있는지 | `std::string`의 멤버 함수 |
+| 4 | `if`, `else`, `&&`, `!` | if와 삼항 연산자 |
+| 5 | `when`으로 값 고르기 | switch |
+| 6 | `for`와 범위 `1..3`, `until`, `downTo` | for 문 |
+| 7 | `while`, `break` | 같음 |
+| 8 | 함수, 기본 인자, 이름 붙인 인자 | 함수와 기본 인자 |
+| 9 | `listOf`, `mutableListOf` | `std::vector`, 범위 기반 for |
+| 10 | `App?`, `?.`, `?:` (null 안전) | 포인터와 null 검사 |
+| 11 | `filter { }`, `map { }` 람다 | `[](auto& a){ }` 람다 |
+| 12 | 종합: 앱 검색 함수 | (3일차 검색 기능의 축소판) |
+
+직접 써 보려면 같은 폴더의 `practice/KotlinPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 `myKotlinPractice(step = 1)`로 바꿔 실행합니다.
+
+### XML 화면 실습 5단계
+
+`practice/XmlPracticeActivity.kt`의 `STEP` 숫자를 1부터 5까지 바꿔 가며 Run 하고, 에뮬레이터의 앱 목록에서 "XML 연습" 아이콘을 누릅니다. 화면 모양은 `res/layout/xml_step1.xml`부터 `xml_step5.xml`까지에 있습니다. `STEP`을 0으로 두면 직접 써 보는 빈 화면 `res/layout/xml_my.xml`이 뜹니다.
 
 1단계를 실행하면 Logcat에 이렇게 찍힙니다.
 

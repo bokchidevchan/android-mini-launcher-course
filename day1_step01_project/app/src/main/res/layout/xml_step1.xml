@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 1단계. 글자 하나.
+     XML 로 화면을 만들 때는 태그 하나가 화면 조각 하나입니다.
+     LinearLayout 은 안에 든 것을 한 줄로 놓는 상자, TextView 는 글자입니다.
+     layout_width 와 layout_height 는 크기입니다. 모든 태그에 꼭 적습니다.
+       match_parent = 부모만큼 크게, wrap_content = 내용만큼만 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안녕, XML"
+        android:textColor="#1565C0"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <!-- 바꿔 보기: 28sp 를 40sp 로, 색 #1565C0 을 #C62828 로 바꾸고 오른쪽 미리 보기를 봅니다.
+         TextView 를 하나 더 복사해 붙여 글자를 두 줄로 만들어 봅니다 -->
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 직접 써 보는 화면입니다.
+     XmlPracticeActivity.kt 의 STEP 을 0 으로 바꾸고 Run 하면 이 화면이 뜹니다.
+     xml_step1.xml 부터 xml_step5.xml 까지를 보고, 아래 빈 자리에 옮겨 적거나 복사해서 붙입니다 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- 여기에 씁니다 -->
+
+</LinearLayout>

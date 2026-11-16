@@ -22,5 +22,5 @@
                    Button 세 개(뽑기!, 기록 보기, 처음부터).
          태그마다 android:layout_width 와 android:layout_height 를 꼭 적습니다 (빼면 실행할 때 앱이 꺼집니다).
          코드에서 찾아 쓸 것에는 android:id="@+id/이름" 을 붙입니다.
-         막히면 같은 폴더의 activity_lunch_answer.xml 을 봅니다 -->
+         막히면 day1_extra_answer 폴더의 activity_lunch_answer.xml 을 봅니다 -->
 </LinearLayout>

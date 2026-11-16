@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 5단계. 코드로 줄 추가하기.
+     목록처럼 개수가 정해지지 않은 것은 XML 에 다 적을 수 없습니다.
+     빈 상자(listLayout)만 만들어 두고, Kotlin 코드가 줄을 하나씩 만들어 넣습니다 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="앱 목록"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <!-- 줄이 들어갈 빈 상자 -->
+    <LinearLayout
+        android:id="@+id/listLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical" />
+
+    <!-- 바꿔 보기: XmlPracticeActivity.kt 의 step5AddViews 에서 목록에 "Phone" 을 하나 더 넣어 봅니다 -->
+</LinearLayout>

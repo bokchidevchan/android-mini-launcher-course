@@ -26,7 +26,7 @@ import com.example.minilauncher.ui.theme.MiniLauncherTheme
 
 // 1일차 8교시 둘째 화면: 기록 보기. Compose 로 만듭니다.
 // 첫 화면의 "기록 보기" 버튼이 이 화면을 엽니다. Split 을 눌러 Preview 로 모양을 먼저 볼 수 있습니다.
-// 정답: LunchHistoryAnswerActivity.kt
+// 정답은 day1_extra_answer 폴더에 있습니다. 먼저 만들어 보고 엽니다
 class LunchHistoryPracticeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

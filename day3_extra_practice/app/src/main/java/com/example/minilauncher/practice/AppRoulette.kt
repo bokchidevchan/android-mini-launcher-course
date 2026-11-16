@@ -40,7 +40,7 @@ import kotlinx.coroutines.launch
 // "돌리기"를 누르면 설치된 앱 이름이 빠르게 바뀌다가 하나에서 멈춥니다. "이 앱 열기"를 누르면 그 앱이 열립니다.
 // 실행: 에뮬레이터의 앱 목록에서 "앱 룰렛 연습" 아이콘.
 // 화면 모양(RouletteLayout)은 만들어져 있습니다. AppRouletteScreen 안을 직접 만듭니다.
-// 정답: AppRouletteAnswer.kt ("앱 룰렛 정답" 아이콘)
+// 정답은 day3_extra_answer 폴더에 있습니다. 먼저 만들어 보고 엽니다
 class AppRoulettePracticeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,27 +74,4 @@ fun AppRouletteScreen() {
         onSpin = { /* 2번 */ },
         onOpen = { /* 3번 */ },
     )
-}
-
-// 화면 모양. 상태를 갖지 않고, 받은 값을 그리고 눌린 것을 알리기만 합니다
-@Composable
-fun RouletteLayout(count: Int, label: String?, spinning: Boolean, onSpin: () -> Unit, onOpen: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxSize().safeDrawingPadding().padding(24.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-    ) {
-        Text("앱 룰렛", fontSize = 28.sp, fontWeight = FontWeight.Bold)
-        Text("설치된 앱 ${count}개 가운데 하나", fontSize = 16.sp)
-        Spacer(Modifier.height(40.dp))
-        Text(label ?: "돌려 보세요", fontSize = 40.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-        Spacer(Modifier.height(40.dp))
-        Button(onClick = onSpin, enabled = !spinning, modifier = Modifier.width(200.dp)) {
-            Text(if (spinning) "돌아가는 중" else "돌리기")
-        }
-        Spacer(Modifier.height(8.dp))
-        OutlinedButton(onClick = onOpen, enabled = label != null && !spinning, modifier = Modifier.width(200.dp)) {
-            Text("이 앱 열기")
-        }
-    }
 }

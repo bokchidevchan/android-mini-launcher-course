@@ -17,5 +17,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- XML 화면 실습. 앱 목록에 "XML 연습" 아이콘이 따로 생깁니다 -->
+        <activity
+            android:name=".practice.XmlPracticeActivity"
+            android:exported="true"
+            android:label="XML 연습">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

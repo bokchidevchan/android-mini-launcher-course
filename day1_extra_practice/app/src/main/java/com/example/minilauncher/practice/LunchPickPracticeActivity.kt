@@ -11,7 +11,7 @@ import com.example.minilauncher.R
 // 실행: 에뮬레이터의 앱 목록에서 "점심 뽑기 연습" 아이콘.
 // 화면 모양은 res/layout/activity_lunch_practice.xml 에, 동작은 이 파일에 만듭니다.
 // 메뉴 목록은 lunchMenus (LunchMenus.kt) 를 씁니다.
-// 정답: LunchPickAnswerActivity.kt, res/layout/activity_lunch_answer.xml ("점심 뽑기 정답" 아이콘)
+// 정답은 day1_extra_answer 폴더에 있습니다. 먼저 만들어 보고 엽니다
 class LunchPickPracticeActivity : ComponentActivity() {
 
     // 지금까지 뽑은 메뉴. 둘째 화면에 넘겨줄 것이라 목록으로 모아 둡니다

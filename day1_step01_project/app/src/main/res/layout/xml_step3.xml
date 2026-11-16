@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 3단계. 버튼과 클릭.
+     android:id="@+id/이름" 은 이름표입니다. Kotlin 코드가 이 이름으로 찾아서 씁니다.
+     눌렸을 때 할 일은 XML 이 아니라 XmlPracticeActivity.kt 의 step3Button 에 적혀 있습니다 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/countText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지금 0"
+        android:textSize="32sp" />
+
+    <Button
+        android:id="@+id/plusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="+1" />
+
+    <!-- 바꿔 보기: countText 의 id 를 countLabel 로 바꾸면 Kotlin 쪽에 빨간 줄이 생깁니다. 이름표가 달라졌기 때문입니다 -->
+</LinearLayout>

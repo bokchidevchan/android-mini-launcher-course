@@ -39,16 +39,7 @@ import kotlinx.coroutines.launch
 // 화면을 누르면 빨간색이 되고, 조금 뒤 초록색으로 바뀝니다. 초록색이 되자마자 누르면 몇 ms 걸렸는지 나옵니다.
 // 실행: 에뮬레이터의 앱 목록에서 "반응 속도 게임 연습" 아이콘.
 // 화면(ReactionScreen)은 만들어져 있습니다. ReactionViewModel 의 onTap 을 직접 만듭니다.
-// 정답: ReactionAnswer.kt ("반응 속도 게임 정답" 아이콘)
-
-// 게임의 상태. 화면은 이 다섯 가지 가운데 하나를 그립니다
-sealed interface GameState {
-    data object Ready : GameState                  // 처음. 누르면 시작
-    data object Waiting : GameState                // 빨간색. 초록색을 기다리는 중
-    data object Go : GameState                     // 초록색. 지금 눌러야 함
-    data class Result(val ms: Long) : GameState    // 걸린 시간
-    data object TooEarly : GameState               // 초록색이 되기 전에 눌렀음
-}
+// 정답은 day2_extra_answer 폴더에 있습니다. 먼저 만들어 보고 엽니다
 
 class ReactionViewModel : ViewModel() {
 
@@ -84,48 +75,6 @@ class ReactionPracticeActivity : ComponentActivity() {
                 val best by vm.best.collectAsStateWithLifecycle()
                 ReactionScreen(state = state, best = best, onTap = vm::onTap)
             }
-        }
-    }
-}
-
-// 걸린 시간에 붙이는 한마디
-fun reactionComment(ms: Long): String = when {
-    ms < 250 -> "번개 같은 손"
-    ms < 400 -> "꽤 빠른 편"
-    ms < 700 -> "평범한 사람"
-    else -> "혹시 졸았나요"
-}
-
-// 화면. 상태를 갖지 않고, 받은 상태를 그리고 눌린 것을 알리기만 합니다
-@Composable
-fun ReactionScreen(state: GameState, best: Long?, onTap: () -> Unit) {
-    val color = when (state) {
-        GameState.Waiting -> Color(0xFFC62828)
-        GameState.Go -> Color(0xFF2E7D32)
-        else -> Color(0xFF37474F)
-    }
-    val title = when (state) {
-        GameState.Ready -> "화면을 누르면 시작"
-        GameState.Waiting -> "초록색이 되면 누르세요"
-        GameState.Go -> "지금!"
-        is GameState.Result -> "${state.ms}ms"
-        GameState.TooEarly -> "너무 빨랐어요"
-    }
-    val sub = when (state) {
-        is GameState.Result -> reactionComment(state.ms) + "\n화면을 누르면 다시"
-        GameState.TooEarly -> "초록색이 된 뒤에 눌러야 합니다\n화면을 누르면 다시"
-        else -> ""
-    }
-    Box(
-        modifier = Modifier.fillMaxSize().background(color).clickable(onClick = onTap).padding(24.dp),
-        contentAlignment = Alignment.Center,
-    ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(title, color = Color.White, fontSize = 36.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
-            Spacer(Modifier.height(12.dp))
-            Text(sub, color = Color.White, fontSize = 18.sp, textAlign = TextAlign.Center)
-            Spacer(Modifier.height(24.dp))
-            Text(if (best == null) "최고 기록 없음" else "최고 기록 ${best}ms", color = Color.White, fontSize = 16.sp)
         }
     }
 }

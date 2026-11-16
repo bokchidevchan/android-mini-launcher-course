@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 2단계. 세로와 가로로 놓기.
+     android:orientation 이 vertical 이면 세로로, horizontal 이면 가로로 놓습니다.
+     상자 안에 상자를 또 넣을 수 있습니다. margin 은 바깥 여백, padding 은 안쪽 여백입니다 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="위"
+        android:textSize="24sp" />
+
+    <!-- 가로로 놓는 상자 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="왼쪽"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="가운데"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="오른쪽"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="아래"
+        android:textSize="24sp" />
+
+    <!-- 바꿔 보기: 안쪽 상자의 horizontal 을 vertical 로 바꿔 봅니다. 24dp 를 48dp 로 바꿔 봅니다 -->
+</LinearLayout>
