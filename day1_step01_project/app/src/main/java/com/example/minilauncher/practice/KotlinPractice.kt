@@ -5,6 +5,7 @@ import android.util.Log
 // 1일차 오전 Kotlin 문법 실습 10단계.
 // MainActivity.kt 의 kotlinPractice(step = 1) 에서 숫자를 1부터 10까지 바꿔 가며 Run 합니다.
 // Logcat 검색창에 tag:Kotlin 을 넣으면 이 파일이 남긴 줄만 보입니다.
+// 직접 써 보고 싶으면 같은 폴더의 KotlinPractice_My.kt 에 옮겨 적습니다.
 
 private const val TAG = "Kotlin"
 
@@ -21,7 +22,7 @@ data class App(val label: String, val packageName: String, val installed: Boolea
 
 // listOf(...) 는 값을 순서대로 담은 리스트를 만듭니다. C++ 의 std::vector 자리입니다.
 // listOf 로 만든 리스트는 읽기만 되고, 넣고 빼려면 mutableListOf 로 만듭니다 (5단계)
-private val sampleApps = listOf(
+val sampleApps = listOf(
     App("Settings", "com.android.settings"),
     App("Camera", "com.android.camera2"),
     App("Chrome", "com.android.chrome"),
@@ -91,11 +92,11 @@ private fun step03Conditions() {
 
 // 4단계. 함수
 // 기본값이 있는 인자는 생략할 수 있고, 이름을 붙여서 넘길 수도 있습니다
-private fun describe(label: String, size: Int = 56, selected: Boolean = false): String {
+fun describe(label: String, size: Int = 56, selected: Boolean = false): String {
     return "$label 아이콘 ${size}dp" + if (selected) " (선택됨)" else ""
 }
 
-private fun twice(x: Int) = x * 2      // 한 줄 함수는 = 로 씁니다
+fun twice(x: Int) = x * 2      // 한 줄 함수는 = 로 씁니다
 
 private fun step04Functions() {
     show(describe("Chrome"))
@@ -126,7 +127,7 @@ private fun step05Lists() {
 // 6단계. 람다
 // { } 안이 람다입니다. 인자가 하나면 it 으로 부릅니다. C++ 의 [](auto& a){ } 자리
 // 함수를 인자로 받을 수도 있습니다. (Int) -> Unit 은 C++ 의 std::function<void(int)> 자리
-private fun runTwice(action: (Int) -> Unit) {
+fun runTwice(action: (Int) -> Unit) {
     action(1)
     action(2)
 }
@@ -163,7 +164,7 @@ private fun step07DataClass() {
 
 // 8단계. 클래스
 // 생성자 인자에 val 을 붙이면 그대로 멤버 변수가 됩니다. new 를 쓰지 않습니다
-private class Counter(val name: String, start: Int = 0) {
+class Counter(val name: String, start: Int = 0) {
     var value = start
         private set                    // 밖에서는 읽기만 됩니다
 
@@ -173,11 +174,11 @@ private class Counter(val name: String, start: Int = 0) {
 }
 
 // : 뒤가 부모입니다. 부모의 함수를 다시 쓸 때는 override 를 꼭 적습니다 (C++ 의 순수 가상 클래스 자리)
-private interface Greeter {
+interface Greeter {
     fun greet(): String
 }
 
-private class KoreanGreeter : Greeter {
+class KoreanGreeter : Greeter {
     override fun greet() = "안녕하세요"
 }
 
@@ -193,9 +194,9 @@ private fun step08Classes() {
 
 // 9단계. enum class 와 when
 // 경우를 하나라도 빠뜨리면 컴파일 오류가 납니다. 2일차의 sealed interface 도 같은 방식으로 when 에 경우를 모두 적습니다
-private enum class Network { WIFI, MOBILE, OFFLINE }
+enum class Network { WIFI, MOBILE, OFFLINE }
 
-private fun networkText(network: Network): String = when (network) {
+fun networkText(network: Network): String = when (network) {
     Network.WIFI -> "Wi-Fi"
     Network.MOBILE -> "모바일 데이터"
     Network.OFFLINE -> "오프라인"
@@ -210,7 +211,7 @@ private fun step09EnumWhen() {
 
 // 10단계. 종합: 앱 검색
 // 3일차에 만드는 검색 기능의 축소판입니다. 함수, 리스트, 람다, null 안전을 한데 씁니다
-private fun search(apps: List<App>, query: String): List<App> {
+fun search(apps: List<App>, query: String): List<App> {
     if (query.isBlank()) return apps
     return apps.filter { it.label.contains(query, ignoreCase = true) }
 }

@@ -77,7 +77,7 @@ private fun step02Delay(scope: CoroutineScope) {
 
 // 3단계. suspend 함수
 // suspend 가 붙은 함수는 중간에 멈췄다가 이어질 수 있습니다. 부르는 쪽은 보통 함수처럼 위에서 아래로 읽습니다
-private suspend fun loadLabel(name: String): String {
+suspend fun loadLabel(name: String): String {
     delay(300)                     // 서버에서 받아 오는 데 0.3초 걸린다고 칩니다
     return "$name 이름"
 }
@@ -139,7 +139,7 @@ private fun step06Cancel(scope: CoroutineScope) {
 
 // 7단계. 예외 처리
 // 코루틴 안에서도 try, catch 로 잡습니다. 잡지 않으면 앱이 꺼집니다
-private suspend fun loadOrFail(fail: Boolean): String {
+suspend fun loadOrFail(fail: Boolean): String {
     delay(200)
     if (fail) throw IllegalStateException("서버 응답 없음")
     return "앱 16개"
@@ -195,7 +195,7 @@ private fun step09StateFlow(scope: CoroutineScope) {
 
 // 10단계. 종합: 불러오는 중, 성공, 실패
 // 이 모듈 뒤쪽에서 볼 LauncherViewModel 의 축소판입니다. 화면 상태를 셋 중 하나로 묶어 StateFlow 로 내보냅니다
-private sealed interface LoadState {
+sealed interface LoadState {
     data object Loading : LoadState
     data class Success(val apps: String) : LoadState
     data class Error(val message: String) : LoadState

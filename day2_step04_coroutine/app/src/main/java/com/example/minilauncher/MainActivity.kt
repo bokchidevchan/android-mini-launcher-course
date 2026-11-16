@@ -21,6 +21,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.lifecycle.lifecycleScope
 import com.example.minilauncher.data.FakeAppRepository
 import com.example.minilauncher.practice.coroutinePractice
+import com.example.minilauncher.practice.myCoroutinePractice
 import com.example.minilauncher.ui.AppsContent
 import com.example.minilauncher.ui.ButtonRow
 import com.example.minilauncher.ui.StatusArea
@@ -35,6 +36,7 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "onCreate (복원 데이터 ${if (savedInstanceState == null) "없음" else "있음"})")
         // 코루틴 실습: 숫자를 1부터 10까지 바꿔 가며 Run 합니다. Logcat 검색창에 tag:Coroutine 을 넣습니다
         coroutinePractice(lifecycleScope, step = 1)
+        // myCoroutinePractice(lifecycleScope, step = 1)   // 직접 쓴 코드(CoroutinePractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다
         // 실패 확률을 바꿔 보고 싶으면: adb shell am start -n com.example.minilauncher/.MainActivity --ef fail_rate 1.0
         val failRate = intent.getFloatExtra("fail_rate", 0.3f)
         val factory = viewModelFactory { initializer { LauncherViewModel(FakeAppRepository(failRate)) } }

@@ -101,3 +101,13 @@ https://www.figma.com/design/szFZ4g6y6kvu9kJf8WORY0/
 
 Gradle 9.3.1, Android Gradle Plugin 8.13.2, Kotlin 2.0.21, Compose BOM 2025.06.01, compileSdk 36, minSdk 26.
 Android Studio Rabbit에 Java가 들어 있어서 JDK를 따로 설치하지 않아도 됩니다. 실습 화면과 로그는 Android 16(API 36), Android 17(API 37) 에뮬레이터 기준입니다.
+
+## 시간이 남으면
+
+수업이 일찍 끝났을 때 푸는 문제입니다. 문제 파일의 TODO를 고치고 Run 하면 Logcat의 `tag:Extra`에 문제마다 O, X가 찍힙니다.
+
+| 폴더 | 내용 |
+|---|---|
+| [day1_extra_practice](day1_extra_practice) | Kotlin 문제 5개, Compose 문제 2개 |
+| [day2_extra_practice](day2_extra_practice) | 코루틴 문제 5개 |
+| [day3_extra_practice](day3_extra_practice) | 런처에 쓸 만한 함수 5개 |

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 부팅 완료 방송을 받으려면 필요. 일반 권한이라 설치할 때 자동으로 허용됩니다 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Foreground Service 와 알림 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- 고정 앱 16개의 아이콘을 읽으려면 이 앱들을 보겠다고 미리 적어야 합니다 (패키지 공개 범위, 3일차에 자세히) -->
+    <queries>
+        <package android:name="com.google.android.calendar" />
+        <package android:name="com.android.camera2" />
+        <package android:name="com.android.chrome" />
+        <package android:name="com.google.android.deskclock" />
+        <package android:name="com.google.android.contacts" />
+        <package android:name="com.google.android.apps.docs" />
+        <package android:name="com.google.android.documentsui" />
+        <package android:name="com.google.android.gm" />
+        <package android:name="com.google.android.googlequicksearchbox" />
+        <package android:name="com.google.android.apps.maps" />
+        <package android:name="com.google.android.apps.messaging" />
+        <package android:name="com.google.android.dialer" />
+        <package android:name="com.google.android.apps.photos" />
+        <package android:name="com.android.settings" />
+        <package android:name="com.google.android.youtube" />
+        <package android:name="com.google.android.apps.youtube.music" />
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MiniLauncher">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".lab.LabActivity"
+            android:exported="true"
+            android:label="실험실"
+            android:taskAffinity="com.example.minilauncher.lab">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 정적 등록: 앱이 꺼져 있어도 시스템이 이 Receiver 를 깨워서 부릅니다 -->
+        <receiver
+            android:name=".system.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 4대 컴포넌트 중 Service. Android 14 부터 foregroundServiceType 을 꼭 적어야 합니다 -->
+        <service
+            android:name=".service.SyncService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+    </application>
+</manifest>

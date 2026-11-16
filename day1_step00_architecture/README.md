@@ -20,13 +20,11 @@ app  ->  core:data     ->  core:domain
 | `feature:home` | 화면 | Compose 화면과 ViewModel. `core:domain`만 압니다 |
 | `app` | 조립 | 어떤 저장소를 꽂을지 정하는 한 곳입니다 |
 
-## 켜면 알림이 뜹니다 (Service 맛보기)
-
-앱을 켜면 알림 권한을 묻고, 허락하면 알림이 20초 동안 보입니다. 알림을 띄우는 것은 `app` 모듈의 `HelloService.kt`입니다. Manifest와 Gradle 파일을 읽어 보는 재료로 넣었습니다.
+## Manifest와 Gradle 파일
 
 | 파일 | 볼 것 |
 |---|---|
-| `app/src/main/AndroidManifest.xml` | 권한(`uses-permission`), 화면(`activity`), 화면 없는 부품(`service`) |
+| `app/src/main/AndroidManifest.xml` | 앱 이름(`android:label`)과 화면(`activity`) |
 | `settings.gradle.kts` | 모듈 4개 목록 |
 | `gradle/libs.versions.toml` | 라이브러리 이름과 버전 |
 | `app/build.gradle.kts` | 앱 ID, SDK 버전, 쓰는 라이브러리와 모듈 |

@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.minilauncher.practice.kotlinPractice
+import com.example.minilauncher.practice.myKotlinPractice
 import com.example.minilauncher.ui.theme.LauncherBackground
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
 
@@ -28,6 +29,7 @@ class MainActivity : ComponentActivity() {
         Log.d("MiniLauncher", "MainActivity onCreate, 프로세스 id=${android.os.Process.myPid()}")
         // Kotlin 문법 실습: 숫자를 1부터 10까지 바꿔 가며 Run 합니다. Logcat 검색창에 tag:Kotlin 을 넣습니다
         kotlinPractice(step = 1)
+        // myKotlinPractice(step = 1)   // 직접 쓴 코드(KotlinPractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다
         enableEdgeToEdge()
         setContent {
             MiniLauncherTheme {
