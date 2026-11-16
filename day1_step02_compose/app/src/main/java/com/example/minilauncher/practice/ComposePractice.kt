@@ -215,6 +215,28 @@ fun Example10Grid() {
     // 바꿔 보기: 88.dp 를 120.dp 로 바꾸면 한 줄에 몇 칸이 될까요? 다음 실습의 ui/AppGrid.kt 가 이 모양입니다
 }
 
+// 11. 상태 끌어올리기 (state hoisting)
+// 5번은 상태를 버튼 옆에 두었습니다. 여기서는 상태를 부모가 가집니다.
+// 값은 아래로 내려 주고, 눌렸다는 사실은 람다(onClick)로 위에 알립니다. 그래서 버튼 두 개가 같은 값을 바꿉니다
+@Composable
+fun Example11Hoisting() {
+    var count by remember { mutableIntStateOf(0) }       // 상태는 부모 한 곳에만 있습니다
+    Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text("부모가 가진 값: $count", fontSize = 20.sp)
+        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            PlusButton(label = "왼쪽 +1", onClick = { count++ })
+            PlusButton(label = "오른쪽 +1", onClick = { count++ })
+        }
+    }
+    // 바꿔 보기: 오른쪽 버튼의 count++ 를 count = 0 으로 바꿔 봅니다. PlusButton 은 고치지 않아도 됩니다
+}
+
+// 상태가 없는 화면 조각. 받은 글자를 그리고, 눌리면 알리기만 합니다
+@Composable
+private fun PlusButton(label: String, onClick: () -> Unit) {
+    Button(onClick = onClick) { Text(label) }
+}
+
 // 예제 10개를 한 화면에 모아 봅니다
 @Composable
 fun ComposePracticeGallery() {
@@ -271,3 +293,7 @@ private fun Example09Preview() { MiniLauncherTheme { Example09List() } }
 @Preview(showBackground = true, widthDp = 360, name = "10 격자와 선택")
 @Composable
 private fun Example10Preview() { MiniLauncherTheme { Example10Grid() } }
+
+@Preview(showBackground = true, widthDp = 360, name = "11 상태 끌어올리기")
+@Composable
+private fun Example11Preview() { MiniLauncherTheme { Example11Hoisting() } }
