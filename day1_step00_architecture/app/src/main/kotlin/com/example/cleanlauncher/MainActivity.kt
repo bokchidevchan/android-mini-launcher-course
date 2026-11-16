@@ -1,12 +1,15 @@
 package com.example.cleanlauncher
 
+import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.material3.MaterialTheme
 import androidx.lifecycle.viewmodel.initializer
@@ -32,14 +35,31 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    // 알림 권한을 묻는 창. 허락하든 거절하든 Service 는 시작합니다 (거절하면 알림만 안 보임)
+    private val askNotification =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { startHelloService() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        // 처음 켤 때 한 번만. 화면을 돌려 다시 만들어질 때는 건너뜁니다
+        if (savedInstanceState == null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                askNotification.launch(Manifest.permission.POST_NOTIFICATIONS)
+            } else {
+                startHelloService()
+            }
+        }
         setContent {
             MaterialTheme {
                 HomeScreen(viewModel, onAppClick = ::launchApp)
             }
         }
+    }
+
+    // Manifest 에 적어 둔 HelloService 를 시작합니다. 알림이 20초 동안 보입니다
+    private fun startHelloService() {
+        startForegroundService(Intent(this, HelloService::class.java))
     }
 
     private fun launchApp(app: AppInfo) {

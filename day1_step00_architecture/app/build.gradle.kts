@@ -45,6 +45,8 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.runner)
+    // 테스트에서 권한을 미리 허락하는 GrantPermissionRule
+    androidTestImplementation(libs.androidx.test.rules)
     // Compose 테스트가 안에서 쓰는 Espresso. 최신 안드로이드(16, 17)에서 돌리려면 새 버전이 필요합니다
     androidTestImplementation(libs.androidx.test.espresso.core)
 }
