@@ -208,7 +208,9 @@ fun Example08Card() {
 // 9. 긴 목록
 // LazyColumn 은 화면에 보이는 줄만 만듭니다. 줄이 천 개여도 느려지지 않습니다.
 // items(labels) { label -> ... } 는 "목록의 항목 하나마다 이렇게 그려라"입니다. for 문을 대신합니다.
-// 그냥 Column 에 for 로 1000 줄을 넣으면 안 보이는 줄까지 다 만들어서 느려집니다
+// 그냥 Column 에 for 로 1000 줄을 넣으면 안 보이는 줄까지 다 만들어서 느려집니다.
+// XML 방식으로는 RecyclerView 에 Adapter, ViewHolder, 한 줄 xml 까지 적어야 했습니다 (오전 XmlPracticeActivity.kt 의 6단계).
+// 같은 일을 여기서는 LazyColumn 과 items 몇 줄로 합니다
 @Composable
 fun Example09List() {
     val labels = List(30) { "앱 ${it + 1}" }

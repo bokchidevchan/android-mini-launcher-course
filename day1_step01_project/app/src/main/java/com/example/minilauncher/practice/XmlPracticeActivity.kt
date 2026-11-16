@@ -2,15 +2,20 @@ package com.example.minilauncher.practice
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.minilauncher.R
 
 // 1일차 XML 화면 실습 5단계.
-// 아래 STEP 숫자를 1부터 5까지 바꿔 가며 Run 하고, 에뮬레이터의 앱 목록에서 "XML 연습" 아이콘을 누릅니다.
+// 아래 STEP 숫자를 1부터 5까지 바꿔 가며 Run 하고 (6은 Compose 와 비교해 볼 긴 목록), 에뮬레이터의 앱 목록에서 "XML 연습" 아이콘을 누릅니다.
 // 화면 모양은 res/layout/xml_step1.xml ~ xml_step5.xml 에 있습니다. 파일을 열고 오른쪽 위 Split 을 누르면 미리 보기가 나옵니다.
 // 직접 만들어 보는 것은 같은 폴더의 XmlPractice_My.kt 와 res/layout/xml_my.xml 에 합니다 ("XML 연습 직접" 아이콘).
 // XML 방식은 화면 모양을 XML 파일에, 동작을 Kotlin 파일에 나눠 적습니다. 오후에 배우는 Compose 는 둘을 Kotlin 한곳에 적습니다
@@ -30,7 +35,8 @@ class XmlPracticeActivity : ComponentActivity() {
             3 -> step3Button()
             4 -> step4Input()
             5 -> step5AddViews()
-            else -> Log.d("Xml", "1부터 5까지의 숫자를 넣어 주세요")
+            6 -> step6RecyclerView()
+            else -> Log.d("Xml", "1부터 6까지의 숫자를 넣어 주세요")
         }
     }
 
@@ -74,4 +80,40 @@ class XmlPracticeActivity : ComponentActivity() {
         }
         Log.d("Xml", "줄 ${names.size}개를 넣었습니다")
     }
+
+    // 6단계. 긴 목록 (RecyclerView)
+    // 5단계처럼 줄을 전부 만들면 줄이 많을 때 느려집니다. RecyclerView 는 화면에 보이는 줄만 만들고 다시 씁니다.
+    // 그 대신 적을 것이 많습니다. 아래 AppAdapter 와 AppHolder, 그리고 xml_item_app.xml 까지 필요합니다.
+    // 오후의 ComposePractice.kt 9번(LazyColumn)이 같은 일을 몇 줄로 합니다. 두 코드의 길이를 비교해 봅니다
+    private fun step6RecyclerView() {
+        setContentView(R.layout.xml_step6)
+        val names = List(100) { "앱 ${it + 1}" }
+        val appList = findViewById<RecyclerView>(R.id.appList)
+        appList.layoutManager = LinearLayoutManager(this)      // 줄을 위에서 아래로 놓겠다는 뜻
+        appList.adapter = AppAdapter(names)
+        Log.d("Xml", "줄 ${names.size}개를 RecyclerView 에 맡겼습니다")
+        // 바꿔 보기: List(100) 을 List(1000) 으로 바꿔도 느려지지 않는지 밀어 봅니다
+    }
+}
+
+// 줄 하나를 붙잡고 있는 상자. 그 줄 안의 글자 칸(appName)을 미리 찾아 둡니다
+class AppHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val name: TextView = view.findViewById(R.id.appName)
+}
+
+// 목록과 화면을 이어 주는 것. RecyclerView 가 "줄 하나 만들어 줘", "몇 번째 값을 넣어 줘", "모두 몇 개야" 하고 물으면 답합니다
+class AppAdapter(private val names: List<String>) : RecyclerView.Adapter<AppHolder>() {
+    // 줄 하나 만들기: xml_item_app.xml 을 화면 조각으로 바꿉니다
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.xml_item_app, parent, false)
+        return AppHolder(view)
+    }
+
+    // 몇 번째 값을 그 줄에 넣기
+    override fun onBindViewHolder(holder: AppHolder, position: Int) {
+        holder.name.text = names[position]
+    }
+
+    // 모두 몇 개인지
+    override fun getItemCount() = names.size
 }

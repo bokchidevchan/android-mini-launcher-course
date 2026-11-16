@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 6단계. 긴 목록 (RecyclerView).
+     줄이 아주 많을 때 XML 방식에서 쓰는 것입니다. 화면에 보이는 줄만 만들고, 밀려 나간 줄을 다시 씁니다.
+     필요한 것이 셋입니다: 이 파일(목록이 들어갈 자리), xml_item_app.xml(한 줄의 모양), Kotlin 의 Adapter(줄에 값을 넣는 코드).
+     오후에 Compose 로는 같은 것을 LazyColumn 한 줄로 만듭니다 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="앱 100개"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/appList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp" />
+</LinearLayout>
