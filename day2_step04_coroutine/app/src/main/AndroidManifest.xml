@@ -21,6 +21,9 @@
         <package android:name="com.google.android.apps.youtube.music" />
     </queries>
 
+    <!-- 인터넷을 쓰겠다는 표시. 2일차 오전의 "아재 개그" 앱이 씁니다 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -47,6 +50,30 @@
             android:exported="true"
             android:label="실험실"
             android:taskAffinity="com.example.minilauncher.lab">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 2일차 오전: 네트워크에서 받아 오는 앱. 앱 목록에 "아재 개그" 아이콘이 생깁니다 -->
+        <activity
+            android:name=".practice.JokeActivity"
+            android:exported="true"
+            android:label="아재 개그"
+            android:taskAffinity="com.example.minilauncher.jokeactivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 2일차 오전: 네트워크에서 받아 오는 앱. 앱 목록에 "아재 개그 연습" 아이콘이 생깁니다 -->
+        <activity
+            android:name=".practice.MyJokeActivity"
+            android:exported="true"
+            android:label="아재 개그 연습"
+            android:taskAffinity="com.example.minilauncher.myjokeactivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
