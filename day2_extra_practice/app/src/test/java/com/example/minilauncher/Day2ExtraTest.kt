@@ -12,12 +12,14 @@ class Day2ExtraTest {
     @Test
     fun 정답은_모두_O() = runBlocking {
         val lines = checkDay2(Day2Answers)
-        assertEquals(5, lines.size)
+        assertEquals(15, lines.size)
         assertTrue(lines.toString(), lines.all { it.endsWith(": O") })
     }
 
     @Test
-    fun 문제_파일은_풀기_전에도_채점이_끝까지_돈다() = runBlocking {
-        assertEquals(5, checkDay2(Day2Extra).size)
+    fun 문제_파일은_풀기_전에는_모두_X() = runBlocking {
+        val lines = checkDay2(Day2Extra)
+        assertEquals(15, lines.size)
+        assertTrue(lines.toString(), lines.none { it.endsWith(": O") })
     }
 }

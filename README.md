@@ -104,10 +104,10 @@ Android Studio Rabbit에 Java가 들어 있어서 JDK를 따로 설치하지 않
 
 ## 시간이 남으면
 
-수업이 일찍 끝났을 때 푸는 문제입니다. 문제 파일의 TODO를 고치고 Run 하면 Logcat의 `tag:Extra`에 문제마다 O, X가 찍힙니다.
+모듈이 끝날 때마다, 그리고 수업이 일찍 끝났을 때 푸는 연습 문제입니다. 문제 파일의 TODO를 고치고 Run 하면 Logcat의 `tag:Extra`에 문제마다 O, X가 찍힙니다.
 
 | 폴더 | 내용 |
 |---|---|
-| [day1_extra_practice](day1_extra_practice) | Kotlin 문제 5개, Compose 문제 2개 |
-| [day2_extra_practice](day2_extra_practice) | 코루틴 문제 5개 |
-| [day3_extra_practice](day3_extra_practice) | 런처에 쓸 만한 함수 5개 |
+| [day1_extra_practice](day1_extra_practice) | Kotlin 문제 17개, Compose 문제 6개 |
+| [day2_extra_practice](day2_extra_practice) | 코루틴 문제 10개, 시스템 이벤트에 쓰는 함수 5개 |
+| [day3_extra_practice](day3_extra_practice) | 런처에 쓰는 함수 10개, 로그를 읽는 함수 5개 |

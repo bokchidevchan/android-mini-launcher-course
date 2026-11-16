@@ -9,7 +9,7 @@
 1. Android Studio에서 File > Open으로 이 폴더를 엽니다.
 2. `app/src/main/java/com/example/minilauncher/practice/Day2Extra.kt`를 엽니다.
 3. `TODO`가 적힌 줄을 고치고 Run 합니다.
-4. Logcat 검색창에 `tag:Extra`를 넣습니다. 앱이 뜨고 3초쯤 뒤에 문제마다 O, X가 찍힙니다.
+4. Logcat 검색창에 `tag:Extra`를 넣습니다. 앱이 뜨고 5초쯤 뒤에 문제마다 O, X가 찍힙니다.
 
 ```
 문제 1: O

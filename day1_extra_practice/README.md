@@ -23,4 +23,4 @@
 | `practice/Day1Extra.kt` | 문제. 여기만 고칩니다 |
 | `practice/Day1ExtraAnswers.kt` | 정답. 먼저 풀어 보고 엽니다 |
 | `practice/Day1ExtraCheck.kt` | 채점하는 코드. 고치지 않습니다 |
-| `practice/Day1ExtraCompose.kt` | Compose 문제 2개. Split으로 Preview를 보며 풉니다. 정답은 파일 맨 아래 |
+| `practice/Day1ExtraCompose.kt` | Compose 문제 6개. Split으로 Preview를 보며 풉니다. 정답은 파일 맨 아래 |
