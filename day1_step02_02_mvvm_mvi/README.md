@@ -11,6 +11,50 @@
 | `mvvm` | XML | `MvvmViewModel.kt` (값과 함수), `MvvmActivity.kt` (화면), `res/layout/mvvm_like.xml` (모양) |
 | `mvi` | Compose | `LikeState.kt` (상태), `LikeIntent.kt` (주문서), `MviViewModel.kt` (주문서를 받아 새 상태를 만듦), `MviActivity.kt` (화면) |
 
+## 그림으로 보기
+
+화살표는 "누가 누구에게 말하는가"입니다. 두 방식 모두 화면이 ViewModel에 일을 알리고, ViewModel이 값을 바꾸면 화면이 그 값을 보여 줍니다. 한 바퀴 도는 것은 같고, 화살표에 실리는 것이 다릅니다.
+
+### MVVM (`mvvm` 폴더, XML)
+
+```mermaid
+flowchart LR
+    V["View<br/>MvvmActivity + mvvm_like.xml"]
+    VM["ViewModel<br/>MvvmViewModel"]
+    V -->|"① 버튼마다 다른 함수를 부름<br/>plus() / reset()"| VM
+    VM -->|"② 값이 바뀌었다고 알려 줌<br/>count, message (값마다 따로)"| V
+```
+
+1. +1을 누르면 화면이 `vm.plus()`를 부릅니다. 처음으로를 누르면 `vm.reset()`을 부릅니다. 올라가는 길이 버튼 수만큼 있습니다.
+2. ViewModel이 `count`와 `message`를 바꿉니다.
+3. 화면은 두 값을 각각 지켜보고 있다가(`observe`) 바뀐 값으로 글자를 직접 고칩니다. 내려오는 길도 값 수만큼 있습니다.
+
+### MVI (`mvi` 폴더, Compose)
+
+```mermaid
+flowchart LR
+    V["View<br/>MviActivity (LikeScreen)"]
+    VM["ViewModel<br/>MviViewModel.onIntent()"]
+    S["State<br/>LikeState(count, message)"]
+    V -->|"① 주문서를 냄<br/>LikeIntent.Plus / Reset"| VM
+    VM -->|"② 지금 상태 + 주문서 = 새 상태"| S
+    S -->|"③ 상태 한 덩어리가 내려감<br/>화면이 알아서 다시 그려짐"| V
+```
+
+1. +1을 누르면 화면이 `onIntent(LikeIntent.Plus)`를 부릅니다. 처음으로를 눌러도 같은 `onIntent`에 주문서만 바꿔서 냅니다. 올라가는 길이 하나입니다.
+2. ViewModel이 `when`으로 주문서를 보고 새 `LikeState`를 만듭니다.
+3. 새 상태가 화면으로 내려가고, Compose가 그 상태로 화면을 다시 그립니다. 내려오는 길도 하나입니다.
+
+### 두 그림의 차이
+
+| | MVVM | MVI |
+|---|---|---|
+| 화면에서 ViewModel로 올라가는 길 | 버튼 수만큼 (`plus()`, `reset()`) | 하나 (`onIntent`) |
+| ViewModel에서 화면으로 내려오는 길 | 값 수만큼 (`count`, `message`) | 하나 (`LikeState`) |
+| 도는 방향 | 올라갔다 내려옴 | 한 방향으로 한 바퀴 (화면, 주문서, 상태, 다시 화면) |
+
+화면은 ViewModel을 알지만 ViewModel은 화면을 모릅니다. ViewModel 코드에는 `TextView`도 `Activity`도 나오지 않습니다. 그래서 화면을 XML에서 Compose로 바꿔도 ViewModel은 그대로 쓸 수 있고, 화면 없이 ViewModel만 테스트할 수 있습니다.
+
 ## 무엇이 다른가
 
 둘 다 화면은 그리기만 하고, 값을 바꾸는 규칙은 ViewModel에 둡니다. 다른 것은 화면이 ViewModel에 말하는 방법과 상태를 담는 방법입니다.
