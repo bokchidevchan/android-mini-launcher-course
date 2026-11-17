@@ -41,7 +41,7 @@ import com.example.minilauncher.ui.theme.MiniLauncherTheme
 // 3일차: 검색해서 여는 앱 "앱 찾기". 완성한 미니 런처의 검색창이 하는 일을 화면 하나로 줄인 것입니다.
 // Run 한 뒤 에뮬레이터의 앱 목록에서 "앱 찾기" 아이콘을 누릅니다 (기본 홈 앱을 바꾸기 전이나, 되돌린 뒤에).
 // 글자를 넣으면 이름에 그 글자가 든 앱만 남고, 누르면 그 앱이 열립니다.
-// 직접 써 보고 싶으면 같은 폴더의 SearchApps_My.kt 를 엽니다. [1] [2] [3] 표시가 붙은 곳을 차례로 가져갑니다.
+// [1] [2] [3] 은 같은 폴더의 뼈대 SearchApps_My.kt 에서 채우는 자리입니다.
 
 class SearchAppsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

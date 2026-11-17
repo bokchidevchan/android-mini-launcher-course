@@ -58,7 +58,9 @@ C++나 다른 언어로 개발해 본 분을 기준으로 만들었습니다. �
 | | 15:00~17:00 | 2-3 백그라운드 처리 (Service, Notification) | [day2_step06_service](day2_step06_service) |
 | | 16:00~ | 오후 과제: 컵라면 타이머 만들기 | 뼈대 [day2_task2_timer_practice](day2_task2_timer_practice), 완성 [day2_task2_timer_answer](day2_task2_timer_answer) |
 | 3일차 | 09:00~12:00 | 3-1 HomeScreen(Launcher) 만들기 | [day3_step07_launcher](day3_step07_launcher) |
-| | 13:00~15:00 | 3-2 Logcat 로그 분석 | [day3_step07x_bughunt](day3_step07x_bughunt) |
+| | 11:00~ | 오전 과제: 즐겨찾기 서랍 만들기 | 뼈대 [day3_task1_favorites_practice](day3_task1_favorites_practice), 완성 [day3_task1_favorites_answer](day3_task1_favorites_answer) |
+| | 13:00~14:00 | 3-2 Logcat 로그 분석 (로그 찍기) | [day3_step07x_logcat](day3_step07x_logcat) |
+| | 14:00~15:00 | 오후 과제: 버그 세 개 찾아 고치기 | [day3_step07x_bughunt](day3_step07x_bughunt) |
 | | 15:00~17:00 | 3-3 미니 런처 완성과 코드 리뷰 | [day3_step08_final](day3_step08_final) |
 
 점심은 12:00~13:00입니다. 폴더 이름을 누르면 그 모듈의 실습 안내가 나옵니다.

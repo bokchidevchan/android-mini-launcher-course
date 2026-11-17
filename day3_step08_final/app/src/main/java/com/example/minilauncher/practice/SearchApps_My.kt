@@ -38,24 +38,9 @@ import com.example.minilauncher.ui.AppIconImage
 import com.example.minilauncher.ui.theme.LauncherBackground
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
 
-// 같이 해 보기 파일입니다. 완성본은 같은 폴더의 SearchApps.kt 입니다.
+// 7교시 같이 만들기 "앱 찾기" 의 뼈대입니다. 완성본은 같은 폴더의 SearchApps.kt 입니다.
 // Run 한 뒤 에뮬레이터의 앱 목록에서 "앱 찾기 직접" 아이콘을 누릅니다.
-// 지금은 설치된 앱이 전부 나오기만 합니다. 아래 [1] [2] [3] 을 차례로 하고, 할 때마다 Run 해서 봅니다.
-//
-// [1] 검색어 입력창. "[1] 여기에" 자리에 붙입니다
-//         OutlinedTextField(
-//             value = query,
-//             onValueChange = { query = it },
-//             label = { Text("앱 이름") },
-//             singleLine = true,
-//             modifier = Modifier.fillMaxWidth(),
-//         )
-//
-// [2] 거르기. val shown = apps 를 아래 줄로 바꿉니다
-//         val shown = apps.filter { it.label.contains(query, ignoreCase = true) }
-//
-// [3] 누르면 열기. Row 의 modifier 에서 fillMaxWidth() 뒤에 붙입니다
-//         .clickable { launchApp(context, app) }
+// [1] [2] [3] 자리를 채웁니다. 무엇을 쓰는지는 README.md 와 교안에 있습니다.
 
 class MySearchAppsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,16 +60,16 @@ fun MySearchAppsScreen() {
         apps = InstalledAppRepository(context.applicationContext).loadApps()
     }
 
-    val shown = apps
+    val shown = apps    // [2] 여기를 고칩니다: 검색어가 이름에 든 앱만 남기기
 
     Column(Modifier.fillMaxSize().background(LauncherBackground).safeDrawingPadding().padding(16.dp)) {
         Text("앱 찾기", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
-        // [1] 여기에
+        // [1] 여기를 채웁니다: 검색어 입력창
         Text("${shown.size}개", modifier = Modifier.padding(vertical = 8.dp))
         LazyColumn {
             items(shown, key = { it.packageName + it.className }) { app ->
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),   // [3] 여기를 고칩니다: 누르면 앱 열기
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     AppIconImage(app, 40.dp)
