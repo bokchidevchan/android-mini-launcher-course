@@ -2,36 +2,37 @@
 
 1일차 4교시 끝 | [전체 일정으로](../README.md)
 
-`day1_step02_02_mvvm_mvi` 폴더를 열고 Run 한 다음, 에뮬레이터의 앱 목록에서 "MVVM 예제"와 "MVI 예제" 아이콘을 차례로 누릅니다. Logcat 검색창에는 `tag:Arch`를 넣습니다.
+보여 주기용 코드입니다. 같은 "좋아요" 화면을 두 가지 방식으로 만들었고, 코드는 폴더 두 개가 전부입니다.
 
-보여 주기용 코드입니다. 같은 "좋아요" 화면을 두 가지 방식으로 만들어 폴더를 나눠 두었습니다. 두 파일을 Android Studio에서 양옆에 열어 놓고 비교합니다.
+`day1_step02_02_mvvm_mvi` 폴더를 열고 Run 하면 MVVM 화면이 뜹니다. MVI 화면은 에뮬레이터의 앱 목록에서 "MVI 예제 (Compose)" 아이콘으로 엽니다. Logcat 검색창에는 `tag:Arch`를 넣습니다.
 
-| 폴더 | 파일 | 내용 |
+| 폴더 | 화면 | 파일 |
 |---|---|---|
-| `practice/mvvm` | `LikeMvvm.kt` | MVVM으로 만든 화면. "MVVM 예제" 아이콘 |
-| `practice/mvi` | `LikeMvi.kt` | MVI로 만든 화면. "MVI 예제" 아이콘 |
-| `practice` | `LikePanel.kt` | 두 방식이 같이 쓰는 화면 모양 |
+| `mvvm` | XML | `MvvmViewModel.kt` (값과 함수), `MvvmActivity.kt` (화면), `res/layout/mvvm_like.xml` (모양) |
+| `mvi` | Compose | `MviViewModel.kt` (상태, 주문서, ViewModel), `MviActivity.kt` (화면) |
 
 ## 무엇이 다른가
 
 둘 다 화면은 그리기만 하고, 값을 바꾸는 규칙은 ViewModel에 둡니다. 다른 것은 화면이 ViewModel에 말하는 방법과 상태를 담는 방법입니다.
 
-| | MVVM | MVI |
+| | MVVM (`mvvm` 폴더) | MVI (`mvi` 폴더) |
 |---|---|---|
 | 화면이 ViewModel에 말하는 법 | 할 일마다 함수가 따로 (`plus()`, `reset()`) | 문이 하나 (`onIntent(주문서)`) |
-| 상태 | 값마다 따로 둘 수 있음 (`count`, `message`) | 한 덩어리 (`LikeState`) |
+| 상태 | 값마다 따로 (`count`, `message`) | 한 덩어리 (`LikeState`) |
+| 값이 바뀌면 | 값마다 지켜보는 줄(`observe`)을 적고 글자를 직접 고침 | 상태를 읽는 화면이 알아서 다시 그려짐 |
 | 좋은 점 | 적을 것이 적음. 작은 화면에 충분 | 일어난 일이 한곳에 순서대로 남음. 값을 하나만 바꾸는 실수가 줄어듦 |
 | 아쉬운 점 | 버튼이 많아지면 값이 왜 바뀌었는지 찾기 어려움 | 적을 것이 많음. 버튼 하나에 주문서 종류와 `when` 가지를 같이 더함 |
 | 비유 | 리모컨. 버튼마다 하는 일이 따로 | 창구가 하나인 은행. 신청서를 한 창구에 냄 |
 
 ```kotlin
-// MVVM: 할 일마다 함수
-vm.plus()
-vm.reset()
+// MVVM: 할 일마다 함수. 값마다 지켜보는 줄
+plusButton.setOnClickListener { vm.plus() }
+vm.count.observe(this) { countText.text = "$it" }
+vm.message.observe(this) { messageText.text = it }
 
-// MVI: 문 하나에 주문서만 바꿔서
-vm.onIntent(LikeIntent.Plus)
-vm.onIntent(LikeIntent.Reset)
+// MVI: 상태 하나를 받고, 문 하나로 내보냄
+LikeScreen(state = vm.state, onIntent = vm::onIntent)
+Button(onClick = { onIntent(LikeIntent.Plus) }) { Text("+1") }
 ```
 
 ## 왜 이렇게 나누나
@@ -40,18 +41,10 @@ vm.onIntent(LikeIntent.Reset)
 
 MVI가 한 걸음 더 가는 이유는 추적입니다. 버튼이 많아지면 "지금 값이 왜 이렇게 됐지?"를 찾기 어려운데, 문이 하나면 그 문에 로그 한 줄만 찍어도 일어난 일이 순서대로 다 보입니다.
 
-## Compose에서는 MVVM을 안 쓰나
+## 왜 XML은 MVVM, Compose는 MVI로 짝지었나
 
-안 쓰는 것이 아닙니다. 이 폴더의 `LikeMvvm.kt`가 "Compose + MVVM"이고, 3일 동안 만드는 런처도 이 방식입니다.
+XML 화면은 값이 바뀌어도 알아서 바뀌지 않습니다. 그래서 값마다 지켜보다가(`observe`) 글자를 고쳐 주는 줄이 필요하고, 이 방식이 XML 시절에 MVVM으로 굳었습니다. 화면과 값이 서로를 고치는 양방향 바인딩도 이때 많이 썼습니다.
 
-안 쓰게 된 것은 XML 시절 MVVM의 양방향 바인딩입니다. XML에서는 화면과 값이 서로를 고쳤습니다. 입력 칸에 글자를 치면 값이 바뀌고, 값을 바꾸면 입력 칸이 바뀌었습니다. 편하지만 값이 어디서 바뀌었는지 찾기 어려웠습니다.
+Compose는 값이 한 방향으로만 흐릅니다. 상태가 위에서 아래로 내려가고, 일어난 일이 아래에서 위로 올라옵니다. "상태 하나, 문 하나"인 MVI가 이 흐름과 모양이 같아서 Compose와 잘 맞습니다.
 
-Compose는 값이 한 방향으로만 흐릅니다. 값은 위에서 아래로 내려가고(`count`), 일어난 일은 아래에서 위로 올라옵니다(`onPlus`). 그래서 Compose에서 MVVM을 쓰면 모양이 MVI와 비슷해지고, 아예 MVI로 쓰는 팀도 많습니다. "XML은 MVVM, Compose는 MVI"라는 말은 이 흐름을 줄여서 한 말입니다.
-
-| | XML + MVVM | Compose + MVVM | Compose + MVI |
-|---|---|---|---|
-| 값이 흐르는 방향 | 양쪽 (바인딩) | 한쪽 | 한쪽 |
-| 화면이 말하는 법 | 바인딩, 함수 | 함수 여러 개 | `onIntent` 하나 |
-| 상태 | 값마다 따로 | 따로 또는 한 덩어리 | 한 덩어리 |
-
-이 폴더는 `day1_step02_compose`에 위 파일들만 더한 것입니다.
+Compose에서 MVVM을 못 쓰는 것은 아닙니다. 3일 동안 만드는 런처는 Compose에 MVVM을 씁니다(`LauncherViewModel`). 다만 Compose식 MVVM은 양방향 바인딩을 쓰지 않아서 모양이 MVI와 비슷해지고, 아예 MVI로 쓰는 팀도 많습니다.
