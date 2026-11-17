@@ -30,7 +30,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -88,7 +91,10 @@ fun LauncherScreen(vm: LauncherViewModel) {
 
     // rememberSaveable: 화면을 돌려도 검색어가 남습니다 (remember 와 비교해 보기)
     var query by rememberSaveable { mutableStateOf("") }
-    val boot = remember { BootReceiver.lastBoot(context) }
+    // 부팅 시각은 파일(SharedPreferences)에 있어서 IO 스레드에서 읽습니다 (3일차 버그 3 의 고친 모양)
+    val boot by produceState<String?>(null) {
+        value = withContext(Dispatchers.IO) { BootReceiver.lastBoot(context) }
+    }
     val sync = rememberSyncProgress()
     val status = StatusInfo(clock = rememberClock(), network = rememberNetwork(), battery = rememberBattery(), boot = boot)
     val allApps = (state.apps as? AppsState.Success)?.apps.orEmpty()
