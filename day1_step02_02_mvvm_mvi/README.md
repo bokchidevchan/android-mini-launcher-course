@@ -9,7 +9,7 @@
 | 폴더 | 화면 | 파일 |
 |---|---|---|
 | `mvvm` | XML | `MvvmViewModel.kt` (값과 함수), `MvvmActivity.kt` (화면), `res/layout/mvvm_like.xml` (모양) |
-| `mvi` | Compose | `MviViewModel.kt` (상태, 주문서, ViewModel), `MviActivity.kt` (화면) |
+| `mvi` | Compose | `LikeState.kt` (상태), `LikeIntent.kt` (주문서), `MviViewModel.kt` (주문서를 받아 새 상태를 만듦), `MviActivity.kt` (화면) |
 
 ## 무엇이 다른가
 
