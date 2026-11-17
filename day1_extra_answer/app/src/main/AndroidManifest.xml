@@ -66,9 +66,12 @@
             </intent-filter>
         </activity>
 
-        <!-- 생명주기 실습의 둘째 화면. 아이콘 없이 Intent 로만 엽니다 -->
+        <!-- 생명주기 실습의 계산기 화면. 아이콘 없이 Intent 로만 엽니다 -->
         <activity
-            android:name=".practice.LifecycleSecondActivity"
+            android:name=".practice.CalculatorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".practice.MyCalculatorActivity"
             android:exported="false" />
 
         <!-- 8교시 앱. 에뮬레이터의 앱 목록에 아이콘이 따로 생깁니다 -->

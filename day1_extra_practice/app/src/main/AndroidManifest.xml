@@ -28,48 +28,51 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniLauncher">
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
-        <!-- 명시적 Intent 로만 여는 화면이라 외부에 열지 않습니다 -->
-        <activity
-            android:name=".DetailActivity"
-            android:exported="false" />
+<!--        &lt;!&ndash; 명시적 Intent 로만 여는 화면이라 외부에 열지 않습니다 &ndash;&gt;-->
+<!--        <activity-->
+<!--            android:name=".DetailActivity"-->
+<!--            android:exported="false" />-->
 
-        <!-- 1일차 오후 생명주기 실습. 앱 목록에 "생명주기 연습" 아이콘이 생깁니다 -->
-        <activity
-            android:name=".practice.LifecyclePracticeActivity"
-            android:exported="true"
-            android:label="생명주기 연습"
-            android:taskAffinity="com.example.minilauncher.lifecyclepracticeactivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+<!--        &lt;!&ndash; 1일차 오후 생명주기 실습. 앱 목록에 "생명주기 연습" 아이콘이 생깁니다 &ndash;&gt;-->
+<!--        <activity-->
+<!--            android:name=".practice.LifecyclePracticeActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="생명주기 연습"-->
+<!--            android:taskAffinity="com.example.minilauncher.lifecyclepracticeactivity">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
-        <!-- 1일차 오후 생명주기 실습. 앱 목록에 "생명주기 연습 직접" 아이콘이 생깁니다 -->
-        <activity
-            android:name=".practice.MyLifecycleActivity"
-            android:exported="true"
-            android:label="생명주기 연습 직접"
-            android:taskAffinity="com.example.minilauncher.mylifecycleactivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+<!--        &lt;!&ndash; 1일차 오후 생명주기 실습. 앱 목록에 "생명주기 연습 직접" 아이콘이 생깁니다 &ndash;&gt;-->
+<!--        <activity-->
+<!--            android:name=".practice.MyLifecycleActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="생명주기 연습 직접"-->
+<!--            android:taskAffinity="com.example.minilauncher.mylifecycleactivity">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
-        <!-- 생명주기 실습의 둘째 화면. 아이콘 없이 Intent 로만 엽니다 -->
-        <activity
-            android:name=".practice.LifecycleSecondActivity"
-            android:exported="false" />
+<!--        &lt;!&ndash; 생명주기 실습의 계산기 화면. 아이콘 없이 Intent 로만 엽니다 &ndash;&gt;-->
+<!--        <activity-->
+<!--            android:name=".practice.CalculatorActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".practice.MyCalculatorActivity"-->
+<!--            android:exported="false" />-->
 
         <!-- 8교시 앱. 에뮬레이터의 앱 목록에 아이콘이 따로 생깁니다 -->
         <activity

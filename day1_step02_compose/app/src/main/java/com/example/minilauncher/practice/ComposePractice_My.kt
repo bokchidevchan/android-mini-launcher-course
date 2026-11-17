@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -49,6 +50,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
 
+
+
 // 직접 만들어 보는 파일입니다.
 // 교안의 "Compose 화면 직접 만들어 보기" 장에 있는 완성 화면과 요구사항을 보고 MyExample 안에 만듭니다.
 // 오전에 XML 로 만든 것과 같은 화면입니다. Split 을 누르면 오른쪽 Preview 에 바로 보이고,
@@ -56,17 +59,153 @@ import com.example.minilauncher.ui.theme.MiniLauncherTheme
 // ComposePractice.kt 의 예제(2번 세로와 가로, 5번 버튼과 상태)에서 필요한 것을 가져다 써도 됩니다.
 // 정답은 같은 폴더의 ComposePractice_MyAnswer.kt 에 있습니다. 먼저 만들어 보고 엽니다
 @Composable
-fun MyExample() {
-    Column(Modifier.fillMaxWidth().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("Mini Launcher", fontSize = 32.sp, fontWeight = FontWeight.Bold)
+fun MyExample1() {
 
-        // 여기에 만듭니다.
-        // 1. 한 줄 소개 글자
-        // 2. 좋아요 수를 기억하는 상태와 그것을 보여 주는 글자
-        // 3. 가로로 놓인 버튼 두 개(좋아요, 처음으로)
+    Column() {
+        Text("보통 텍스트")
+        Text("큰 글자", fontSize = 32.sp)
+        Text("굵은 글자", fontWeight = FontWeight.Bold)
+        Text("글자 색 바꾸기", color = Color.Red)
+        Text("배경 색 바꾸기", modifier = Modifier
+            .padding(8.dp)
+            .background(Color.Yellow))
     }
+
 }
+
+@Composable
+fun MyExample2() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+
+        Text("첫번째줄 텍스트")
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Text("두번째줄 텍스트1", fontSize = 5.sp, fontWeight = FontWeight.Bold)
+            Text("두번째줄 텍스트2", fontSize = 5.sp, fontWeight = FontWeight.Bold)
+            Text("두번째줄 텍스트3", fontSize = 5.sp, fontWeight = FontWeight.Bold)
+        }
+        Text("세번째줄 텍스트")
+
+    }
+
+
+}
+
+
+@Composable
+fun MyExample3() {
+
+    Box(
+        modifier = Modifier
+            .width(70.dp)
+            .height(40.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(Color.Red)
+            .clickable {
+
+            }
+        ,
+        contentAlignment = Alignment.Center
+    ) {
+        Text("여기는 버튼입니다.")
+    }
+
+}
+
+@Composable
+fun MyExample4() {
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Yellow)
+    ) {
+
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .clip(CircleShape)
+                .background(Color.Red)
+                .padding(top = 20.dp, start = 20.dp)
+        ) {
+
+            Text("안녕하세요", modifier = Modifier.align(Alignment.Center))
+
+        }
+
+    }
+
+}
+
+@Composable
+fun MyExample5(){
+
+    val labels = listOf("라벨1", "라벨2", "라벨3", "라벨4", "라벨5", "라벨6", "라벨7", "라벨8", "라벨9", "라벨10")
+    Column() {
+
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp)
+                .padding(30.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            horizontalArrangement = Arrangement.spacedBy(20.dp)
+        ) {
+            items(labels) { label ->
+                Box(
+                    modifier = Modifier
+                        .background(Color.Yellow)
+                        .padding(16.dp)
+                ) {
+                    Text(label, modifier = Modifier.align(Alignment.Center))
+                }
+            }
+        }
+    }
+
+
+}
+
+
+@Composable
+fun MyExample6(){
+
+    val textList = listOf("라벨1", "라벨2", "라벨3", "라벨4", "라벨5", "라벨6", "라벨7", "라벨8", "라벨9", "라벨10")
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(300.dp)
+            .padding(30.dp),
+    ) {
+
+        items(textList) { text ->
+            Box(
+                modifier = Modifier
+                    .background(Color.Yellow)
+                    .padding(16.dp)
+            ) {
+                Text(text, modifier = Modifier.align(Alignment.Center))
+            }
+        }
+    }
+
+
+}
+
 
 @Preview(showBackground = true, widthDp = 360, name = "내가 만드는 화면")
 @Composable
-private fun MyExamplePreview() { MiniLauncherTheme { MyExample() } }
+private fun MyExamplePreview() {
+    MiniLauncherTheme {
+        MyExample6()
+    }
+}

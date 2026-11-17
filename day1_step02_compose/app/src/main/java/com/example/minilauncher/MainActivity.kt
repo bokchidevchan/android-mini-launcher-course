@@ -17,6 +17,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.minilauncher.model.FakeApps
+import com.example.minilauncher.practice.CommonBtn
+import com.example.minilauncher.practice.MyCounter
 import com.example.minilauncher.ui.AppGrid
 import com.example.minilauncher.ui.StatusArea
 import com.example.minilauncher.ui.theme.LauncherBackground
@@ -29,32 +31,45 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MiniLauncherTheme {
-                LauncherScreen()
+                // LauncherScreen()
+                Column() {
+
+                    // 값 비지니스 로직으로 나온 값
+                    // count -> 1 -> 3
+                    // sum
+                    CommonBtn(btnText = "공통버튼")
+                    CommonBtn(btnText = "공통버튼2")
+                    CommonBtn(btnText = "공통버튼3")
+                    MyCounter()
+
+                }
+
+
             }
         }
     }
 }
-
-@Composable
-fun LauncherScreen() {
-    // remember: 다시 그려져도(Recomposition) 값을 기억합니다. 화면을 돌리면 사라집니다 (3단계에서 해결)
-    var selected by remember { mutableStateOf<String?>(null) }
-
-    Column(Modifier.fillMaxSize().background(LauncherBackground).safeDrawingPadding()) {
-        StatusArea(clock = "12:00", network = "Wi-Fi", battery = "80%")
-        AppGrid(
-            apps = FakeApps,
-            selected = selected,
-            onAppClick = { app ->
-                Log.d("MiniLauncher", "선택: ${app.label}")
-                selected = app.packageName
-            },
-        )
-    }
-}
-
-@Preview(showBackground = true, widthDp = 412, heightDp = 914)
-@Composable
-fun LauncherScreenPreview() {
-    MiniLauncherTheme { LauncherScreen() }
-}
+//
+//@Composable
+//fun LauncherScreen() {
+//    // remember: 다시 그려져도(Recomposition) 값을 기억합니다. 화면을 돌리면 사라집니다 (3단계에서 해결)
+//    var selected by remember { mutableStateOf<String?>(null) }
+//
+//    Column(Modifier.fillMaxSize().background(LauncherBackground).safeDrawingPadding()) {
+//        StatusArea(clock = "12:00", network = "Wi-Fi", battery = "80%")
+//        AppGrid(
+//            apps = FakeApps,
+//            selected = selected,
+//            onAppClick = { app ->
+//                Log.d("MiniLauncher", "선택: ${app.label}")
+//                selected = app.packageName
+//            },
+//        )
+//    }
+//}
+//
+//@Preview(showBackground = true, widthDp = 412, heightDp = 914)
+//@Composable
+//fun LauncherScreenPreview() {
+//    MiniLauncherTheme { LauncherScreen() }
+//}

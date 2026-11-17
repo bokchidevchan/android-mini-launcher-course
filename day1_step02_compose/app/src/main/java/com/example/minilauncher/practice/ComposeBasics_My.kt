@@ -2,7 +2,9 @@ package com.example.minilauncher.practice
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -45,9 +47,29 @@ import com.example.minilauncher.ui.theme.MiniLauncherTheme
 @Composable
 fun MyCounter() {
     // 여기에 붙입니다
+    var count by remember { mutableIntStateOf(0) }
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(text = "눌린 횟수")
+        Text(text = "${count}",
+            fontSize = 64.sp,
+            fontWeight = FontWeight.Bold)
+        Button(onClick = {
+            count++
+        }) {
+            Text(text = "+1")
+        }
+    }
 }
 
-@Preview(showBackground = true, widthDp = 412, heightDp = 500, name = "내가 만드는 카운터")
+@Preview(
+    showBackground = true,
+    widthDp = 412,
+    heightDp = 500,
+    name = "내가 만드는 카운터")
 @Composable
 private fun MyCounterPreview() {
     MiniLauncherTheme { MyCounter() }

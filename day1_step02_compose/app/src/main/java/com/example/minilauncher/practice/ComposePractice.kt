@@ -49,8 +49,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
 
-// 1일차 13:00 Compose 화면 조각 11개.
-// 오른쪽 위 Split 을 누르면 아래 Preview 11개가 차례로 보입니다. (처음엔 Build & Refresh)
+// 1일차 13:00 Compose 화면 조각 12개 (0번부터 11번).
+// 오른쪽 위 Split 을 누르면 아래 Preview 12개가 차례로 보입니다. (처음엔 Build & Refresh)
 // 버튼이나 입력창은 Preview 이름 오른쪽 ⋮ 메뉴 > Start Interactive Mode 로 눌러 봅니다.
 // 예제마다 끝에 "바꿔 보기"가 있습니다. 값을 바꾸면 Preview 가 바로 바뀝니다.
 //
@@ -65,6 +65,43 @@ import com.example.minilauncher.ui.theme.MiniLauncherTheme
 //   dp, sp        크기 단위. dp 는 길이(화면이 촘촘해도 같은 크기로 보임), sp 는 글자 크기(사용자의 글자 크기 설정을 따름)
 //   { } 안에 적기  Column { A(); B() } 처럼 중괄호 안에 적은 순서대로 화면에 놓입니다. C++ 의 함수 호출과 모양이 같습니다
 //   @Preview      에뮬레이터 없이 Android Studio 안에서 미리 보게 해 주는 표시. 맨 아래에 모아 두었습니다
+
+// 0. 공통 버튼
+// 모양이 같은 버튼을 여러 곳에서 쓰려면 버튼을 조각 하나(CommonButton)로 만들어 두고 불러 씁니다.
+// 버튼마다 달라지는 것은 두 가지뿐이라 그 둘만 인자로 받습니다.
+//   text      버튼에 적을 글자
+//   onClick   눌렸을 때 할 일. 부르는 쪽이 { } 안에 적어서 넘깁니다
+// CommonButton 은 눌리면 onClick() 을 부르기만 하고, 무슨 일이 일어나는지는 모릅니다.
+// 그래서 아래 세 버튼은 같은 조각인데 하는 일이 다 다릅니다 (인사 글자 바꾸기, 1 늘리기, 처음으로 돌리기).
+// 비유: 초인종은 다 똑같이 생겼지만, 눌렀을 때 누가 나올지는 그 집이 정합니다
+@Composable
+fun Example00CommonButton() {
+    var message by remember { mutableStateOf("아직 아무 버튼도 안 눌렀습니다") }
+    var count by remember { mutableIntStateOf(0) }
+    Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text(message)
+        Text("지금 $count", fontSize = 20.sp)
+        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            CommonButton(text = "인사", onClick = { message = "안녕하세요" })   // 글자를 바꿉니다
+            CommonButton(text = "+1", onClick = { count++ })                  // 숫자를 늘립니다
+            CommonButton(text = "처음으로", onClick = {                        // 여러 줄도 적을 수 있습니다
+                count = 0
+                message = "처음으로 돌아왔습니다"
+            })
+        }
+    }
+    // 바꿔 보기: "+1" 버튼의 count++ 를 count += 10 으로 바꿔 봅니다. CommonButton 은 고치지 않아도 됩니다.
+    // CommonButton 안의 Button 을 OutlinedButton 으로 바꾸면 세 버튼 모양이 한 번에 바뀝니다
+}
+
+// 공통 버튼 조각. 모양은 여기 한 곳에서 정하고, 눌렸을 때 할 일은 부르는 쪽에서 받습니다.
+// onClick: () -> Unit 은 "인자 없이 부르고, 돌려주는 값도 없는 함수"라는 타입입니다. C++ 의 std::function<void()> 자리
+@Composable
+private fun CommonButton(text: String, onClick: () -> Unit) {
+    Button(onClick = onClick, shape = RoundedCornerShape(12.dp)) {
+        Text(text, fontWeight = FontWeight.Bold)
+    }
+}
 
 // 1. 글자
 // Text 는 글자 하나를 그립니다. 크기는 sp, 굵기와 색은 인자로 정합니다.
@@ -295,10 +332,11 @@ private fun PlusButton(label: String, onClick: () -> Unit) {
     Button(onClick = onClick) { Text(label) }
 }
 
-// 예제 11개를 한 화면에 모아 봅니다
+// 예제 12개를 한 화면에 모아 봅니다
 @Composable
 fun ComposePracticeGallery() {
     Column(Modifier.verticalScroll(rememberScrollState())) {
+        Example00CommonButton()
         Example01Text()
         Example02ColumnRow()
         Example03Box()
@@ -312,6 +350,10 @@ fun ComposePracticeGallery() {
         Example11Hoisting()
     }
 }
+
+@Preview(showBackground = true, widthDp = 360, name = "00 공통 버튼")
+@Composable
+private fun Example00Preview() { MiniLauncherTheme { Example00CommonButton() } }
 
 @Preview(showBackground = true, widthDp = 360, name = "01 글자")
 @Composable

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 계산기 화면. MainActivity 와 MainActivity2 가 같이 씁니다. 가로로 돌리면 세로가 짧아지므로 ScrollView 로 감쌉니다 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F3F4"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계산기"
+            android:textColor="#202124"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <!-- 이 화면이 값을 어디에 기억하는지 적는 자리. 글자는 Activity 가 넣습니다 -->
+        <TextView
+            android:id="@+id/textLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="#5F6368" />
+
+        <!-- 표시창 -->
+        <TextView
+            android:id="@+id/textDisplay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:gravity="end"
+            android:padding="12dp"
+            android:text="0"
+            android:textColor="#202124"
+            android:textSize="28sp" />
+
+        <!-- 글자판. 단추에 적힌 글자가 그대로 눌린 키가 됩니다 -->
+        <GridLayout
+            android:id="@+id/keypad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:columnCount="4">
+
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="7" />
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="8" />
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="9" />
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="×" />
+
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="4" />
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="5" />
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="6" />
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="-" />
+
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="1" />
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="2" />
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="3" />
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="+" />
+
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="C" />
+            <Button android:layout_width="0dp" android:layout_columnWeight="1" android:text="0" />
+            <Button android:layout_width="0dp" android:layout_columnSpan="2" android:layout_columnWeight="2" android:text="=" />
+        </GridLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="12+3 을 누른 뒤 화면을 돌려 보세요"
+            android:textColor="#5F6368" />
+    </LinearLayout>
+</ScrollView>
