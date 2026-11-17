@@ -51,7 +51,8 @@ C++나 다른 언어로 개발해 본 분을 기준으로 만들었습니다. �
 | | 14:00~15:30 | 1-3 Jetpack Compose 기초 (13시에는 day1_step01에서 XML 화면 실습) | [day1_step02_compose](day1_step02_compose) |
 | | 15:30~17:00 | 1-4 Activity 생명주기와 화면 이동 | [day1_step03_lifecycle](day1_step03_lifecycle) |
 | | 13:00~ (4교시 끝) | 비교 코드: MVVM과 MVI | [day1_step02_02_mvvm_mvi](day1_step02_02_mvvm_mvi) |
-| 2일차 | 09:00~12:00 | 2-1 메인 스레드와 Coroutine, Flow | [day2_step04_coroutine](day2_step04_coroutine) |
+| 2일차 | 09:00~10:00 | 2-1 메인 스레드 (스레드 실습) | [day2_step04_thread](day2_step04_thread) |
+| | 10:00~12:00 | 2-1 Coroutine, Flow | [day2_step04_coroutine](day2_step04_coroutine) |
 | | 11:00~ | 오전 과제: 복습 퀴즈 앱 만들기 | 뼈대 [day2_task1_quiz_practice](day2_task1_quiz_practice), 완성 [day2_task1_quiz_answer](day2_task1_quiz_answer) |
 | | 13:00~15:00 | 2-2 시스템 이벤트 감지 (BroadcastReceiver) | [day2_step05_receiver](day2_step05_receiver) |
 | | 15:00~17:00 | 2-3 백그라운드 처리 (Service, Notification) | [day2_step06_service](day2_step06_service) |

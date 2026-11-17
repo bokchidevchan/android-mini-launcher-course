@@ -1,27 +1,14 @@
 # 2-1 메인 스레드와 Coroutine, Flow
 
-2일차 09:00~12:00 | [전체 일정으로](../README.md)
+2일차 10:00~12:00 | [전체 일정으로](../README.md)
 
 `day2_step04_coroutine` 폴더를 열고 시작합니다.
 
-메인 스레드를 막으면 무슨 일이 생기는지 직접 겪어 보고, 코루틴으로 고칩니다. 앱 목록을 2초 걸려 불러오는 동안의 화면(불러오는 중, 성공, 실패)을 StateFlow 하나로 나타냅니다.
+2일차 2교시부터 씁니다. 1교시의 스레드 실습은 [day2_step04_thread](../day2_step04_thread) 폴더에 있습니다. 코루틴의 기능을 하나씩 돌려 보고, 앱 목록을 2초 걸려 불러오는 동안의 화면(불러오는 중, 성공, 실패)을 StateFlow 하나로 나타냅니다.
 
 <p><img src="../docs/images/s04_loading.png" alt="불러오는 중" width="260">
 <img src="../docs/images/s04_success.png" alt="불러오기 성공" width="260">
 <img src="../docs/images/s04_error.png" alt="불러오기 실패" width="260"></p>
-
-## 스레드 실습 6단계
-
-`MainActivity.kt`의 `threadPractice(this, step = 1)`에서 숫자를 1부터 6까지 바꿔 가며 Run 합니다. Logcat 검색칸에 `tag:Thread`를 넣습니다. 코드는 `practice/ThreadPractice.kt`에 있습니다. 직접 써 보려면 `practice/ThreadPractice_My.kt`의 빈 함수에 옮겨 적고 `myThreadPractice(this, step = 1)`로 바꿔 실행합니다. 코루틴 실습으로 넘어갈 때는 숫자를 0으로 바꿉니다.
-
-| 단계 | 실습하는 것 |
-|---|---|
-| 1 | 지금 어느 스레드인가: 스레드 이름, pid와 tid |
-| 2 | 메인 스레드의 MessageQueue: `Handler.post`는 큐에 넣기만 합니다 |
-| 3 | 메인 스레드를 3초 막으면 화면이 멈춥니다 |
-| 4 | 새 스레드에서 일하기: 메인 스레드는 기다리지 않습니다 |
-| 5 | 일은 새 스레드에서, 화면은 `runOnUiThread`로 메인 스레드에서 |
-| 6 | 같은 일을 코루틴으로 (`withContext(Dispatchers.IO)`) |
 
 ## 코루틴 실습 11단계
 
