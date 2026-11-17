@@ -6,48 +6,95 @@
 
 File > Open으로 이 폴더를 열고 Run 하면 복습 퀴즈 화면이 뜹니다. 아래 [1]부터 차례로 채우고, 채울 때마다 Run 합니다. 파일 안에 `[1] 여기를 채웁니다`처럼 자리가 표시되어 있습니다.
 
-## [1] 문제 목록 받아 오기
+전체 흐름은 이렇습니다.
 
-`practice/QuizApp.kt`의 `fetchQuizzes()` 안. `emptyList()`를 지우고 두 줄을 씁니다.
+```
+버튼 누름 → load() → fetchQuizzes() 가 인터넷에서 받아 옴 → 상태(_state)를 바꿈 → 화면이 바뀜
+```
 
-- 주소의 글자를 모두 읽습니다: `URL(QUIZ_URL).readText()`
-- 읽은 글자를 문제 목록으로 바꿔 돌려줍니다: `parseQuizzes(글자)`
+## [1] 인터넷에서 문제 목록 받아 오기
 
-확인: 화면은 아직 그대로입니다.
+**하는 일**: `fetchQuizzes()`는 인터넷 주소에서 글자를 받아 와 문제 목록으로 바꿔 돌려주는 함수입니다. 인터넷은 오래 걸릴 수 있어서 `withContext(Dispatchers.IO) { }` 안(IO 스레드)에서 합니다. 이 부분은 이미 적혀 있습니다.
 
-## [2] 버튼을 누르면 문제 보여 주기
-
-같은 파일의 `load()` 안. 안내 줄(`아직 [2] 를 안 채웠어요`)을 지우고 씁니다.
-
-1. 상태를 "받아 오는 중"으로 바꿉니다: `_state.value = QuizState.Loading`
-2. 코루틴을 시작합니다: `viewModelScope.launch { }`
-3. 그 안에서 `fetchQuizzes()`로 목록을 받고, 하나를 골라 상태에 넣습니다: `QuizState.Success(목록.random())`
-
-확인: 누르면 잠깐 "받아 오는 중"이 보이고 문제가 뜹니다. "정답 보기"를 누르면 답이 보입니다.
-
-## [3] 인터넷이 안 될 때
-
-[2]에서 `launch { }` 안에 쓴 두 줄을 `try { } catch (e: Exception) { }`로 감쌉니다. `catch` 안에서는 실패 글자를 상태에 넣습니다: `QuizState.Error("인터넷 연결을 확인해 주세요")`
-
-확인: 에뮬레이터의 Wi-Fi와 모바일 데이터를 끄고 누르면 실패 글자가 뜹니다.
-
-## [4] 멈추는 화면 고치기
-
-에뮬레이터의 앱 목록에서 "멈춤 고치기" 아이콘을 엽니다. "3초 걸리는 일"을 누르면 3초 동안 화면이 멈춥니다.
-
-`practice/FreezeFix.kt`의 `result = slowWork()` 한 줄을 아래 네 줄로 바꿉니다. 오래 걸리는 일만 다른 스레드로 보내는 것입니다.
+**채울 곳**: `practice/QuizApp.kt`의 `fetchQuizzes()` 중괄호 안. 지금 있는 `emptyList()`(빈 목록)를 지우고 아래 빈칸 두 줄을 씁니다.
 
 ```kotlin
-result = "일하는 중"
-scope.launch {
-    result = withContext(Dispatchers.Default) { slowWork() }
+suspend fun fetchQuizzes(): List<Quiz> = withContext(Dispatchers.IO) {
+    val text = ______________     // ① 주소의 글자를 모두 읽어 text 에 넣음
+    ______________                // ② text 를 문제 목록으로 바꿈
 }
 ```
 
-확인: "3초 걸리는 일"을 누른 뒤 "눌러 보기"를 누르면 숫자가 바로 오릅니다.
+- ①에 쓸 것: `URL(QUIZ_URL).readText()`. `QUIZ_URL`은 문제가 있는 주소이고, `readText()`는 그 주소의 글자를 모두 읽어 옵니다.
+- ②에 쓸 것: `parseQuizzes(text)`. 글자를 문제(`Quiz`) 목록으로 바꿔 주는 함수이고, `QuizScreen.kt`에 만들어져 있습니다.
+- `withContext { }` 블록은 마지막 줄의 값을 돌려줍니다. 그래서 ②에는 `return` 없이 `parseQuizzes(text)`만 쓰면 이 목록이 함수의 결과가 됩니다.
+
+**확인**: Run 해도 화면은 그대로입니다. 받아 오는 함수만 만들었고, 아직 버튼이 이 함수를 부르지 않기 때문입니다. 빨간 줄 없이 Run 되면 됩니다.
+
+## [2] 버튼을 누르면 받아 와서 보여 주기
+
+**하는 일**: 버튼을 누르면 `load()`가 불립니다. 여기서 [1]의 함수를 불러 문제를 받고, 화면 상태(`_state`)에 넣습니다. 상태를 바꾸면 화면이 알아서 다시 그려집니다.
+
+**채울 곳**: 같은 파일의 `load()` 안. 지금 있는 안내 줄(`아직 [2] 를 안 채웠어요`)을 지우고 아래 빈칸을 채웁니다.
+
+```kotlin
+fun load() {
+    _state.value = ______________              // ① 화면을 "받아 오는 중"으로
+    viewModelScope.launch {                    // 코루틴 시작 (인터넷을 기다리는 동안 화면이 안 멈춤)
+        val quizzes = ______________           // ② [1]의 함수로 문제 목록을 받음
+        _state.value = ______________          // ③ 그중 하나를 골라 화면에 보여 줌
+    }
+}
+```
+
+- ①에 쓸 것: `QuizState.Loading`
+- ②에 쓸 것: `fetchQuizzes()`
+- ③에 쓸 것: `QuizState.Success(quizzes.random())`. `random()`은 목록에서 아무거나 하나를 고릅니다.
+
+화면 상태의 종류(`Ready`, `Loading`, `Success`, `Error`)는 `QuizScreen.kt`의 `QuizState`에 있습니다.
+
+**확인**: "하나 받아 오기"를 누르면 잠깐 "받아 오는 중"이 보이고 문제가 뜹니다. "정답 보기"를 누르면 답이 보입니다.
+
+## [3] 인터넷이 안 될 때 안내하기
+
+**하는 일**: 인터넷이 끊겨 있으면 `fetchQuizzes()`에서 예외가 나고 앱이 꺼집니다. 예외를 잡아서 앱이 꺼지는 대신 안내 글자를 보여 줍니다.
+
+**채울 곳**: [2]에서 `launch { }` 안에 쓴 두 줄(②, ③)을 `try { }`로 감싸고, 뒤에 `catch`를 붙입니다.
+
+```kotlin
+    viewModelScope.launch {
+        try {
+            val quizzes = fetchQuizzes()
+            _state.value = QuizState.Success(quizzes.random())
+        } catch (e: Exception) {
+            _state.value = ______________      // 실패했을 때 보여 줄 상태
+        }
+    }
+```
+
+- 빈칸에 쓸 것: `QuizState.Error("인터넷 연결을 확인해 주세요")`
+
+**확인**: 에뮬레이터의 Wi-Fi와 모바일 데이터를 끄고 누르면 앱이 꺼지지 않고 안내 글자가 뜹니다. 확인한 뒤 다시 켭니다.
+
+## [4] 멈추는 화면 고치기
+
+**하는 일**: 메인 스레드에서 3초 걸리는 일을 하면 그동안 화면이 멈춥니다. 오래 걸리는 일만 다른 스레드로 보내서 화면이 멈추지 않게 합니다.
+
+에뮬레이터의 앱 목록에서 "멈춤 고치기" 아이콘을 엽니다. "3초 걸리는 일"을 누르면 3초 동안 "눌러 보기"의 숫자가 안 오릅니다.
+
+**채울 곳**: `practice/FreezeFix.kt`에서 `[4] 여기를 고칩니다` 아래의 `result = slowWork()` 한 줄을 아래 네 줄로 바꿉니다.
+
+```kotlin
+result = "일하는 중"                                           // 먼저 글자를 바꿔 둠
+scope.launch {                                                 // 코루틴 시작
+    result = withContext(Dispatchers.Default) { slowWork() }   // 3초 걸리는 일만 다른 스레드에서
+}
+```
+
+**확인**: "3초 걸리는 일"을 누른 뒤 "눌러 보기"를 누르면 숫자가 바로 오릅니다. 3초 뒤에 "끝났습니다"가 뜹니다.
 
 ## 그대로 쓰는 파일
 
-`practice/QuizScreen.kt`: 주소(`QUIZ_URL`), 문제(`Quiz`), 화면 상태(`QuizState`), 화면이 들어 있습니다.
+`practice/QuizScreen.kt`: 주소(`QUIZ_URL`), 문제(`Quiz`), 글자를 목록으로 바꾸는 함수(`parseQuizzes`), 화면 상태(`QuizState`), 화면이 들어 있습니다.
 
-막히면 [day2_task1_quiz_answer](../day2_task1_quiz_answer)의 같은 파일을 봅니다. [1] [2] [3]이 같은 자리에 채워져 있습니다.
+막히면 [day2_task1_quiz_answer](../day2_task1_quiz_answer)를 엽니다. 같은 파일의 같은 자리에 [1] [2] [3]이 채워져 있고, README에 단계별 정답이 있습니다.
