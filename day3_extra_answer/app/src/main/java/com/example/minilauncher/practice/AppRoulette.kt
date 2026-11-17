@@ -75,7 +75,10 @@ fun AppRouletteScreen() {
             // [2] 코루틴으로 0.08초마다 current 를 아무 앱으로 15번 바꾸고 멈춥니다. 도는 동안 spinning 은 true
             scope.launch {
                 spinning = true
-                repeat(15) { current = apps.random(); delay(80) }
+                repeat(15) {
+                    current = apps.random()
+                    delay(80)
+                }
                 spinning = false
             }
         }) { Text(if (spinning) "돌아가는 중" else "돌리기") }

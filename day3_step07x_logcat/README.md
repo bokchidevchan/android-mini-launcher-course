@@ -1,13 +1,73 @@
 # 3-2 Logcat 로그 분석 (4교시: 로그 찍기)
 
-3일차 13:00~14:00 | [전체 일정으로](../README.md) | 다음: [day3_step07x_bughunt](../day3_step07x_bughunt) (오후 과제)
+3일차 13:00~14:00 | [전체 일정으로](../README.md)
 
-`day3_step07x_logcat` 폴더를 열고 시작합니다. 로그를 찍고 Logcat에서 골라 보는 법을 익힙니다. 5교시 오후 과제(버그 찾기)는 `day3_step07x_bughunt` 폴더에서 합니다.
+`day3_step07x_logcat` 폴더를 열고 시작합니다. 로그를 찍고 Logcat에서 골라 보는 법을 익힙니다.
 
-## 로그 실습 5단계
+## 먼저 돌려 보기
 
-`MainActivity.kt`의 `logPractice(step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/LogPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/LogPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.
+`MainActivity.kt`의 `logPractice(step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 합니다. Logcat 검색칸에 `tag:LogPractice`를 넣습니다. 코드는 `practice/LogPractice.kt`에 있습니다.
 
-5단계는 앱이 꺼지는 단계입니다. 확인했으면 숫자를 1로 되돌립니다. 앱이 꺼진 로그는 Logcat 검색칸을 `package:mine`으로 바꿔서 봅니다.
+5단계는 앱이 꺼지는 단계입니다. 앱이 꺼진 로그는 검색칸을 `package:mine`으로 바꿔서 봅니다. 확인했으면 숫자를 1로 되돌립니다. 그대로 두면 앱을 켤 때마다 꺼집니다.
 
-[전체 일정으로](../README.md)
+## 직접 써 보기
+
+채우는 곳은 `practice/LogPractice_My.kt` 하나이고, 파일 안에 `[1] 여기를 채웁니다`처럼 자리가 표시되어 있습니다. `MainActivity.kt`에서 `logPractice(step = 1)` 줄을 주석으로 막고, 바로 아래의 `myLogPractice(step = 1)` 줄의 주석을 풉니다. 검색칸에는 `tag:MyLog`를 넣습니다. 숫자를 바꿔 가며 [1]부터 차례로 채우고 Run 합니다.
+
+이 파일에서는 `Log.d(TAG, 글자)` 대신 `show(글자)`를 써도 됩니다.
+
+### [1] 로그 레벨 다섯 가지
+
+**하는 일**: 같은 태그로 레벨만 바꿔 다섯 줄을 찍습니다.
+
+**채울 곳**: `myLogStep01()` 안.
+
+**힌트**: 레벨마다 함수가 있습니다. `Log.v`, `Log.d`, `Log.i`, `Log.w`, `Log.e`이고, 모두 `(TAG, 글자)`를 받습니다.
+
+**확인**: V, D, I, W, E 다섯 줄이 찍힙니다. 검색칸에 `level:warn`을 더하면 W와 E만 남습니다.
+
+### [2] 값을 같이 찍기
+
+**하는 일**: 앱 이름 목록에서 검색어가 든 것만 거르고, 검색어와 개수와 결과를 한 줄에 찍습니다.
+
+**채울 곳**: `myLogStep02()` 안.
+
+**힌트**: 문자열 안에 `$이름`이나 `${식}`을 쓰면 값이 들어갑니다. 예: `"검색어=$query, 결과=${result.size}개"`
+
+**확인**: `검색어=c, 전체=3개, 결과=2개 [Camera, Chrome]`처럼 값이 함께 찍힙니다.
+
+### [3] 태그 나누기
+
+**하는 일**: 기능마다 다른 태그로 찍습니다. 예: 검색은 `MyLog.Search`, 네트워크는 `MyLog.Network`.
+
+**채울 곳**: `myLogStep03()` 안.
+
+**힌트**: `Log.d`의 첫 자리가 태그입니다. 여기서는 `TAG` 대신 글자를 바로 넣습니다.
+
+**확인**: 검색칸에 `tag:MyLog.Search`를 넣으면 그 태그의 줄만 남습니다.
+
+### [4] 예외를 잡아서 찍기
+
+**하는 일**: 목록의 없는 자리(예: 세 개짜리 목록의 6번째)를 읽어 예외를 내고, 잡아서 `Log.e`로 찍습니다.
+
+**채울 곳**: `myLogStep04()` 안.
+
+**힌트**
+- 예외를 잡는 모양은 `try { ... } catch (e: IndexOutOfBoundsException) { ... }`입니다.
+- `Log.e`의 세 번째 자리에 `e`를 넘기면 어디서 났는지(스택)가 같이 찍힙니다.
+
+**확인**: E 줄과 스택이 찍히고, 잡았기 때문에 앱은 꺼지지 않습니다.
+
+### [5] 잡지 않은 예외
+
+**하는 일**: `null`인 값에 `!!`를 붙여 써서 앱을 일부러 꺼지게 합니다.
+
+**채울 곳**: `myLogStep05()` 안.
+
+**힌트**: `String?`(비어 있을 수 있는 글자) 변수에 `null`을 넣고, 그 변수에 `!!`를 붙여 길이(`length`)를 읽습니다.
+
+**확인**: 앱이 꺼집니다. 검색칸을 `package:mine`으로 바꾸면 `FATAL EXCEPTION`과 `NullPointerException`, 내 코드 줄이 보입니다. 확인했으면 숫자를 1로 되돌립니다.
+
+막히면 `practice/LogPractice.kt`의 같은 단계 함수를 봅니다.
+
+다음: [오후 과제: 버그 세 개 찾아 고치기](../day3_step07x_bughunt)

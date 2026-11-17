@@ -69,7 +69,8 @@ fun MySearchAppsScreen() {
         LazyColumn {
             items(shown, key = { it.packageName + it.className }) { app ->
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),   // [3] 여기를 고칩니다: 누르면 앱 열기
+                    // [3] 여기를 고칩니다: 아래 modifier 줄에 누르면 앱 열기를 더합니다
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 6.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     AppIconImage(app, 40.dp)

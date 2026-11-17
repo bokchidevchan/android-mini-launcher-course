@@ -5,7 +5,7 @@ import android.util.Log
 // 3일차 오후 로그 실습 5단계.
 // MainActivity.kt 의 logPractice(step = 1) 에서 숫자를 1부터 5까지 바꿔 가며 Run 합니다.
 // Logcat 검색창에 tag:LogPractice 를 넣습니다.
-// 직접 써 보고 싶으면 같은 폴더의 LogPractice_My.kt 에 옮겨 적습니다.
+// 직접 써 보는 파일은 같은 폴더의 LogPractice_My.kt 입니다.
 
 private const val TAG = "LogPractice"
 
@@ -29,7 +29,7 @@ private fun step01Levels() {
     Log.i(TAG, "I: 알아 둘 만한 일")
     Log.w(TAG, "W: 이상하지만 계속 돌 수 있는 일")
     Log.e(TAG, "E: 실패한 일")
-    // 바꿔 보기: 검색창을 tag:LogPractice level:warn 으로 바꿔 몇 줄이 남는지 봅니다
+    // 검색창을 tag:LogPractice level:warn 으로 바꾸면 W 와 E 두 줄만 남습니다
 }
 
 // 2단계. 값을 같이 찍기
@@ -47,7 +47,7 @@ private fun step03Tags() {
     Log.d("LogPractice.Search", "검색을 시작했습니다")
     Log.d("LogPractice.Network", "서버에 물어봤습니다")
     Log.d("LogPractice.Search", "검색이 끝났습니다")
-    // 바꿔 보기: 검색창에 tag:LogPractice.Search 를 넣어 봅니다. tag:LogPractice 만 넣으면 전부 보입니다
+    // 검색창에 tag:LogPractice.Search 를 넣으면 검색 두 줄만 남고, tag:LogPractice 만 넣으면 세 줄이 다 보입니다
 }
 
 // 4단계. 예외를 잡아서 찍기
@@ -60,7 +60,7 @@ private fun step04Caught() {
         Log.e(TAG, "없는 자리를 읽었습니다. 크기=${apps.size}", e)
     }
     Log.d(TAG, "예외를 잡았기 때문에 이 줄까지 옵니다")
-    // 바꿔 보기: Logcat 에서 at com.example.minilauncher 로 시작하는 줄의 파란 글자를 눌러 봅니다
+    // Logcat 에서 at com.example.minilauncher 로 시작하는 줄의 파란 글자를 누르면 apps[5] 줄로 이동합니다
 }
 
 // 5단계. 잡지 않은 예외

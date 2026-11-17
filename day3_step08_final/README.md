@@ -79,10 +79,14 @@ OutlinedTextField(
     value = ______________,              // ① 입력창에 보여 줄 글자
     onValueChange = { ______________ },  // ② 글자가 바뀌면 할 일
     label = { Text("앱 이름") },
+    singleLine = true,                   // 한 줄로
+    modifier = Modifier.fillMaxWidth(),  // 가로로 꽉 차게
 )
 ```
 
-**힌트**: Compose의 입력창은 글자를 스스로 기억하지 않습니다. ①에 `query`를 넘기고, ②에서 새 글자(`it`)를 `query`에 넣어야 화면에 글자가 보입니다.
+**힌트**
+- Compose의 입력창은 글자를 스스로 기억하지 않습니다. ①에는 검색어를 담아 둔 변수를 넘깁니다.
+- ②의 `{ }` 안에서 `it`이 새로 입력된 글자입니다. 이 글자를 검색어 변수에 넣어야 화면에 글자가 보이고 [1]의 목록도 바뀝니다.
 
 **확인**: 입력창에 `c`를 넣으면 Camera, Chrome처럼 c가 든 앱만 남고 개수가 줄어듭니다.
 
@@ -96,9 +100,37 @@ OutlinedTextField(
 modifier = Modifier.fillMaxWidth().clickable { ______________ }.padding(vertical = 6.dp),
 ```
 
-**힌트**: 오늘 2교시에 본 `launchApp(context, 앱)`을 씁니다. 이 줄의 앱은 `app`입니다.
+**힌트**: 앱을 여는 함수는 오늘 2교시에 본 `launchApp`입니다. 무엇을 넘기는지는 `AppLauncher.kt`에서 확인합니다. 이 줄이 그리는 앱은 `items { app -> }`의 `app`입니다.
 
-**확인**: 줄을 누르면 그 앱이 열립니다. 막히면 같은 폴더의 `practice/SearchApps.kt`(완성본, 앱 목록의 "앱 찾기" 아이콘)를 봅니다. 같은 번호가 같은 자리에 있습니다.
+**확인**: 줄을 누르면 그 앱이 열립니다.
+
+막히면 같은 폴더의 `practice/SearchApps.kt`(완성본, 앱 목록의 "앱 찾기" 아이콘)를 봅니다. 같은 번호가 같은 자리에 있습니다. 뼈대와 완성본이 한 프로젝트에 같이 있어서, 뼈대 쪽 파일과 화면 이름에만 `My`가 붙어 있습니다.
+
+### 단계별 정답
+
+[1] 이름에 검색어가 든 앱만 남깁니다. 검색어가 비어 있으면 모든 이름이 빈 글자를 포함하므로 전부 남습니다.
+
+```kotlin
+val shown = apps.filter { it.label.contains(query, ignoreCase = true) }
+```
+
+[2] 입력창은 `query`를 보여 주고, 글자가 바뀌면 `query`를 바꿉니다. `query`가 바뀌면 화면이 다시 그려지면서 [1]의 `shown`도 다시 계산됩니다.
+
+```kotlin
+OutlinedTextField(
+    value = query,
+    onValueChange = { query = it },
+    label = { Text("앱 이름") },
+    singleLine = true,
+    modifier = Modifier.fillMaxWidth(),
+)
+```
+
+[3] 줄 전체에 `clickable`을 붙여, 누르면 그 줄의 앱을 엽니다.
+
+```kotlin
+modifier = Modifier.fillMaxWidth().clickable { launchApp(context, app) }.padding(vertical = 6.dp),
+```
 
 ## 수업이 끝나면
 
