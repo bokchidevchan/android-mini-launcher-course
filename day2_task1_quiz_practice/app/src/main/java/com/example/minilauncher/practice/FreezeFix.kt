@@ -36,7 +36,8 @@ import kotlinx.coroutines.withContext
 // 지금은 "3초 걸리는 일"을 누르면 3초 동안 화면이 멈춥니다. 그동안 "눌러 보기"를 눌러도 숫자가
 // 안 오릅니다. 메인 스레드가 3초 동안 붙잡혀 있기 때문입니다.
 //
-// [4] 아래 "[4] 여기를 고칩니다" 자리의 result = slowWork() 한 줄을 지우고 아래 네 줄을 씁니다
+// [4] 아래 "[4] 여기를 고칩니다" 자리의 result = slowWork() 한 줄을 지우고, 그 자리에 아래 네 줄을 옮겨 적습니다
+//     (아래 네 줄은 이 설명 안에 있어서 // 를 지우는 대신 복사해서 붙입니다)
 //         result = "일하는 중"
 //         scope.launch {
 //             result = withContext(Dispatchers.Default) { slowWork() }   // 오래 걸리는 일만 워커 스레드로
