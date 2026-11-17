@@ -45,10 +45,10 @@
 - 홈 앱 목록에 Mini Launcher가 없음: 이 단계 코드(day3_step07_launcher)를 실행했는지 확인합니다. 앞 단계에는 HOME 카테고리가 없습니다.
 - 홈 화면에서 뒤로 가기가 안 먹음: 런처가 닫히지 않게 `BackHandler`로 막아 둔 것입니다.
 
-다음: [3-2 Logcat 로그 분석](../day3_step07x_bughunt)
-
 ## 오전 과제: 즐겨찾기 서랍 만들기
 
 과제는 따로 떼어 둔 폴더에서 합니다. 뼈대 [day3_task1_favorites_practice](../day3_task1_favorites_practice)를 열고 README를 따라 채웁니다. 완성 프로젝트는 [day3_task1_favorites_answer](../day3_task1_favorites_answer)입니다.
 
 [전체 일정으로](../README.md)
+
+다음: [3-2 Logcat 로그 분석](../day3_step07x_logcat)

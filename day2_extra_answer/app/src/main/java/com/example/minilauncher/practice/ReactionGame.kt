@@ -35,7 +35,7 @@ import kotlin.random.Random
 // 2일차 8교시: 반응 속도 게임. 화면이 초록색으로 바뀌는 순간 얼마나 빨리 누르는지 잽니다. (정답)
 // 실행: Run 하면 이 화면이 바로 뜹니다.
 
-class ReactionAnswerActivity : ComponentActivity() {
+class ReactionGameActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -71,17 +71,17 @@ fun ReactionGameScreen() {
             // 화면을 누를 때마다 여기가 실행됩니다. 지금 어떤 화면이냐에 따라 할 일이 다릅니다
             when (screen) {
                 "기다림" -> {
-                    // [2] 너무 일찍 눌렀을 때: 기다리던 코루틴을 취소하고 screen 을 "너무 빠름" 으로 바꿉니다
+                    // [2] 너무 일찍 눌렀을 때. 기다리던 코루틴(waiting)을 취소하고 screen 을 "너무 빠름" 으로 바꿉니다
                     waiting?.cancel()
                     screen = "너무 빠름"
                 }
                 "지금" -> {
-                    // [3] 제때 눌렀을 때: 걸린 시간을 result 에 넣고 screen 을 "결과" 로 바꿉니다
+                    // [3] 제때 눌렀을 때. 걸린 시간(지금 시각 - goTime)을 result 에 넣고 screen 을 "결과" 로 바꿉니다
                     result = System.currentTimeMillis() - goTime
                     screen = "결과"
                 }
                 else -> {
-                    // [1] 시작: screen 을 "기다림" 으로 바꾸고, 1~4초 뒤에 "지금" 으로 바꿉니다
+                    // [1] 시작. screen 을 "기다림" 으로 바꾸고, 코루틴으로 1~4초 쉰 뒤 goTime 을 적고 "지금" 으로 바꿉니다
                     screen = "기다림"
                     waiting = scope.launch {
                         delay(Random.nextLong(1000, 4000))

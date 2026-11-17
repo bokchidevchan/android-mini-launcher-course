@@ -39,7 +39,7 @@ import com.example.minilauncher.model.AppInfo
 // 3일차 8교시: 앱 룰렛. 설치된 앱 가운데 하나를 뽑아서 열어 줍니다. (정답)
 // 실행: Run 하면 이 화면이 바로 뜹니다.
 
-class AppRouletteAnswerActivity : ComponentActivity() {
+class AppRouletteActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -72,7 +72,7 @@ fun AppRouletteScreen() {
         Text(current?.label ?: "돌려 보세요", fontSize = 40.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
         Spacer(Modifier.height(40.dp))
         Button(enabled = !spinning && apps.isNotEmpty(), modifier = Modifier.width(200.dp), onClick = {
-            // [2] 돌리기: 0.08초마다 아무 앱으로 15번 바꾸고 멈춥니다. 도는 동안 spinning 은 true
+            // [2] 코루틴으로 0.08초마다 current 를 아무 앱으로 15번 바꾸고 멈춥니다. 도는 동안 spinning 은 true
             scope.launch {
                 spinning = true
                 repeat(15) { current = apps.random(); delay(80) }
@@ -81,7 +81,7 @@ fun AppRouletteScreen() {
         }) { Text(if (spinning) "돌아가는 중" else "돌리기") }
         Spacer(Modifier.height(8.dp))
         OutlinedButton(enabled = current != null && !spinning, modifier = Modifier.width(200.dp), onClick = {
-            // [3] 이 앱 열기: 지금 보이는 앱(current)을 엽니다. current 는 null 일 수 있습니다
+            // [3] 지금 보이는 앱(current)을 엽니다. current 는 null 일 수 있습니다
             current?.let { launchApp(context, it) }
         }) { Text("이 앱 열기") }
     }

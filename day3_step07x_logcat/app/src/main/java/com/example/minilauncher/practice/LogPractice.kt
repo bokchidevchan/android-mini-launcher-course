@@ -39,7 +39,6 @@ private fun step02Values() {
     val query = "c"
     val result = apps.filter { it.contains(query, ignoreCase = true) }
     Log.d(TAG, "검색어=$query, 전체=${apps.size}개, 결과=${result.size}개 $result")
-    // 바꿔 보기: query 를 "zzz" 로 바꾸고, 결과가 0개일 때는 Log.w 로 찍게 고쳐 봅니다
 }
 
 // 3단계. 태그 나누기

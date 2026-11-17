@@ -10,7 +10,7 @@
 
         <!-- Run 하면 이 화면이 뜹니다 -->
         <activity
-            android:name=".practice.ReactionAnswerActivity"
+            android:name=".practice.ReactionGameActivity"
             android:exported="true"
             android:label="반응 속도 게임">
             <intent-filter>

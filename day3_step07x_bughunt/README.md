@@ -1,6 +1,6 @@
-# 3-2 Logcat 로그 분석
+# 오후 과제: 버그 세 개 찾아 고치기
 
-3일차 14:00~15:00 (오후 과제) | [전체 일정으로](../README.md)
+3일차 14:00~15:00 (3-2 Logcat 로그 분석) | [전체 일정으로](../README.md)
 
 `day3_step07x_bughunt` 폴더를 열고 시작합니다.
 
@@ -29,7 +29,7 @@ E/AndroidRuntime: Caused by: java.lang.NullPointerException
 - 검색칸에 `leaked`를 넣고, 에뮬레이터를 가로, 세로로 몇 번 돌립니다.
 - 이런 줄이 찍힙니다. `... has leaked IntentReceiver ... Are you missing a call to unregisterReceiver()?`
 - 찾을 것: `has leaked IntentReceiver`가 무슨 뜻인지. 경고 아래에서 이 앱 코드 줄(등록한 곳)을 찾고, 2일차의 "등록과 해제는 짝"과 비교합니다.
-- 참고: Activity가 사라질 때 시스템이 대신 정리해서 앱이 꺼지지는 않습니다. Application Context로 등록하면 앱이 살아 있는 동안 계속 남습니다.
+- 참고: Activity가 사라질 때 시스템이 대신 정리해서 앱이 꺼지지는 않습니다.
 
 ## 버그 3: 앱은 멀쩡한데 경고가 찍힙니다
 
@@ -45,11 +45,9 @@ E/AndroidRuntime: Caused by: java.lang.NullPointerException
 | 2 | 등록한 Receiver를 화면이 사라질 때 해제합니다 | 화면을 몇 번 돌려도 `leaked`가 더 찍히지 않습니다 |
 | 3 | 메인 스레드에서 하던 읽기를 2-1에서 배운 `withContext(Dispatchers.IO)`로 옮깁니다 | 앱을 다시 실행해도 `DiskReadViolation`이 더 찍히지 않습니다 |
 
-다음: [3-3 미니 런처 완성과 코드 리뷰](../day3_step08_final)
-
 ## 정답 (다 고친 뒤에 확인)
 
-버그 1, 2의 정답은 [day3_step07_launcher](../day3_step07_launcher)의 같은 파일입니다. 버그 3은 day3_step07_launcher에도 같은 읽기가 남아 있어서(StrictMode를 켜지 않아 경고만 안 보일 뿐입니다), `MainActivity.kt`의 부팅 시각 읽기를 아래처럼 바꿉니다.
+버그 1, 2의 정답은 [day3_step07_launcher](../day3_step07_launcher)의 같은 파일입니다. 버그 3의 정답은 [day3_step08_final](../day3_step08_final)의 `MainActivity.kt`에 있습니다. 부팅 시각 읽기를 아래처럼 바꿉니다.
 
 ```kotlin
 // 바꾸기 전: 메인 스레드에서 SharedPreferences 를 읽음
@@ -62,3 +60,5 @@ val boot by produceState<String?>(null) {
 ```
 
 import에 `androidx.compose.runtime.produceState`, `kotlinx.coroutines.Dispatchers`, `kotlinx.coroutines.withContext`를 더합니다. 다시 실행하면 `DiskReadViolation`이 더 찍히지 않습니다.
+
+다음: [3-3 미니 런처 완성과 코드 리뷰](../day3_step08_final)

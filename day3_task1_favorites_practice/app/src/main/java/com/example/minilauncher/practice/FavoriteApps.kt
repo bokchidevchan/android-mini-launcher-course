@@ -18,7 +18,7 @@ import com.example.minilauncher.model.AppInfo
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
 
 // 3일차 오전 과제 "즐겨찾기 서랍" 의 뼈대입니다.
-// [1] [2] [3] [4] 자리를 채웁니다. 무엇을 쓰는지는 README.md 에 있습니다. 완성본은 day3_task1_favorites_answer 폴더입니다.
+// [1] [2] [3] 을 채우고 [4] 를 고칩니다. 순서와 힌트는 README.md 에 있습니다. 완성본은 day3_task1_favorites_answer 폴더입니다.
 // 화면은 FavoriteAppsLayout.kt 에 있습니다. 위의 import 가운데 회색인 것은 채우고 나면 쓰입니다.
 
 @Composable

@@ -18,7 +18,7 @@
 
         <!-- Run 하면 이 화면이 뜹니다 -->
         <activity
-            android:name=".practice.AppRoulettePracticeActivity"
+            android:name=".practice.AppRouletteActivity"
             android:exported="true"
             android:label="앱 룰렛">
             <intent-filter>

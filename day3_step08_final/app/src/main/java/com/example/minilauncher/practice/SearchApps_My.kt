@@ -39,8 +39,8 @@ import com.example.minilauncher.ui.theme.LauncherBackground
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
 
 // 7교시 같이 만들기 "앱 찾기" 의 뼈대입니다. 완성본은 같은 폴더의 SearchApps.kt 입니다.
-// Run 한 뒤 에뮬레이터의 앱 목록에서 "앱 찾기 직접" 아이콘을 누릅니다.
-// [1] [2] [3] 자리를 채웁니다. 무엇을 쓰는지는 README.md 와 교안에 있습니다.
+// 기본 홈 앱을 원래 런처로 되돌린 뒤 Run 하고, 에뮬레이터의 앱 목록에서 "앱 찾기 직접" 아이콘을 누릅니다.
+// [1] [2] [3] 자리를 위에서부터 차례로 채웁니다. 순서와 힌트는 README.md 에 있습니다.
 
 class MySearchAppsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,11 +60,11 @@ fun MySearchAppsScreen() {
         apps = InstalledAppRepository(context.applicationContext).loadApps()
     }
 
-    val shown = apps    // [2] 여기를 고칩니다: 검색어가 이름에 든 앱만 남기기
+    val shown = apps    // [1] 여기를 고칩니다: 검색어가 이름에 든 앱만 남기기
 
     Column(Modifier.fillMaxSize().background(LauncherBackground).safeDrawingPadding().padding(16.dp)) {
         Text("앱 찾기", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
-        // [1] 여기를 채웁니다: 검색어 입력창
+        // [2] 여기를 채웁니다: 검색어 입력창
         Text("${shown.size}개", modifier = Modifier.padding(vertical = 8.dp))
         LazyColumn {
             items(shown, key = { it.packageName + it.className }) { app ->

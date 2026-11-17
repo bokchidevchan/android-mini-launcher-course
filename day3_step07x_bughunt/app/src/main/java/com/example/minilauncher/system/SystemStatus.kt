@@ -27,7 +27,7 @@ private const val TAG = "SystemEvent"
 
 data class BatteryInfo(val level: Int, val charging: Boolean)
 
-// 배터리: 동적 등록. 화면에 보이는 동안만 받고, 화면이 사라지면 해제합니다 (등록과 해제는 항상 짝)
+// 배터리: 동적 등록. 화면에 보이는 동안 배터리 상태를 받습니다
 @Composable
 fun rememberBattery(): BatteryInfo? {
     val context = LocalContext.current

@@ -41,7 +41,7 @@ import com.example.minilauncher.ui.theme.MiniLauncherTheme
 // 3일차: 검색해서 여는 앱 "앱 찾기". 완성한 미니 런처의 검색창이 하는 일을 화면 하나로 줄인 것입니다.
 // Run 한 뒤 에뮬레이터의 앱 목록에서 "앱 찾기" 아이콘을 누릅니다 (기본 홈 앱을 바꾸기 전이나, 되돌린 뒤에).
 // 글자를 넣으면 이름에 그 글자가 든 앱만 남고, 누르면 그 앱이 열립니다.
-// [1] [2] [3] 은 같은 폴더의 뼈대 SearchApps_My.kt 에서 채우는 자리입니다.
+// [1] [2] [3] 은 같은 폴더의 뼈대 SearchApps_My.kt 에서 채우는 자리이고, 같은 번호가 같은 자리에 있습니다.
 
 class SearchAppsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,19 +55,19 @@ class SearchAppsActivity : ComponentActivity() {
 fun SearchAppsScreen() {
     val context = LocalContext.current
     var apps by remember { mutableStateOf<List<AppInfo>>(emptyList()) }     // 설치된 앱 전체
-    var query by rememberSaveable { mutableStateOf("") }                    // [1] 검색어. 화면을 돌려도 남게 rememberSaveable
+    var query by rememberSaveable { mutableStateOf("") }                    // 검색어. 화면을 돌려도 남게 rememberSaveable
 
     // 화면이 뜰 때 한 번, 설치된 앱 목록을 읽습니다
     LaunchedEffect(Unit) {
         apps = InstalledAppRepository(context.applicationContext).loadApps()
     }
 
-    // [2] 검색어가 이름에 든 앱만 남깁니다. 검색어가 비어 있으면 contains("") 가 항상 참이라 전부 남습니다
+    // [1] 검색어가 이름에 든 앱만 남깁니다. 검색어가 비어 있으면 contains("") 가 항상 참이라 전부 남습니다
     val shown = apps.filter { it.label.contains(query, ignoreCase = true) }
 
     Column(Modifier.fillMaxSize().background(LauncherBackground).safeDrawingPadding().padding(16.dp)) {
         Text("앱 찾기", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
-        // [1] 입력창은 값을 스스로 기억하지 않습니다. query 를 보여 주고, 글자가 바뀌면 query 를 바꿉니다
+        // [2] 입력창은 값을 스스로 기억하지 않습니다. query 를 보여 주고, 글자가 바뀌면 query 를 바꿉니다
         OutlinedTextField(
             value = query,
             onValueChange = { query = it },
@@ -90,6 +90,4 @@ fun SearchAppsScreen() {
             }
         }
     }
-    // 바꿔 보면: ignoreCase = true 를 지우면 대소문자를 가려서, 소문자 c 로는 Chrome 이
-    // 안 찾아집니다
 }
