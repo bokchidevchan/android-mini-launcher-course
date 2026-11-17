@@ -41,6 +41,8 @@
 | 10 | 종합: 불러오는 중, 성공, 실패 |
 | 11 | `lifecycleScope`: 화면을 돌리거나 닫으면 코루틴이 같이 취소됩니다 |
 
+직접 써 보려면 `practice/CoroutinePractice_My.kt`의 빈 함수에 옮겨 적고 `myCoroutinePractice`로 바꿔 실행합니다. 멈추는 화면을 직접 고쳐 보는 파일은 `practice/FreezeFix_My.kt`이고, 앱 목록의 "멈춤 고치기" 아이콘으로 엽니다(오전 과제의 [4]와 같은 내용).
+
 ## 오전 과제: 복습 퀴즈 앱 만들기
 
 뼈대 프로젝트 [day2_task1_quiz_practice](../day2_task1_quiz_practice)를 열고 복습 퀴즈 앱을 만듭니다. 완성 프로젝트는 [day2_task1_quiz_answer](../day2_task1_quiz_answer)입니다.

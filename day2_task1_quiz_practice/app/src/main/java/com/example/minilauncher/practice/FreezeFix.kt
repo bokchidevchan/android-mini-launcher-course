@@ -31,22 +31,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-// 같이 해 보기 파일입니다. 멈추는 화면을 직접 고쳐 봅니다. 완성된 모양은 lab/LabActivity.kt 의 두 번째 버튼입니다.
+// 2일차 오전 과제 [4]: 멈추는 화면 고치기 (뼈대).
 // Run 한 뒤 에뮬레이터의 앱 목록에서 "멈춤 고치기" 아이콘을 누릅니다.
+// 지금은 "3초 걸리는 일"을 누르면 3초 동안 화면이 멈춥니다. 그동안 "눌러 보기"를 눌러도 숫자가
+// 안 오릅니다. 메인 스레드가 3초 동안 붙잡혀 있기 때문입니다.
 //
-// 먼저 겪어 보기
-//   "3초 걸리는 일"을 누르고 바로 "눌러 보기"를 여러 번 누릅니다. 3초 동안 숫자가 안 오릅니다. 메인 스레드가 붙잡혔기 때문입니다.
-//
-// 고치기 (아래 [1] 자리의 한 줄을 바꿉니다)
-//   [1] result = slowWork() 를 지우고 아래 네 줄을 붙입니다
+// [4] 아래 "[4] 여기를 고칩니다" 자리의 result = slowWork() 한 줄을 지우고 아래 네 줄을 씁니다
 //         result = "일하는 중"
 //         scope.launch {
-//             result = withContext(Dispatchers.Default) { slowWork() }     // 오래 걸리는 일만 뒤쪽 스레드로
+//             result = withContext(Dispatchers.Default) { slowWork() }   // 오래 걸리는 일만 워커 스레드로
 //         }
-//   다시 Run 해서 "3초 걸리는 일"을 누른 뒤 "눌러 보기"를 누릅니다. 이번에는 숫자가 바로 오릅니다.
-//
-// 더 해 보기
-//   [2] Thread.sleep(3000) 을 10000 으로 늘려도 화면이 살아 있는지 봅니다
+//     확인: 다시 Run 해서 "3초 걸리는 일"을 누른 뒤 "눌러 보기"를 누르면 숫자가 바로 오릅니다
+// 완성본은 day2_task1_quiz_answer 폴더의 같은 파일입니다.
+// 위의 import 가운데 회색으로 보이는 것은 아직 안 써서 그런 것이니 그대로 둡니다.
 
 // 오래 걸리는 일 (예: 큰 파일 읽기). 일부러 3초 동안 스레드를 붙잡습니다
 private fun slowWork(): String {
@@ -66,7 +63,7 @@ fun FreezeFixScreen() {
     ) {
         Text("멈춤 고치기", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
         Button(onClick = {
-            // [1] 여기를 고칩니다. 지금은 메인 스레드에서 3초를 붙잡습니다
+            // [4] 여기를 고칩니다. 지금은 메인 스레드에서 3초를 붙잡습니다
             result = slowWork()
         }, modifier = Modifier.fillMaxWidth()) { Text("3초 걸리는 일") }
         FilledTonalButton(onClick = { taps++ }, modifier = Modifier.fillMaxWidth()) { Text("눌러 보기: $taps") }

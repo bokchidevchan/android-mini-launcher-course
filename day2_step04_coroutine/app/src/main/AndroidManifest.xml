@@ -21,9 +21,6 @@
         <package android:name="com.google.android.apps.youtube.music" />
     </queries>
 
-    <!-- 인터넷을 쓰겠다는 표시. 2일차 오전 과제의 "복습 퀴즈" 앱이 씁니다 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

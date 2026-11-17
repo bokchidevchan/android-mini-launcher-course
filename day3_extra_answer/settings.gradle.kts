@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "MiniLauncher"
+rootProject.name = "AppRoulette"
 include(":app")

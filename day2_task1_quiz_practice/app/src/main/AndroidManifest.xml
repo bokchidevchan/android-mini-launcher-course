@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- 고정 앱 16개의 아이콘을 읽으려면 이 앱들을 보겠다고 미리 적어야 합니다 (패키지 공개 범위, 3일차에 자세히) -->
-    <queries>
-        <package android:name="com.google.android.calendar" />
-        <package android:name="com.android.camera2" />
-        <package android:name="com.android.chrome" />
-        <package android:name="com.google.android.deskclock" />
-        <package android:name="com.google.android.contacts" />
-        <package android:name="com.google.android.apps.docs" />
-        <package android:name="com.google.android.documentsui" />
-        <package android:name="com.google.android.gm" />
-        <package android:name="com.google.android.googlequicksearchbox" />
-        <package android:name="com.google.android.apps.maps" />
-        <package android:name="com.google.android.apps.messaging" />
-        <package android:name="com.google.android.dialer" />
-        <package android:name="com.google.android.apps.photos" />
-        <package android:name="com.android.settings" />
-        <package android:name="com.google.android.youtube" />
-        <package android:name="com.google.android.apps.youtube.music" />
-    </queries>
-
-    <!-- 인터넷을 쓰겠다는 표시. 2일차 오전의 "복습 퀴즈" 앱이 씁니다 -->
+    <!-- 인터넷을 쓰겠다는 표시. 문제를 인터넷에서 받아 옵니다 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -31,44 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniLauncher">
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".DetailActivity"
-            android:exported="false" />
-
-        <!-- 2일차 실험 화면. 앱 서랍에 "실험실" 아이콘이 따로 생깁니다 -->
-        <activity
-            android:name=".lab.LabActivity"
-            android:exported="true"
-            android:label="실험실"
-            android:taskAffinity="com.example.minilauncher.lab">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <!-- 2일차 오전: 네트워크에서 받아 오는 앱. 앱 목록에 "복습 퀴즈" 아이콘이 생깁니다 -->
+        <!-- 과제 [1] [2] [3]: 복습 퀴즈 화면. Run 하면 이 화면이 뜹니다 -->
         <activity
             android:name=".practice.QuizActivity"
             android:exported="true"
-            android:label="복습 퀴즈"
-            android:taskAffinity="com.example.minilauncher.quizactivity">
+            android:label="복습 퀴즈">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- 2일차 오전: 멈추는 화면을 코루틴으로 직접 고쳐 보는 화면. 앱 목록에 "멈춤 고치기" 아이콘이 생깁니다 -->
+        <!-- 과제 [4]: 멈추는 화면. 앱 목록에 "멈춤 고치기" 아이콘이 따로 생깁니다 -->
         <activity
             android:name=".practice.FreezeFixActivity"
             android:exported="true"

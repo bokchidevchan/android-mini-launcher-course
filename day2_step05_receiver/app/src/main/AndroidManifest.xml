@@ -45,17 +45,6 @@
             android:name=".DetailActivity"
             android:exported="false" />
 
-        <activity
-            android:name=".lab.LabActivity"
-            android:exported="true"
-            android:label="실험실"
-            android:taskAffinity="com.example.minilauncher.lab">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
         <!-- 정적 등록: 앱이 꺼져 있어도 시스템이 이 Receiver 를 깨워서 부릅니다 -->
         <receiver
             android:name=".system.BootReceiver"

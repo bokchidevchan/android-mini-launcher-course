@@ -23,11 +23,3 @@ fun launchApp(context: Context, app: AppInfo) {
         Toast.makeText(context, "${app.label} 을(를) 열 수 없습니다", Toast.LENGTH_SHORT).show()
     }
 }
-
-fun openDetail(context: Context, app: AppInfo) {
-    context.startActivity(
-        Intent(context, DetailActivity::class.java)
-            .putExtra(DetailActivity.EXTRA_LABEL, app.label)
-            .putExtra(DetailActivity.EXTRA_PACKAGE, app.packageName)
-    )
-}

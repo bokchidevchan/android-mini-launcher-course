@@ -25,7 +25,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.minilauncher.ui.theme.LauncherBackground
-import com.example.minilauncher.ui.theme.MiniLauncherTheme
 import org.json.JSONArray
 
 // 2일차 오전 과제 "복습 퀴즈" 앱에서 고치지 않고 그대로 쓰는 부분입니다.

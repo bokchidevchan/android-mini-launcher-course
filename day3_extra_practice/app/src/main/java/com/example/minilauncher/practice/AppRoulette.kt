@@ -4,10 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,30 +18,26 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 import com.example.minilauncher.data.InstalledAppRepository
 import com.example.minilauncher.launchApp
 import com.example.minilauncher.model.AppInfo
 
 // 3일차 8교시: 앱 룰렛. 설치된 앱 가운데 하나를 뽑아서 열어 줍니다.
-// 실행: Run 한 뒤 에뮬레이터의 앱 목록에서 "앱 룰렛 연습" 아이콘.
+// 실행: Run 하면 이 화면이 바로 뜹니다.
 // 파일은 이것 하나입니다. 화면 모양은 만들어져 있고, [1] [2] [3] 세 군데만 채우면 됩니다.
 // 위의 import 가운데 회색으로 보이는 것은 아직 안 써서 그런 것이니 그대로 둡니다.
 
@@ -91,4 +84,3 @@ fun AppRouletteScreen() {
         }) { Text("이 앱 열기") }
     }
 }
-// 더 해 보기: 멈출 때가 가까울수록 천천히 바뀌게 하기 (delay 값을 점점 크게)

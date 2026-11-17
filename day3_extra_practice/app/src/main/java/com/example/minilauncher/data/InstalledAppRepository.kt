@@ -21,7 +21,7 @@ class InstalledAppRepository(private val context: Context) : AppRepository {
                     className = it.activityInfo.name,
                 )
             }
-            .filter { it.packageName != context.packageName }   // 런처 자신은 빼기
+            .filter { it.packageName != context.packageName }   // 이 앱 자신은 빼기
             .sortedBy { it.label.lowercase() }
             .also { Log.d("Launcher", "설치 앱 ${it.size}개 조회") }
     }

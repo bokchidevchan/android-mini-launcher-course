@@ -22,7 +22,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 // 2일차 오후 과제 "컵라면 타이머" 앱의 완성본입니다.
-// Run 한 뒤 에뮬레이터의 앱 목록에서 "컵라면 타이머" 아이콘을 누릅니다.
+// Run 하면 컵라면 타이머 화면이 바로 뜹니다.
 // 시작을 누르고 홈으로 나가도 알림에서 남은 시간이 계속 줄어듭니다. 화면이 아니라 Service 가 세고 있기 때문입니다.
 // 화면과 알림은 같은 폴더의 RamenTimerScreen.kt 에 있습니다. 번호 [1] [2] [3] 은 뼈대 프로젝트의 같은 번호 자리입니다.
 

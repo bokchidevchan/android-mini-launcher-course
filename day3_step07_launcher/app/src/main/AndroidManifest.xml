@@ -45,17 +45,6 @@
             android:name=".DetailActivity"
             android:exported="false" />
 
-        <activity
-            android:name=".lab.LabActivity"
-            android:exported="true"
-            android:label="실험실"
-            android:taskAffinity="com.example.minilauncher.lab">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
         <!-- 정적 등록: 앱이 꺼져 있어도 시스템이 이 Receiver 를 깨워서 부릅니다 -->
         <receiver
             android:name=".system.BootReceiver"
@@ -95,28 +84,5 @@
             </intent-filter>
         </activity>
 
-        <!-- 3일차: 검색해서 여는 앱. 앱 목록에 "앱 찾기" 아이콘이 생깁니다 -->
-        <activity
-            android:name=".practice.SearchAppsActivity"
-            android:exported="true"
-            android:label="앱 찾기"
-            android:taskAffinity="com.example.minilauncher.searchappsactivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <!-- 직접 만들어 보는 화면. 앱 목록에 "앱 찾기 직접" 아이콘이 생깁니다 -->
-        <activity
-            android:name=".practice.MySearchAppsActivity"
-            android:exported="true"
-            android:label="앱 찾기 직접"
-            android:taskAffinity="com.example.minilauncher.mysearchappsactivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 </manifest>
