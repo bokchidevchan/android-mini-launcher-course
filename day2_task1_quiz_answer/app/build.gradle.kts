@@ -9,7 +9,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.reviewquiz"
+        applicationId = "com.example.reviewquiz.answer"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

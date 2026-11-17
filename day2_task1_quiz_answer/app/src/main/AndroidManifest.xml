@@ -15,18 +15,18 @@
         <activity
             android:name=".practice.QuizActivity"
             android:exported="true"
-            android:label="복습 퀴즈">
+            android:label="복습 퀴즈 (완성)">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- 과제 [4]: 멈추는 화면. 앱 목록에 "멈춤 고치기" 아이콘이 따로 생깁니다 -->
+        <!-- 과제 [4]: 멈추는 화면. 앱 목록에 "멈춤 고치기 (완성)" 아이콘이 따로 생깁니다 -->
         <activity
             android:name=".practice.FreezeFixActivity"
             android:exported="true"
-            android:label="멈춤 고치기"
+            android:label="멈춤 고치기 (완성)"
             android:taskAffinity="com.example.minilauncher.freezefixactivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
