@@ -10,6 +10,19 @@
 <img src="../docs/images/s06_notification.png" alt="알림창의 진행 막대" width="260">
 <img src="../docs/images/s06_done.png" alt="동기화 완료" width="260"></p>
 
+## 오후 문제: 직접 해 보기
+
+예상을 먼저 적고 Run 해서 확인합니다. 1번은 `day2_step05_receiver` 폴더, 2~4번은 이 폴더입니다.
+
+| 문제 | 고칠 곳 | 확인 |
+|---|---|---|
+| 1 | `ReceiverPractice.kt` 2단계: 배터리 방송을 찍는 줄 아래에, 20% 이하면 배터리 부족도 찍기 | `step = 2`로 Run. 에뮬레이터 Battery의 Charge level을 15로 바꿈 |
+| 2 | `NotificationPractice.kt` 2단계: 알림 글자를 다른 글자로 바꾸기 | `step = 2`로 Run. 화면 위쪽을 끌어내려 확인 |
+| 3 | `NotificationPractice.kt` 4단계: `1500L`을 `500L`로 바꾸기 | `step = 4`. 진행 막대가 차는 시간이 어떻게 달라지나 |
+| 4 | `RamenTimer.kt`의 화면에 5초 버튼을 하나 더 넣기 | 컵라면 타이머 아이콘. 5초 버튼을 누르면 5부터 줄어듦 |
+
+4번 힌트: `Button(onClick = { start(10) })` 줄을 복사해 숫자와 글자를 바꿉니다. 그다음 아래 "앱 만들기"의 컵라면 타이머를 `RamenTimer_My.kt`에서 [1]부터 [4]까지 직접 만듭니다.
+
 ## 따라 하기
 
 1. 앱을 실행하고 "동기화 시작"을 누릅니다.
