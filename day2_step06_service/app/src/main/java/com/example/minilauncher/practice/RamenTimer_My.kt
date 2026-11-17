@@ -45,10 +45,9 @@ class MyRamenTimerService : Service() {
         // [1] 알림 채널을 만들고, 알림과 함께 Foreground 로 올립니다
         //
         //     createRamenChannel(this)
-        //     ServiceCompat.startForeground(
-        //         this, RamenTimer.NOTIFICATION, ramenNotification(this, total, total),
-        //         ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC,
-        //     )
+        //     val first = ramenNotification(this, total, total)
+        //     val type = ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
+        //     ServiceCompat.startForeground(this, RamenTimer.NOTIFICATION, first, type)
         //
         //     확인: "10초 (맛보기)"를 누르고 화면 위쪽을 끌어내리면 "10초 남았어요" 알림이 있습니다. 시간은 아직 안 줄어듭니다.
         //     알림 권한 창이 뜨면 허용을 누릅니다. 허용한 뒤 알림이 안 보이면 버튼을 한 번 더 누릅니다. 남은 알림은 다시 Run 하면 사라집니다
@@ -60,7 +59,8 @@ class MyRamenTimerService : Service() {
         //         val manager = getSystemService(NotificationManager::class.java)
         //         for (left in total downTo 1) {
         //             RamenTimer.remaining.value = left
-        //             manager.notify(RamenTimer.NOTIFICATION, ramenNotification(this@MyRamenTimerService, left, total))
+        //             val notification = ramenNotification(this@MyRamenTimerService, left, total)
+        //             manager.notify(RamenTimer.NOTIFICATION, notification)
         //             delay(1000)
         //         }
         //     }
@@ -69,11 +69,12 @@ class MyRamenTimerService : Service() {
         //     다 세어도 알림이 "1초 남았어요"에서 멈춰 있습니다
 
         // [3] 다 세면 끝냅니다. 아래 주석은 이 자리에서 풀지 않습니다.
-        //     네 줄을 위 [2] 의 for 가 끝나는 } 바로 아래, launch 가 끝나는 } 앞으로 옮겨 씁니다
+        //     다섯 줄을 위 [2] 의 for 가 끝나는 } 바로 아래, launch 가 끝나는 } 앞으로 옮겨 씁니다
         //
         //         RamenTimer.remaining.value = 0
         //         ServiceCompat.stopForeground(this@MyRamenTimerService, ServiceCompat.STOP_FOREGROUND_DETACH)
-        //         manager.notify(RamenTimer.NOTIFICATION, ramenNotification(this@MyRamenTimerService, 0, total))
+        //         val done = ramenNotification(this@MyRamenTimerService, 0, total)
+        //         manager.notify(RamenTimer.NOTIFICATION, done)
         //         stopSelf(startId)
         //
         //     확인: 다 세면 화면과 알림이 "다 익었어요"로 바뀌고 진행 막대가 사라집니다. 알림을 밀어 지우면 다시 생기지 않습니다

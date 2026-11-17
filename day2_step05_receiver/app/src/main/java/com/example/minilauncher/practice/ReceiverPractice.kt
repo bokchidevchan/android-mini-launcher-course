@@ -12,7 +12,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 
 // 2일차 오후 시스템 이벤트 실습 5단계.
-// MainActivity.kt 의 receiverPractice(this, step = 1) 에서 숫자를 1부터 5까지 바꿔 가며 Run 합니다.
+// MainActivity.kt 의 receiverPractice(this, step = 1) 에서 숫자를 1부터 5까지 바꿔 가며
+// Run 합니다.
 // Logcat 검색창에 tag:Receiver 를 넣으면 이 파일이 남긴 줄만 보입니다.
 // 직접 써 보고 싶으면 같은 폴더의 ReceiverPractice_My.kt 에 옮겨 적습니다.
 
@@ -35,12 +36,14 @@ fun receiverPractice(activity: ComponentActivity, step: Int) {
 }
 
 // 방송을 받기 시작하고, 화면이 끝날 때(onDestroy) 알아서 그만 받게 합니다.
-// 그만 받는 것(unregisterReceiver)을 빼먹으면 3일차 버그 2의 "has leaked IntentReceiver" 가 찍힙니다
+// 그만 받는 것(unregisterReceiver)을 빼먹으면 3일차 버그 2의 "has leaked
+// IntentReceiver" 가 찍힙니다
 fun listenWhileAlive(activity: ComponentActivity, filter: IntentFilter, onReceive: (Intent) -> Unit) {
     val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) = onReceive(intent)
     }
-    // 시스템이 보내는 방송만 받을 것이라 다른 앱에는 열지 않습니다 (RECEIVER_NOT_EXPORTED)
+    // 시스템이 보내는 방송만 받을 것이라 다른 앱에는 열지 않습니다
+    // (RECEIVER_NOT_EXPORTED)
     ContextCompat.registerReceiver(activity, receiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED)
     activity.lifecycle.addObserver(LifecycleEventObserver { _, event ->
         if (event == Lifecycle.Event.ON_DESTROY) activity.unregisterReceiver(receiver)
@@ -55,7 +58,8 @@ fun batteryPercentOf(intent: Intent): Int {
 }
 
 // 1단계. 배터리 값을 한 번만 읽기
-// 배터리 방송은 시스템이 마지막 것을 들고 있습니다. 받는 쪽(receiver)을 null 로 주면 그 마지막 방송을 바로 돌려줍니다
+// 배터리 방송은 시스템이 마지막 것을 들고 있습니다. 받는 쪽(receiver)을 null 로 주면 그
+// 마지막 방송을 바로 돌려줍니다
 private fun step01BatteryOnce(activity: ComponentActivity) {
     val intent = activity.registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
     if (intent == null) {
@@ -63,7 +67,8 @@ private fun step01BatteryOnce(activity: ComponentActivity) {
     } else {
         show("지금 배터리: ${batteryPercentOf(intent)}%")
     }
-    // 바꿔 보기: 에뮬레이터 Extended Controls > Battery 에서 Charge level 을 바꾸고 다시 Run 합니다
+    // 바꿔 보기: 에뮬레이터 Extended Controls > Battery 에서 Charge level 을 바꾸고
+    // 다시 Run 합니다
 }
 
 // 2단계. 배터리가 바뀔 때마다 받기
@@ -77,7 +82,8 @@ private fun step02BatteryBroadcast(activity: ComponentActivity) {
 }
 
 // 3단계. 충전기를 꽂고 뺄 때 받기
-// 필터 하나에 방송 여러 개를 적을 수 있습니다. 어떤 방송이 왔는지는 intent.action 으로 가립니다
+// 필터 하나에 방송 여러 개를 적을 수 있습니다. 어떤 방송이 왔는지는 intent.action 으로
+// 가립니다
 private fun step03Charger(activity: ComponentActivity) {
     val filter = IntentFilter().apply {
         addAction(Intent.ACTION_POWER_CONNECTED)
