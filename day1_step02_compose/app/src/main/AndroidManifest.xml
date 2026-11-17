@@ -37,5 +37,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- XML 과 Compose 비교. 앱 목록에 "XML과 Compose 비교" 아이콘이 따로 생깁니다 -->
+        <activity
+            android:name=".practice.XmlVsComposeActivity"
+            android:exported="true"
+            android:label="XML과 Compose 비교">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 같이 해 보기용. 앱 목록에 "XML과 Compose 비교 직접" 아이콘이 생깁니다 -->
+        <activity
+            android:name=".practice.MyXmlVsComposeActivity"
+            android:exported="true"
+            android:label="XML과 Compose 비교 직접">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>
