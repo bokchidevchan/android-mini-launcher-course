@@ -50,5 +50,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- XML 실습 1~6단계를 한 덩어리씩 직접 붙여 보는 화면. 앱 목록에 "XML 단계 직접" 아이콘이 생깁니다 -->
+        <activity
+            android:name=".practice.MyXmlStepsActivity"
+            android:exported="true"
+            android:label="XML 단계 직접">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

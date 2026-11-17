@@ -17,7 +17,8 @@ import com.example.minilauncher.R
 // 1일차 XML 화면 실습 5단계.
 // 아래 STEP 숫자를 1부터 5까지 바꿔 가며 Run 하고 (6은 Compose 와 비교해 볼 긴 목록), 에뮬레이터의 앱 목록에서 "XML 연습" 아이콘을 누릅니다.
 // 화면 모양은 res/layout/xml_step1.xml ~ xml_step5.xml 에 있습니다. 파일을 열고 오른쪽 위 Split 을 누르면 미리 보기가 나옵니다.
-// 직접 만들어 보는 것은 같은 폴더의 XmlPractice_My.kt 와 res/layout/xml_my.xml 에 합니다 ("XML 연습 직접" 아이콘).
+// 같이 해 보기: 단계를 한 덩어리씩 직접 붙여 보는 것은 XmlPracticeActivity_My.kt 와 res/layout/xml_my_step1.xml ~ 6 에 합니다 ("XML 단계 직접" 아이콘).
+// 혼자 해 보기: 화면을 처음부터 만들어 보는 것은 XmlPractice_My.kt 와 res/layout/xml_my.xml 에 합니다 ("XML 연습 직접" 아이콘).
 // XML 방식은 화면 모양을 XML 파일에, 동작을 Kotlin 파일에 나눠 적습니다. 오후에 배우는 Compose 는 둘을 Kotlin 한곳에 적습니다
 private const val STEP = 1
 

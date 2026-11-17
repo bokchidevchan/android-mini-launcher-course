@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 같이 해 보기: 5단계. 코드로 줄 추가하기
+     완성본은 xml_step5.xml 입니다. 그 파일을 옆에 열어 두고 아래 순서대로 한 덩어리씩 가져와 붙입니다.
+     붙일 때마다 오른쪽 위 Split 의 미리 보기가 어떻게 바뀌는지 봅니다.
+     [1] 제목 글자("앱 목록")를 붙입니다
+     [2] 줄이 들어갈 빈 상자(LinearLayout, id 는 listLayout)를 붙입니다
+     [3] 이제 XmlPracticeActivity_My.kt 로 가서 myStep5 에 Kotlin 쪽을 붙입니다
+     실행: XmlPracticeActivity_My.kt 의 MY_STEP 을 5 으로 두고 Run, 앱 목록의 "XML 단계 직접" 아이콘 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- 여기에 붙입니다 -->
+
+</LinearLayout>

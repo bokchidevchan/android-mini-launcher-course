@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 같이 해 보기: 2단계. 세로와 가로로 놓기
+     완성본은 xml_step2.xml 입니다. 그 파일을 옆에 열어 두고 아래 순서대로 한 덩어리씩 가져와 붙입니다.
+     붙일 때마다 오른쪽 위 Split 의 미리 보기가 어떻게 바뀌는지 봅니다.
+     [1] "위" TextView 를 붙입니다
+     [2] 가로로 놓는 상자(안쪽 LinearLayout)를 안의 TextView 셋과 함께 붙입니다
+     [3] "아래" TextView 를 붙입니다
+     [4] 안쪽 상자의 horizontal 을 vertical 로 바꿔 봅니다
+     실행: XmlPracticeActivity_My.kt 의 MY_STEP 을 2 으로 두고 Run, 앱 목록의 "XML 단계 직접" 아이콘 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- 여기에 붙입니다 -->
+
+</LinearLayout>

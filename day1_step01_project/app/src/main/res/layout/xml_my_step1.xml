@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 같이 해 보기: 1단계. 글자 하나
+     완성본은 xml_step1.xml 입니다. 그 파일을 옆에 열어 두고 아래 순서대로 한 덩어리씩 가져와 붙입니다.
+     붙일 때마다 오른쪽 위 Split 의 미리 보기가 어떻게 바뀌는지 봅니다.
+     [1] TextView 태그 하나를 통째로 붙입니다
+     [2] textSize 를 40sp 로, textColor 를 #C62828 로 바꿔 봅니다
+     [3] TextView 를 하나 더 붙여 글자를 두 줄로 만듭니다
+     실행: XmlPracticeActivity_My.kt 의 MY_STEP 을 1 으로 두고 Run, 앱 목록의 "XML 단계 직접" 아이콘 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- 여기에 붙입니다 -->
+
+</LinearLayout>
