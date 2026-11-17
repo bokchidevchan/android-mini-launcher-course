@@ -46,7 +46,7 @@ private fun slowWork(): String {
 fun FreezeFixScreen() {
     var result by remember { mutableStateOf("버튼을 눌러 보세요") }
     var taps by remember { mutableIntStateOf(0) }
-    val scope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()        // 이 화면에서 코루틴을 시작하는 곳. 화면이 사라지면 같이 취소됨
 
     Column(
         Modifier.fillMaxSize().background(LauncherBackground).safeDrawingPadding().padding(24.dp),
@@ -54,7 +54,7 @@ fun FreezeFixScreen() {
     ) {
         Text("멈춤 고치기", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
         Button(onClick = {
-            // [4] 고친 모양. 버튼을 누르면 먼저 글자를 바꾸고, 오래 걸리는 일은 코루틴에 맡깁니다
+            // [4] 버튼을 누르면 먼저 글자를 바꾸고, 오래 걸리는 일은 코루틴에 맡깁니다
             result = "일하는 중"
             scope.launch {
                 result = withContext(Dispatchers.Default) { slowWork() }   // 오래 걸리는 일만 워커 스레드로

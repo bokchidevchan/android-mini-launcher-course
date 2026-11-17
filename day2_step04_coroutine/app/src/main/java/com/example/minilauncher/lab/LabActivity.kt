@@ -34,7 +34,7 @@ import kotlinx.coroutines.withContext
 
 private const val TAG = "Coroutine"
 
-// 2일차 09:00 실험실: ANR 재현과 해결, race condition
+// 2일차 2교시 실험실: race condition (경쟁 상태) 와 Mutex
 class LabActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,18 +43,9 @@ class LabActivity : ComponentActivity() {
     }
 }
 
-// 시간이 오래 걸리는 일 (예: 큰 파일 읽기). 일부러 스레드를 붙잡습니다
-private fun heavyWork(): String {
-    Log.d(TAG, "heavyWork 시작, 스레드=${Thread.currentThread().name}")
-    Thread.sleep(20_000)
-    return "끝 (${Thread.currentThread().name})"
-}
-
 @Composable
 fun LabScreen() {
     var result by remember { mutableStateOf("버튼을 눌러 보세요") }
-    var running by remember { mutableStateOf(false) }
-    var taps by remember { mutableStateOf(0) }
     val scope = rememberCoroutineScope()
 
     Column(
@@ -63,25 +54,7 @@ fun LabScreen() {
     ) {
         Text("실험실", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
 
-        Text("1. 메인 스레드와 ANR", style = MaterialTheme.typography.titleMedium)
-        Button(onClick = {
-            // 잘못된 예: 메인 스레드에서 20초 멈춤. 그동안 다른 곳을 누르면 Android 16 은 5초, Android 17 은 15초 뒤 ANR 로 기록됩니다
-            result = heavyWork()
-        }, Modifier.fillMaxWidth()) { Text("메인 스레드에서 20초 작업 (ANR)") }
-
-        Button(onClick = {
-            running = true
-            scope.launch {
-                // 고친 예: 무거운 일은 Dispatchers.Default(작업용 스레드)로 보내고, 결과만 메인에서 받습니다
-                result = withContext(Dispatchers.Default) { heavyWork() }
-                running = false
-            }
-        }, Modifier.fillMaxWidth()) { Text("코루틴으로 20초 작업 (안 멈춤)") }
-
-        FilledTonalButton(onClick = { taps++ }, Modifier.fillMaxWidth()) { Text("화면이 살아 있나 눌러 보기: $taps") }
-        if (running) CircularProgressIndicator()
-
-        Text("2. race condition", style = MaterialTheme.typography.titleMedium)
+        Text("race condition (경쟁 상태)", style = MaterialTheme.typography.titleMedium)
         FilledTonalButton(onClick = {
             scope.launch {
                 val n = RaceCounter.unsafe(Dispatchers.Default)

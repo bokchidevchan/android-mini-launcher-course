@@ -45,7 +45,7 @@ private fun slowWork(): String {
 fun FreezeFixScreen() {
     var result by remember { mutableStateOf("버튼을 눌러 보세요") }
     var taps by remember { mutableIntStateOf(0) }
-    val scope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope()        // 이 화면에서 코루틴을 시작하는 곳. 화면이 사라지면 같이 취소됨
 
     Column(
         Modifier.fillMaxSize().background(LauncherBackground).safeDrawingPadding().padding(24.dp),

@@ -34,7 +34,7 @@ import kotlinx.coroutines.withContext
 
 private const val TAG = "Coroutine"
 
-// 2일차 09:00 실험실: ANR 재현과 해결, race condition
+// 2일차 1교시 실험실: 메인 스레드를 막으면 생기는 ANR 과, 코루틴으로 고친 버전
 class LabActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,22 +80,6 @@ fun LabScreen() {
 
         FilledTonalButton(onClick = { taps++ }, Modifier.fillMaxWidth()) { Text("화면이 살아 있나 눌러 보기: $taps") }
         if (running) CircularProgressIndicator()
-
-        Text("2. race condition", style = MaterialTheme.typography.titleMedium)
-        FilledTonalButton(onClick = {
-            scope.launch {
-                val n = RaceCounter.unsafe(Dispatchers.Default)
-                result = "Mutex 없음: $n / ${RaceCounter.TIMES * 2}"
-                Log.d(TAG, result)
-            }
-        }, Modifier.fillMaxWidth()) { Text("코루틴 2개가 동시에 +1 (Mutex 없음)") }
-        FilledTonalButton(onClick = {
-            scope.launch {
-                val n = RaceCounter.withMutex(Dispatchers.Default)
-                result = "Mutex 사용: $n / ${RaceCounter.TIMES * 2}"
-                Log.d(TAG, result)
-            }
-        }, Modifier.fillMaxWidth()) { Text("Mutex 로 고친 버전") }
 
         Text("결과", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
         Text(result, style = MaterialTheme.typography.titleMedium)

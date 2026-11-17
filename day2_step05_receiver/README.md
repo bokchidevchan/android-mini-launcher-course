@@ -10,6 +10,10 @@
 <img src="../docs/images/s05_battery15_airplane.png" alt="배터리 15%, 비행기 모드" width="260">
 <img src="../docs/images/s05_boot_time.png" alt="부팅 시각" width="260"></p>
 
+## 단계별 실습 5단계
+
+`MainActivity.kt`의 `receiverPractice(this, step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/ReceiverPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/ReceiverPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.
+
 ## 따라 하기
 
 ### 1. 배터리
@@ -51,15 +55,7 @@ D/SystemEvent: 배터리 변경: BatteryInfo(level=15, charging=true)
 - 부팅 시각이 안 생김: 재부팅 전에 앱을 한 번 열었는지, Stop을 누르지 않았는지 확인합니다.
 - 앱 목록이 에러로 뜸: day2_step05_receiver 폴더를 열었는지 확인합니다. 이 단계부터는 실패 확률이 0입니다.
 
-## 더 해 보기
-
-배터리가 20% 아래로 내려가는 순간 Toast를 한 번만 띄웁니다. 20% 근처를 오르내릴 때 여러 번 뜨지 않게 합니다.
-
 다음: [2-3 백그라운드 처리](../day2_step06_service)
-
-## 단계별 실습 5단계
-
-`MainActivity.kt`의 `receiverPractice(this, step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/ReceiverPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/ReceiverPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.
 
 ## 앱 만들기: 시스템 이벤트로 움직이는 앱 (배터리 펫)
 
@@ -67,5 +63,4 @@ D/SystemEvent: 배터리 변경: BatteryInfo(level=15, charging=true)
 
 | 파일 | 내용 |
 |---|---|
-| `practice/BatteryPetApp.kt` | 완성본. 위에서부터 읽고 "바꿔 보기"를 해 봅니다 |
-| `practice/BatteryPetApp_My.kt` | 직접 만들어 보는 파일. `DisposableEffect` 안에 receiver 등록과 해제를 씁니다. "배터리 펫 연습" 아이콘으로 확인합니다 |
+| `practice/BatteryPetApp.kt` | 완성본. 위에서부터 읽어 봅니다 |

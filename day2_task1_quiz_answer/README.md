@@ -17,7 +17,7 @@ suspend fun fetchQuizzes(): List<Quiz> = withContext(Dispatchers.IO) {
 }
 ```
 
-인터넷은 오래 걸릴 수 있어서 IO 스레드(`Dispatchers.IO`)에서 읽습니다. 메인 스레드에서 읽으면 화면이 멈추고, Android는 아예 오류(`NetworkOnMainThreadException`)를 냅니다.
+인터넷은 오래 걸릴 수 있어서 IO 스레드(`Dispatchers.IO`)에서 읽습니다. 메인 스레드에서 읽으려고 하면 화면이 멈추기 전에 Android가 바로 오류(`NetworkOnMainThreadException`)를 냅니다.
 
 ### [2] 버튼을 누르면 받아 와서 보여 주기
 

@@ -25,7 +25,7 @@ import java.net.URL
 // [1] 인터넷에서 문제 목록을 받아 옵니다. 오래 걸릴 수 있어서 IO 스레드에서 합니다
 suspend fun fetchQuizzes(): List<Quiz> = withContext(Dispatchers.IO) {
     val text = URL(QUIZ_URL).readText()     // 주소에 있는 글자를 모두 읽어 옴
-    parseQuizzes(text)                      // 글자를 문제 목록으로 바꿈
+    parseQuizzes(text)                      // 글자를 문제 목록으로 바꿈. 마지막 줄의 값이 함수의 결과
 }
 
 class QuizViewModel : ViewModel() {
@@ -38,7 +38,7 @@ class QuizViewModel : ViewModel() {
         // [2] 받아 오는 중으로 바꾸고, 코루틴에서 받아 와 하나를 보여 줍니다
         _state.value = QuizState.Loading
         viewModelScope.launch {
-            // [3] 인터넷이 안 되면 실패 글자를 보여 줍니다
+            // [3] [2] 의 두 줄을 try { } 로 감싸, 인터넷이 안 되면 실패 글자를 보여 줍니다
             try {
                 val quizzes = fetchQuizzes()
                 _state.value = QuizState.Success(quizzes.random())

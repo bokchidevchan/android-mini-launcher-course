@@ -43,7 +43,6 @@ import java.util.Locale
 // 에뮬레이터 옆 ... > Battery 에서 먼저 Charger connection 을 None 으로 바꿉니다 (꽂혀 있으면 계속 밥 먹는 중).
 // 그다음 Charge level 과 Charger connection 을 바꾸면 펫의 표정이 바뀝니다.
 // 읽는 순서: 1. 상태  2. 방송을 듣는 곳  3. 화면
-// 직접 써 보고 싶으면 같은 폴더의 BatteryPetApp_My.kt 를 엽니다.
 
 // ---------------------------------------------------------------- 1. 상태
 data class PetState(

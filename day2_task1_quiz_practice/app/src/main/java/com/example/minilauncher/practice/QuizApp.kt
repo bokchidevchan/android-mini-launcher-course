@@ -38,7 +38,7 @@ class QuizViewModel : ViewModel() {
         // [2] 여기를 채웁니다. [2] 를 쓸 때 아래 안내 줄은 지웁니다
         _state.value = QuizState.Error("아직 [2] 를 안 채웠어요")
 
-        // [3] 은 [2] 를 다 한 뒤에 합니다
+        // [3] 은 [2] 를 다 쓴 뒤, launch { } 안에 쓴 줄들을 try { } 로 감쌉니다
     }
 }
 

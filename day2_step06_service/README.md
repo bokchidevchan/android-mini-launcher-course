@@ -14,6 +14,10 @@
 
 뼈대 프로젝트 [day2_task2_timer_practice](../day2_task2_timer_practice)를 열고 컵라면 타이머를 만듭니다. 완성 프로젝트는 [day2_task2_timer_answer](../day2_task2_timer_answer)입니다.
 
+## 단계별 실습 5단계
+
+`MainActivity.kt`의 `notificationPractice(this, step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/NotificationPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/NotificationPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.
+
 ## 따라 하기
 
 1. 앱을 실행하고 "동기화 시작"을 누릅니다.
@@ -44,12 +48,5 @@ D/SyncService: onDestroy
 - 알림이 안 보임: 권한을 거부했거나 Silent 칸을 펼치지 않은 경우입니다.
 - `onDestroy`가 안 찍힘: 앱 화면이 아직 열려 있으면 정상입니다. 뒤로 가기로 닫습니다.
 
-## 더 해 보기
-
-동기화 중에 "동기화 시작"을 다시 누르면 어떻게 되는지 로그로 확인하고, 진행 중에는 버튼을 누를 수 없게 바꿉니다.
-
 다음: [3-1 HomeScreen(Launcher) 만들기](../day3_step07_launcher)
 
-## 단계별 실습 5단계
-
-`MainActivity.kt`의 `notificationPractice(this, step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/NotificationPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/NotificationPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.

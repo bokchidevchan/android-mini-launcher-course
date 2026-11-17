@@ -28,7 +28,7 @@ class RamenTimerService : Service() {
 
     override fun onBind(intent: Intent?): IBinder? = null
 
-    // 버튼을 누르면 불립니다. total 은 셀 시간(초)입니다
+    // 버튼을 누르면 불립니다. total 은 셀 시간(초), startId 는 이번 시작 요청의 번호(끝낼 때 씀)입니다
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val total = intent?.getIntExtra(RamenTimer.EXTRA_SECONDS, 10) ?: 10
 
