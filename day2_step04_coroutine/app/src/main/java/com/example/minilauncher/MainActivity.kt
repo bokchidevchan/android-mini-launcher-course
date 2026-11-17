@@ -22,6 +22,8 @@ import androidx.lifecycle.lifecycleScope
 import com.example.minilauncher.data.FakeAppRepository
 import com.example.minilauncher.practice.coroutinePractice
 import com.example.minilauncher.practice.myCoroutinePractice
+import com.example.minilauncher.practice.myThreadPractice
+import com.example.minilauncher.practice.threadPractice
 import com.example.minilauncher.ui.AppsContent
 import com.example.minilauncher.ui.ButtonRow
 import com.example.minilauncher.ui.StatusArea
@@ -34,6 +36,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate (복원 데이터 ${if (savedInstanceState == null) "없음" else "있음"})")
+        // 스레드 실습: 숫자를 1부터 6까지 바꿔 가며 Run 합니다. Logcat 검색창에 tag:Thread 를 넣습니다. 0 이면 건너뜁니다
+        threadPractice(this, step = 1)
+        // myThreadPractice(this, step = 1)   // 직접 쓴 코드(ThreadPractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다
         // 코루틴 실습: 숫자를 1부터 10까지 바꿔 가며 Run 합니다. Logcat 검색창에 tag:Coroutine 을 넣습니다
         coroutinePractice(lifecycleScope, step = 1)
         // myCoroutinePractice(lifecycleScope, step = 1)   // 직접 쓴 코드(CoroutinePractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다

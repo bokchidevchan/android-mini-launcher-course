@@ -11,8 +11,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 // 2일차 오전 코루틴 실습 10단계.
-// MainActivity.kt 의 coroutinePractice(lifecycleScope, step = 1) 에서 숫자를 1부터 10까지 바꿔 가며 Run 합니다.
-// Logcat 검색창에 tag:Coroutine 을 넣습니다. 맨 앞의 "loadApps 시작" 한 줄은 앱 목록을 불러오는 코드가 찍은 것이라 넘어갑니다.
+// MainActivity.kt 의 coroutinePractice(lifecycleScope, step = 1) 에서 숫자를 1부터
+// 10까지 바꿔 가며 Run 합니다.
+// Logcat 검색창에 tag:Coroutine 을 넣습니다. 맨 앞의 "loadApps 시작" 한 줄은 앱 목록을
+// 불러오는 코드가 찍은 것이라 넘어갑니다.
 // 줄마다 [스레드 이름] 이 붙습니다. 어느 스레드에서 도는지 같이 봅니다.
 
 private const val TAG = "Coroutine"
@@ -58,7 +60,8 @@ private fun step01Launch(scope: CoroutineScope) {
 }
 
 // 2단계. delay 는 스레드를 막지 않습니다
-// 코루틴 두 개가 같은 main 스레드에서 번갈아 돕니다. delay 하는 동안 스레드를 비켜 주기 때문입니다
+// 코루틴 두 개가 같은 main 스레드에서 번갈아 돕니다. delay 하는 동안 스레드를 비켜 주기
+// 때문입니다
 private fun step02Delay(scope: CoroutineScope) {
     scope.launch {
         repeat(3) { i ->
@@ -72,11 +75,13 @@ private fun step02Delay(scope: CoroutineScope) {
             delay(200)
         }
     }
-    // 바꿔 보기: A 쪽의 delay(200) 을 Thread.sleep(200) 으로 바꾸면 순서가 어떻게 될까요?
+    // 바꿔 보기: A 쪽의 delay(200) 을 Thread.sleep(200) 으로 바꾸면 순서가 어떻게
+    // 될까요?
 }
 
 // 3단계. suspend 함수
-// suspend 가 붙은 함수는 중간에 멈췄다가 이어질 수 있습니다. 부르는 쪽은 보통 함수처럼 위에서 아래로 읽습니다
+// suspend 가 붙은 함수는 중간에 멈췄다가 이어질 수 있습니다. 부르는 쪽은 보통 함수처럼
+// 위에서 아래로 읽습니다
 suspend fun loadLabel(name: String): String {
     delay(300)                     // 서버에서 받아 오는 데 0.3초 걸린다고 칩니다
     return "$name 이름"
@@ -114,12 +119,14 @@ private fun step05WithContext(scope: CoroutineScope) {
         }
         show("결과 $sum")
     }
-    // 바꿔 보기: Dispatchers.Default 를 Dispatchers.IO 로 바꿔도 스레드 이름은 DefaultDispatcher-worker 그대로입니다.
+    // 바꿔 보기: Dispatchers.Default 를 Dispatchers.IO 로 바꿔도 스레드 이름은
+    // DefaultDispatcher-worker 그대로입니다.
     // 둘은 스레드 묶음을 같이 쓰고, 동시에 돌릴 수 있는 개수만 다릅니다
 }
 
 // 6단계. 취소
-// cancel() 을 부르면 코루틴은 delay 같은 중단 지점에서 멈춥니다. 지금처럼 delay 로 기다리던 중이면 그 자리에서 바로 멈춥니다.
+// cancel() 을 부르면 코루틴은 delay 같은 중단 지점에서 멈춥니다. 지금처럼 delay 로
+// 기다리던 중이면 그 자리에서 바로 멈춥니다.
 // 화면이 사라질 때 작업을 같이 멈추는 원리입니다
 private fun step06Cancel(scope: CoroutineScope) {
     val job = scope.launch {
@@ -154,12 +161,14 @@ private fun step07Exception(scope: CoroutineScope) {
             show("실패를 잡았습니다: ${e.message}")
         }
     }
-    // 바꿔 보기: try 와 catch 를 지우고 Run 합니다. 앱이 꺼지면 Logcat 을 package:mine 으로 바꿔 FATAL EXCEPTION 을 찾습니다.
+    // 바꿔 보기: try 와 catch 를 지우고 Run 합니다. 앱이 꺼지면 Logcat 을 package:mine
+    // 으로 바꿔 FATAL EXCEPTION 을 찾습니다.
     // 확인했으면 Edit > Undo 로 되돌립니다. 되돌리지 않으면 앱을 열 때마다 꺼집니다
 }
 
 // 8단계. Flow
-// Flow 는 값이 여러 번 흘러나오는 통로입니다. collect 로 받기 시작해야 흐르기 시작합니다
+// Flow 는 값이 여러 번 흘러나오는 통로입니다. collect 로 받기 시작해야 흐르기
+// 시작합니다
 private fun step08Flow(scope: CoroutineScope) {
     val numbers = flow {
         for (i in 1..3) {
@@ -190,11 +199,13 @@ private fun step09StateFlow(scope: CoroutineScope) {
         show("지금 들고 있는 값: ${count.value}")
         job.cancel()
     }
-    // 바꿔 보기: 두 번째 count.value = 1 을 count.value = 5 로 바꾸면 무엇이 더 찍힐까요?
+    // 바꿔 보기: 두 번째 count.value = 1 을 count.value = 5 로 바꾸면 무엇이 더
+    // 찍힐까요?
 }
 
 // 10단계. 종합: 불러오는 중, 성공, 실패
-// 이 모듈 뒤쪽에서 볼 LauncherViewModel 의 축소판입니다. 화면 상태를 셋 중 하나로 묶어 StateFlow 로 내보냅니다
+// 이 모듈 뒤쪽에서 볼 LauncherViewModel 의 축소판입니다. 화면 상태를 셋 중 하나로 묶어
+// StateFlow 로 내보냅니다
 sealed interface LoadState {
     data object Loading : LoadState
     data class Success(val apps: String) : LoadState
