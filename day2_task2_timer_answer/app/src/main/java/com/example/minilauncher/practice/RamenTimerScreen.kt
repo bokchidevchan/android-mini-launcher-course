@@ -34,7 +34,7 @@ import androidx.core.app.NotificationCompat
 import com.example.minilauncher.ui.theme.LauncherBackground
 import kotlinx.coroutines.flow.MutableStateFlow
 
-// 2일차 오후 과제 2 "컵라면 타이머" 앱에서 고치지 않고 그대로 쓰는 부분입니다.
+// 2일차 오후 과제 "컵라면 타이머" 앱에서 고치지 않고 그대로 쓰는 부분입니다.
 // 남은 시간(RamenTimer), 알림 만들기, 화면이 들어 있습니다.
 
 // Service 와 화면이 같이 보는 값입니다. null 은 쉬는 중, 0 은 다 익음, 나머지는 남은 초
@@ -64,8 +64,7 @@ fun ramenNotification(context: Context, left: Int, total: Int): Notification {
     return builder.build()
 }
 
-// service 는 시작할 Service 의 클래스입니다. 연습 파일은 여기에 자기 Service 를
-// 넘깁니다
+// service 는 시작할 Service 의 클래스입니다
 @Composable
 fun RamenTimerScreen(remaining: Int?, service: Class<out Service>) {
     val context = LocalContext.current

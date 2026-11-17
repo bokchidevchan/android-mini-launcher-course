@@ -21,7 +21,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-// 2일차 오후 과제 2: 컵라면 타이머 만들기 (뼈대).
+// 2일차 오후 과제: 컵라면 타이머 만들기 (뼈대).
 // Run 한 뒤 에뮬레이터의 앱 목록에서 "컵라면 타이머" 아이콘을 누릅니다.
 // 화면과 알림은 같은 폴더의 RamenTimerScreen.kt 에 만들어져 있습니다. 이 파일의 [1] [2] [3] 만 채웁니다.
 // 하나 채울 때마다 Run 해서 "확인"에 적힌 대로 되는지 봅니다. 채울 코드는 번호 아래 주석에 있습니다.

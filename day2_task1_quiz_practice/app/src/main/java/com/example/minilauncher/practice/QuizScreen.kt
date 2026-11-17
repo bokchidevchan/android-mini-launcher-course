@@ -28,7 +28,7 @@ import com.example.minilauncher.ui.theme.LauncherBackground
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
 import org.json.JSONArray
 
-// 2일차 오전 과제 2 "복습 퀴즈" 앱에서 고치지 않고 그대로 쓰는 부분입니다.
+// 2일차 오전 과제 "복습 퀴즈" 앱에서 고치지 않고 그대로 쓰는 부분입니다.
 // 주소, 문제 한 개, 받은 글자를 목록으로 바꾸기, 화면 상태, 화면이 들어 있습니다.
 
 // 문제 목록이 있는 주소. 브라우저에 넣으면 받아 올 글자(JSON)가 그대로 보입니다

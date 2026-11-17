@@ -21,7 +21,7 @@ import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 
-// 2일차 오전 과제 2 "복습 퀴즈" 앱의 완성본입니다.
+// 2일차 오전 과제 "복습 퀴즈" 앱의 완성본입니다.
 // Run 한 뒤 에뮬레이터의 앱 목록에서 "복습 퀴즈" 아이콘을 누릅니다.
 // 버튼을 누르면 인터넷에서 문제 목록을 받아 와 하나를 보여 줍니다. 문제는 어제와 오늘 배운 내용입니다.
 // 화면과 상태는 같은 폴더의 QuizScreen.kt 에 있습니다. 번호 [2] [3] 은 뼈대 프로젝트의 같은 번호 자리입니다.

@@ -21,7 +21,7 @@ import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 
-// 2일차 오전 과제 2: 복습 퀴즈 앱 만들기 (뼈대).
+// 2일차 오전 과제: 복습 퀴즈 앱 만들기 (뼈대).
 // Run 한 뒤 에뮬레이터의 앱 목록에서 "복습 퀴즈" 아이콘을 누릅니다.
 // 화면과 상태는 같은 폴더의 QuizScreen.kt 에 만들어져 있습니다. 이 파일의 [1] [2] [3] 만 채웁니다.
 // 하나 채울 때마다 Run 해서 "확인"에 적힌 대로 되는지 봅니다. 채울 코드는 번호 아래 주석에 있습니다.
