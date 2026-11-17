@@ -70,6 +70,27 @@
         <activity
             android:name=".practice.LifecycleSecondActivity"
             android:exported="false" />
+        <!-- 비교 코드: MVVM 과 MVI 비교. 앱 목록에 "MVVM과 MVI 비교" 아이콘이 생깁니다 -->
+        <activity
+            android:name=".practice.MvvmVsMviActivity"
+            android:exported="true"
+            android:label="MVVM과 MVI 비교">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 같이 해 보기용. 앱 목록에 "MVVM과 MVI 비교 직접" 아이콘이 생깁니다 -->
+        <activity
+            android:name=".practice.MyMvvmVsMviActivity"
+            android:exported="true"
+            android:label="MVVM과 MVI 비교 직접">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!-- 8교시 앱. 에뮬레이터의 앱 목록에 아이콘이 따로 생깁니다 -->
         <activity
