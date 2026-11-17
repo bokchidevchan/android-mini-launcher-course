@@ -10,18 +10,9 @@
 <img src="../docs/images/s06_notification.png" alt="알림창의 진행 막대" width="260">
 <img src="../docs/images/s06_done.png" alt="동기화 완료" width="260"></p>
 
-## 오후 문제: 직접 해 보기
+## 오후 과제: 컵라면 타이머 만들기
 
-예상을 먼저 적고 Run 해서 확인합니다. 1번은 `day2_step05_receiver` 폴더, 2~4번은 이 폴더입니다.
-
-| 문제 | 고칠 곳 | 확인 |
-|---|---|---|
-| 1 | `ReceiverPractice.kt` 2단계: 배터리 방송을 찍는 줄 아래에, 20% 이하면 배터리 부족도 찍기 | `step = 2`로 Run. 에뮬레이터 Battery의 Charge level을 15로 바꿈 |
-| 2 | `NotificationPractice.kt` 2단계: 알림 글자를 다른 글자로 바꾸기 | `step = 2`로 Run. 화면 위쪽을 끌어내려 확인 |
-| 3 | `NotificationPractice.kt` 4단계: `1500L`을 `500L`로 바꾸기 | `step = 4`. 진행 막대가 차는 시간이 어떻게 달라지나 |
-| 4 | `RamenTimer.kt`의 화면에 5초 버튼을 하나 더 넣기 | 컵라면 타이머 아이콘. 5초 버튼을 누르면 5부터 줄어듦 |
-
-4번 힌트: `Button(onClick = { start(10) })` 줄을 복사해 숫자와 글자를 바꿉니다. 그다음 아래 "앱 만들기"의 컵라면 타이머를 `RamenTimer_My.kt`에서 [1]부터 [4]까지 직접 만듭니다.
+뼈대 프로젝트 [day2_task2_timer_practice](../day2_task2_timer_practice)를 열고 컵라면 타이머를 만듭니다. 완성 프로젝트는 [day2_task2_timer_answer](../day2_task2_timer_answer)입니다.
 
 ## 따라 하기
 
@@ -62,12 +53,3 @@ D/SyncService: onDestroy
 ## 단계별 실습 5단계
 
 `MainActivity.kt`의 `notificationPractice(this, step = 1)`에서 숫자를 1부터 5까지 바꿔 가며 Run 하고 Logcat을 봅니다. 코드는 `practice/NotificationPractice.kt`에 있습니다. 직접 써 보려면 같은 폴더의 `practice/NotificationPractice_My.kt`의 빈 함수에 옮겨 적고, `MainActivity.kt`에서 바로 아래 주석 줄(`my...Practice`)로 바꿔 실행합니다.
-
-## 앱 만들기: 오후 직접 만들기, 화면을 나가도 계속 도는 앱 (컵라면 타이머)
-
-시작을 누르고 홈으로 나가도 알림에서 남은 시간이 계속 줄어드는 앱입니다. 화면이 아니라 Foreground Service가 시간을 셉니다. Run 한 뒤 에뮬레이터의 앱 목록에서 "컵라면 타이머" 아이콘을 누릅니다.
-
-| 파일 | 내용 |
-|---|---|
-| `practice/RamenTimer.kt` | 완성본. 위에서부터 읽고 "바꿔 보기"를 해 봅니다 |
-| `practice/RamenTimer_My.kt` | 직접 만들어 보는 파일. [1]부터 [4]까지 차례로 채웁니다. Foreground로 올리기, 1초마다 줄이기, 다 세면 끝내기, 코루틴 멈추기 순서입니다. "컵라면 타이머 직접" 아이콘으로 확인합니다 |

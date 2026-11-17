@@ -52,8 +52,10 @@ C++나 다른 언어로 개발해 본 분을 기준으로 만들었습니다. �
 | | 15:30~17:00 | 1-4 Activity 생명주기와 화면 이동 | [day1_step03_lifecycle](day1_step03_lifecycle) |
 | | 13:00~ (4교시 끝) | 비교 코드: MVVM과 MVI | [day1_step02_02_mvvm_mvi](day1_step02_02_mvvm_mvi) |
 | 2일차 | 09:00~12:00 | 2-1 메인 스레드와 Coroutine, Flow | [day2_step04_coroutine](day2_step04_coroutine) |
+| | 11:00~ | 오전 과제: 복습 퀴즈 앱 만들기 | 뼈대 [day2_task1_quiz_practice](day2_task1_quiz_practice), 완성 [day2_task1_quiz_answer](day2_task1_quiz_answer) |
 | | 13:00~15:00 | 2-2 시스템 이벤트 감지 (BroadcastReceiver) | [day2_step05_receiver](day2_step05_receiver) |
 | | 15:00~17:00 | 2-3 백그라운드 처리 (Service, Notification) | [day2_step06_service](day2_step06_service) |
+| | 16:00~ | 오후 과제: 컵라면 타이머 만들기 | 뼈대 [day2_task2_timer_practice](day2_task2_timer_practice), 완성 [day2_task2_timer_answer](day2_task2_timer_answer) |
 | 3일차 | 09:00~12:00 | 3-1 HomeScreen(Launcher) 만들기 | [day3_step07_launcher](day3_step07_launcher) |
 | | 13:00~15:00 | 3-2 Logcat 로그 분석 | [day3_step07x_bughunt](day3_step07x_bughunt) |
 | | 15:00~17:00 | 3-3 미니 런처 완성과 코드 리뷰 | [day3_step08_final](day3_step08_final) |
