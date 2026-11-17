@@ -29,7 +29,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
 
 // 비교 코드: MVVM 과 MVI 비교. 같은 "좋아요" 화면을 위(MVVM)와 아래(MVI)에 두 번 만들었습니다.
-// Run 한 뒤 에뮬레이터의 앱 목록에서 "MVVM과 MVI 비교" 아이콘을 누릅니다. Logcat 검색창에는 tag:Arch 를 넣습니다.
+// 이 폴더(day1_step02_02_mvvm_mvi)를 Android Studio 로 열고 Run 한 뒤 에뮬레이터의 앱 목록에서 "MVVM과 MVI 비교" 아이콘을 누릅니다. Logcat 검색창에는 tag:Arch 를 넣습니다.
 //
 // 둘 다 화면(View)과 ViewModel 로 나누는 것은 같습니다. 다른 것은 "화면이 ViewModel 에 말하는 방법"과 "상태를 담는 방법"입니다.
 //   MVVM   할 일마다 함수가 따로 있습니다 (plus(), reset()). 상태도 값마다 따로 둘 수 있습니다 (count, message)
@@ -41,7 +41,7 @@ import com.example.minilauncher.ui.theme.MiniLauncherTheme
 //
 // 왜 이렇게 나누나
 //   1. 화면에서 계산을 빼기 위해서입니다. 화면은 그리기만 하고, 값을 바꾸는 규칙은 ViewModel 에 둡니다.
-//      그래야 화면 없이 ViewModel 만 테스트할 수 있고, 화면을 돌려도 값이 남습니다 (오후에 본 것)
+//      그래야 화면 없이 ViewModel 만 테스트할 수 있고, 화면을 돌려도 값이 남습니다 (day1_step03_lifecycle 에서 봅니다)
 //   2. MVI 가 한 걸음 더 가는 이유: 버튼이 많아지면 "지금 값이 왜 이렇게 됐지?"를 찾기 어렵습니다.
 //      문이 하나면 그 문에 로그 한 줄만 찍어도 일어난 일이 순서대로 다 보입니다.
 //      상태가 한 덩어리면 count 는 바꿨는데 message 는 안 바꾸는 실수가 줄어듭니다
@@ -49,7 +49,7 @@ import com.example.minilauncher.ui.theme.MiniLauncherTheme
 //      작은 화면은 MVVM 으로 충분하고, 버튼과 상태가 많은 화면에서 MVI 가 편해집니다
 //
 // Compose 는 MVI 만, XML 은 MVVM 만 쓰는 것은 아닙니다. MVVM 은 XML 시절에 퍼졌고 MVI 는 Compose 와 잘 맞지만,
-// Compose 에서도 MVVM 을 많이 씁니다. 이 프로젝트의 LauncherViewModel 이 "Compose + MVVM" 입니다
+// Compose 에서도 MVVM 을 많이 씁니다. day1_step03_lifecycle 의 LauncherViewModel 이 "Compose + MVVM" 입니다
 //
 // ===== 보여 주기 =====
 //   1. 위쪽(MVVM)의 +1, 처음으로를 누릅니다. Logcat 에 "MVVM: plus() 호출" 처럼 함수 이름이 찍힙니다
