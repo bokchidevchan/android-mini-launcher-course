@@ -50,7 +50,7 @@ C++나 다른 언어로 개발해 본 분을 기준으로 만들었습니다. �
 | 1일차 | 09:00~12:00 | 1-1, 1-2 실무 앱 구조, Kotlin 핵심, 안드로이드 구조와 프로젝트 구성 | [day1_step00_architecture](day1_step00_architecture), [day1_step01_project](day1_step01_project) |
 | | 14:00~15:30 | 1-3 Jetpack Compose 기초 (13시에는 day1_step01에서 XML 화면 실습) | [day1_step02_compose](day1_step02_compose) |
 | | 15:30~17:00 | 1-4 Activity 생명주기와 화면 이동 | [day1_step03_lifecycle](day1_step03_lifecycle) |
-| | 16:00~ | 비교 코드: MVVM과 MVI (ViewModel을 배운 뒤에 엶) | [day1_step02_02_mvvm_mvi](day1_step02_02_mvvm_mvi) |
+| | 13:00~ (4교시 끝) | 비교 코드: MVVM과 MVI | [day1_step02_02_mvvm_mvi](day1_step02_02_mvvm_mvi) |
 | 2일차 | 09:00~12:00 | 2-1 메인 스레드와 Coroutine, Flow | [day2_step04_coroutine](day2_step04_coroutine) |
 | | 13:00~15:00 | 2-2 시스템 이벤트 감지 (BroadcastReceiver) | [day2_step05_receiver](day2_step05_receiver) |
 | | 15:00~17:00 | 2-3 백그라운드 처리 (Service, Notification) | [day2_step06_service](day2_step06_service) |
