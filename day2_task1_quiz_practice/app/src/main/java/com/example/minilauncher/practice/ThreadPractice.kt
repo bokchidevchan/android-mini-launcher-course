@@ -48,7 +48,8 @@ private fun step01WhoAmI() {
     show("스레드 이름: ${Thread.currentThread().name}")
     show("pid ${Process.myPid()}, tid ${Process.myTid()}")
     show("메인 스레드인가: ${Looper.myLooper() == Looper.getMainLooper()}")
-    // 바꿔 보기: 위 세 줄을 thread { } 로 감싸면 이름과 tid 가 어떻게 바뀔까요?
+    // 바꿔 보면: 위 세 줄을 thread { } 로 감싸면 이름이 main 대신 Thread-2 처럼 찍히고,
+    // tid 가 pid 와 달라집니다. 메인 스레드인가는 false 가 됩니다
 }
 
 // 2단계. 메인 스레드의 MessageQueue
@@ -60,7 +61,7 @@ private fun step02MessageQueue() {
     handler.post { show("3. 큐에 넣어 둔 일. onCreate 가 끝난 뒤에 실행") }
     handler.postDelayed({ show("4. 1초 뒤에 실행되도록 넣어 둔 일") }, 1000)
     show("2. post 뒤. 넣기만 하고 바로 지나왔습니다")
-    // 바꿔 보기: 1000 을 3000 으로 바꾸면 4번 줄의 시간이 어떻게 될까요?
+    // 바꿔 보면: 1000 을 3000 으로 바꾸면 4번 줄이 1초가 아니라 3초 뒤에 찍힙니다
 }
 
 // 3단계. 메인 스레드를 막으면
@@ -85,7 +86,8 @@ private fun step04NewThread() {
         show("4. 새 스레드의 일 끝")
     }
     show("2. thread 뒤. 바로 지나왔습니다. 화면도 안 멈춥니다")
-    // 바꿔 보기: thread { } 를 하나 더 만들면 스레드 이름이 어떻게 붙을까요?
+    // 바꿔 보면: thread { } 를 하나 더 만들면 Thread-2, Thread-3 처럼 번호가 하나씩
+    // 올라간 이름이 붙습니다. 부를 때마다 스레드가 새로 만들어지기 때문입니다
 }
 
 // 5단계. 일은 새 스레드에서, 화면은 메인 스레드에서

@@ -90,5 +90,6 @@ fun SearchAppsScreen() {
             }
         }
     }
-    // 바꿔 보기: ignoreCase = true 를 지우면 소문자 c 로 Chrome 이 찾아질까요?
+    // 바꿔 보면: ignoreCase = true 를 지우면 대소문자를 가려서, 소문자 c 로는 Chrome 이
+    // 안 찾아집니다
 }

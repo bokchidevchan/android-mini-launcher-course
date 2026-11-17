@@ -23,9 +23,9 @@
 | 5 | 일은 새 스레드에서, 화면은 `runOnUiThread`로 메인 스레드에서 |
 | 6 | 같은 일을 코루틴으로 (`withContext(Dispatchers.IO)`) |
 
-## 코루틴 실습 10단계
+## 코루틴 실습 11단계
 
-`MainActivity.kt`의 `coroutinePractice(lifecycleScope, step = 1)`에서 숫자를 1부터 10까지 바꿔 가며 Run 합니다. Logcat 검색칸에 `tag:Coroutine`을 넣습니다. 줄마다 지난 시간(ms)과 스레드 이름이 같이 찍힙니다. 코드는 `practice/CoroutinePractice.kt`에 있고, 단계마다 끝에 "바꿔 보기"가 적혀 있습니다.
+`MainActivity.kt`의 `coroutinePractice(lifecycleScope, step = 1)`에서 숫자를 1부터 11까지 바꿔 가며 Run 합니다. Logcat 검색칸에 `tag:Coroutine`을 넣습니다. 줄마다 지난 시간(ms)과 스레드 이름이 같이 찍힙니다. 코드는 `practice/CoroutinePractice.kt`에 있고, 단계마다 끝에 "바꿔 보기"가 적혀 있습니다.
 
 | 단계 | 실습하는 것 |
 |---|---|
@@ -39,6 +39,7 @@
 | 8 | `flow`, `emit`, `collect` |
 | 9 | `MutableStateFlow`: 최신 값 하나를 들고 있습니다 |
 | 10 | 종합: 불러오는 중, 성공, 실패 |
+| 11 | `lifecycleScope`: 화면을 돌리거나 닫으면 코루틴이 같이 취소됩니다 |
 
 ## 오전 과제: 복습 퀴즈 앱 만들기
 

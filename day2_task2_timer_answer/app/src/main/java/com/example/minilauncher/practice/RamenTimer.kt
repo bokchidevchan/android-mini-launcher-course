@@ -61,7 +61,8 @@ class RamenTimerService : Service() {
             stopSelf(startId)      // 그사이 새로 시작한 타이머가 있으면 멈추지 않습니다
         }
         return START_NOT_STICKY
-        // 바꿔 보기: delay(1000) 을 delay(200) 으로 바꾸면 라면이 얼마나 빨리 익을까요?
+        // 바꿔 보면: delay(1000) 을 delay(200) 으로 바꾸면 5배 빨리 줄어듭니다.
+        // 10초 (맛보기)가 2초 만에 끝납니다
     }
 
     override fun onDestroy() {

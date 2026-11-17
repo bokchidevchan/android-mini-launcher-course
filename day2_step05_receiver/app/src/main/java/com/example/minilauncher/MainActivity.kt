@@ -42,7 +42,12 @@ class MainActivity : ComponentActivity() {
         // myReceiverPractice(this, step = 1)   // 직접 쓴 코드(ReceiverPractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다
         Log.d(TAG, "onCreate (복원 데이터 ${if (savedInstanceState == null) "없음" else "있음"})")
         // 2일차 오후부터는 에러 화면이 실습을 방해하지 않게 실패 확률 기본값을 0 으로 둡니다 (오전 실습은 0.3)
+        // failRate: 앱 목록을 불러올 때 일부러 실패하게 만드는 확률입니다 (실패 화면을 보려는 연습용).
+        // 뒤의 숫자가 기본값입니다. 0.3 이면 열 번에 세 번쯤 실패하고, 0 이면 실패하지 않습니다
         val failRate = intent.getFloatExtra("fail_rate", 0f)
+        // factory: ViewModel 을 만드는 방법을 적어 둔 것입니다. 만들 때 넘길 값(가짜 목록)이 있어서 필요합니다.
+        // 아래의 viewModel(factory = factory) 는 ViewModel 이 없으면 이 방법으로 만들고, 있으면 있던 것을
+        // 돌려줍니다. 그래서 화면을 돌려도 같은 ViewModel 이 남습니다
         val factory = viewModelFactory { initializer { LauncherViewModel(FakeAppRepository(failRate)) } }
         enableEdgeToEdge()
         setContent {

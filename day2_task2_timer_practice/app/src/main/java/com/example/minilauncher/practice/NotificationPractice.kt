@@ -85,7 +85,8 @@ private fun step03Update(context: Context) {
         manager.notify(PRACTICE_NOTIFICATION, practiceNotification(context, "바뀌었습니다").build())
         show("같은 번호로 다시 띄워 글자를 바꿨습니다")
     }, 6000)
-    // 바꿔 보기: 두 번째 notify 의 번호를 101 로 바꾸면 알림이 몇 개가 될까요?
+    // 바꿔 보면: 두 번째 notify 의 번호를 101 로 바꾸면 알림이 두 개가 됩니다.
+    // 번호가 다르면 다른 알림으로 봅니다
 }
 
 // 4단계. 진행 막대가 있는 알림
@@ -105,8 +106,8 @@ private fun step04Progress(context: Context) {
             show("진행 $percent%")
         }, i * 1500L)
     }
-    // 바꿔 보기: setProgress(100, percent, false) 의 false 를 true 로 바꾸면 막대가
-    // 어떻게 보일까요?
+    // 바꿔 보면: setProgress(100, percent, false) 의 false 를 true 로 바꾸면 막대가
+    // 퍼센트 대신 좌우로 계속 움직입니다. 얼마나 남았는지 모를 때 쓰는 모양입니다
 }
 
 // 5단계. 알림 지우기

@@ -41,7 +41,8 @@ fun myCoroutinePractice(scope: CoroutineScope, step: Int) {
             8 -> myCoStep08(scope)
             9 -> myCoStep09(scope)
             10 -> myCoStep10(scope)
-            else -> show("1부터 10까지의 숫자를 넣어 주세요")
+            11 -> myCoStep11(scope)
+            else -> show("1부터 11까지의 숫자를 넣어 주세요")
         }
     }
 }
@@ -103,5 +104,11 @@ private fun myCoStep09(scope: CoroutineScope) {
 // 10단계. 종합: 불러오는 중, 성공, 실패 (CoroutinePractice.kt 의 step10LoadingState)
 @Suppress("UNUSED_PARAMETER")
 private fun myCoStep10(scope: CoroutineScope) {
+    // 여기에 씁니다
+}
+
+// 11단계. 생명주기와 함께 취소되는 코루틴 (CoroutinePractice.kt 의 step11Lifecycle)
+@Suppress("UNUSED_PARAMETER")
+private fun myCoStep11(scope: CoroutineScope) {
     // 여기에 씁니다
 }

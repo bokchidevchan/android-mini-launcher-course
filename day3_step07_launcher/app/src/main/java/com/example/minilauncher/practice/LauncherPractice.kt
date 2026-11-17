@@ -45,7 +45,8 @@ fun launchableApps(context: Context): List<ResolveInfo> {
 // 1단계. 설치된 앱이 몇 개인지
 private fun step01Count(context: Context) {
     show("아이콘이 있는 앱: ${launchableApps(context).size}개")
-    // 바꿔 보기: AndroidManifest.xml 의 <queries> 덩어리를 주석으로 막고 Run 하면 몇 개가 될까요? 확인하고 되돌립니다
+    // 바꿔 보면: AndroidManifest.xml 의 <queries> 덩어리를 주석으로 막고 Run 하면 숫자가
+    // 몇 개로 확 줄어듭니다. 오류는 나지 않습니다. 확인하고 되돌립니다
 }
 
 // 2단계. 앱 이름 읽기

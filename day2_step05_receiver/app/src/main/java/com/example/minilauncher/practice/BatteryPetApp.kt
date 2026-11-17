@@ -101,7 +101,8 @@ fun rememberPet(): PetState {
         }
         ContextCompat.registerReceiver(context, receiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED)
         onDispose { context.unregisterReceiver(receiver) }
-        // 바꿔 보기: addAction(Intent.ACTION_POWER_CONNECTED) 줄을 지우면 무엇이 안 보일까요?
+        // 바꿔 보면: addAction(Intent.ACTION_POWER_CONNECTED) 줄을 지우면 충전기를 꽂아도
+        // "충전기를 꽂았어요" 기록이 안 생깁니다. 필터에 적은 것만 오기 때문입니다
     }
     return state
 }

@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-// 2일차 오전 코루틴 실습 10단계.
+// 2일차 오전 코루틴 실습 11단계.
 // MainActivity.kt 의 coroutinePractice(lifecycleScope, step = 1) 에서 숫자를 1부터
-// 10까지 바꿔 가며 Run 합니다.
+// 11까지 바꿔 가며 Run 합니다.
 // Logcat 검색창에 tag:Coroutine 을 넣습니다. 맨 앞의 "loadApps 시작" 한 줄은 앱 목록을
 // 불러오는 코드가 찍은 것이라 넘어갑니다.
 // 줄마다 [스레드 이름] 이 붙습니다. 어느 스레드에서 도는지 같이 봅니다.
@@ -42,7 +42,8 @@ fun coroutinePractice(scope: CoroutineScope, step: Int) {
             8 -> step08Flow(scope)
             9 -> step09StateFlow(scope)
             10 -> step10LoadingState(scope)
-            else -> show("1부터 10까지의 숫자를 넣어 주세요")
+            11 -> step11Lifecycle(scope)
+            else -> show("1부터 11까지의 숫자를 넣어 주세요")
         }
     }
 }
@@ -56,7 +57,8 @@ private fun step01Launch(scope: CoroutineScope) {
         show("3. 코루틴 안 (0.1초 뒤)")
     }
     show("2. launch 뒤. 기다리지 않고 바로 지나왔습니다")
-    // 바꿔 보기: delay(100) 을 delay(1000) 으로 바꾸면 3번 줄의 시간이 어떻게 될까요?
+    // 바꿔 보면: delay(100) 을 delay(1000) 으로 바꾸면 3번 줄이 0.1초가 아니라 1초 뒤에
+    // 찍힙니다. 1번과 2번은 그대로 바로 찍힙니다
 }
 
 // 2단계. delay 는 스레드를 막지 않습니다
@@ -75,8 +77,8 @@ private fun step02Delay(scope: CoroutineScope) {
             delay(200)
         }
     }
-    // 바꿔 보기: A 쪽의 delay(200) 을 Thread.sleep(200) 으로 바꾸면 순서가 어떻게
-    // 될까요?
+    // 바꿔 보면: A 쪽의 delay(200) 을 Thread.sleep(200) 으로 바꾸면 A 0, A 1, A 2 가
+    // 먼저 다 찍힌 뒤에 B 가 찍힙니다. sleep 은 스레드를 비켜 주지 않기 때문입니다
 }
 
 // 3단계. suspend 함수
@@ -94,7 +96,8 @@ private fun step03Suspend(scope: CoroutineScope) {
         val second = loadLabel("두 번째")
         show("받음: $second (차례로 받아서 모두 0.6초쯤)")
     }
-    // 바꿔 보기: loadLabel 앞의 suspend 를 지우면 어떤 오류가 날까요?
+    // 바꿔 보면: loadLabel 앞의 suspend 를 지우면 그 안의 delay 줄에 빨간 줄이 생깁니다.
+    // delay 같은 suspend 함수는 suspend 함수나 코루틴 안에서만 부를 수 있기 때문입니다
 }
 
 // 4단계. async 와 await
@@ -141,7 +144,8 @@ private fun step06Cancel(scope: CoroutineScope) {
         job.cancel()
         show("취소했습니다")
     }
-    // 바꿔 보기: delay(350) 을 delay(650) 으로 바꾸면 몇 번까지 찍힐까요?
+    // 바꿔 보면: delay(350) 을 delay(650) 으로 바꾸면 일하는 중 6 까지 찍힙니다.
+    // 0.1초마다 하나씩 찍다가 0.65초에 취소되기 때문입니다
 }
 
 // 7단계. 예외 처리
@@ -199,8 +203,8 @@ private fun step09StateFlow(scope: CoroutineScope) {
         show("지금 들고 있는 값: ${count.value}")
         job.cancel()
     }
-    // 바꿔 보기: 두 번째 count.value = 1 을 count.value = 5 로 바꾸면 무엇이 더
-    // 찍힐까요?
+    // 바꿔 보면: 두 번째 count.value = 1 을 count.value = 5 로 바꾸면 화면에 보여 줄
+    // 값: 5 가 한 줄 더 찍힙니다. 값이 달라졌기 때문입니다
 }
 
 // 10단계. 종합: 불러오는 중, 성공, 실패
@@ -234,4 +238,28 @@ private fun step10LoadingState(scope: CoroutineScope) {
         job.cancel()
     }
     // 바꿔 보기: fail = false 를 fail = true 로 바꿔 실패 화면을 확인합니다
+}
+
+// 11단계. 생명주기와 함께 취소되는 코루틴
+// 여기로 넘어온 scope 는 MainActivity 의 lifecycleScope 입니다. Activity 의 생명주기에
+// 묶여 있어서, 화면이 끝나면(onDestroy) 이 scope 에서 시작한 코루틴이 모두 취소됩니다.
+// 직접 cancel 을 부르지 않아도 됩니다.
+// ViewModel 안에서는 viewModelScope 가 같은 일을 합니다. viewModelScope 는 화면을
+// 돌려도 살아 있고, 화면을 완전히 닫을 때 취소됩니다.
+// Run 한 뒤 뒤로 가기로 화면을 닫으면 "취소됐습니다" 가 찍히고 숫자가 더 안 올라갑니다.
+// 화면을 돌리면 옛 화면의 코루틴이 취소되고, 새 화면에서 0부터 다시 시작합니다
+private fun step11Lifecycle(scope: CoroutineScope) {
+    scope.launch {
+        try {
+            var count = 0
+            while (true) {
+                show("화면이 살아 있는 동안 일하는 중 $count")
+                count++
+                delay(1000)
+            }
+        } finally {
+            // 코루틴이 취소되면 여기로 옵니다
+            show("화면이 끝나서 코루틴도 취소됐습니다")
+        }
+    }
 }

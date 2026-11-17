@@ -39,11 +39,16 @@ class MainActivity : ComponentActivity() {
         // 스레드 실습: 숫자를 1부터 6까지 바꿔 가며 Run 합니다. Logcat 검색창에 tag:Thread 를 넣습니다. 0 이면 건너뜁니다
         threadPractice(this, step = 1)
         // myThreadPractice(this, step = 1)   // 직접 쓴 코드(ThreadPractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다
-        // 코루틴 실습: 숫자를 1부터 10까지 바꿔 가며 Run 합니다. Logcat 검색창에 tag:Coroutine 을 넣습니다
+        // 코루틴 실습: 숫자를 1부터 11까지 바꿔 가며 Run 합니다. Logcat 검색창에 tag:Coroutine 을 넣습니다
         coroutinePractice(lifecycleScope, step = 1)
         // myCoroutinePractice(lifecycleScope, step = 1)   // 직접 쓴 코드(CoroutinePractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다
         // 실패 확률을 바꿔 보고 싶으면: adb shell am start -n com.example.minilauncher/.MainActivity --ef fail_rate 1.0
+        // failRate: 앱 목록을 불러올 때 일부러 실패하게 만드는 확률입니다 (실패 화면을 보려는 연습용).
+        // 뒤의 숫자가 기본값입니다. 0.3 이면 열 번에 세 번쯤 실패하고, 0 이면 실패하지 않습니다
         val failRate = intent.getFloatExtra("fail_rate", 0.3f)
+        // factory: ViewModel 을 만드는 방법을 적어 둔 것입니다. 만들 때 넘길 값(가짜 목록)이 있어서 필요합니다.
+        // 아래의 viewModel(factory = factory) 는 ViewModel 이 없으면 이 방법으로 만들고, 있으면 있던 것을
+        // 돌려줍니다. 그래서 화면을 돌려도 같은 ViewModel 이 남습니다
         val factory = viewModelFactory { initializer { LauncherViewModel(FakeAppRepository(failRate)) } }
         enableEdgeToEdge()
         setContent {
