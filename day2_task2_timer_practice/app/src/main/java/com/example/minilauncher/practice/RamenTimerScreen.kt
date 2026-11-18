@@ -25,6 +25,13 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -34,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.app.NotificationCompat
 import androidx.core.app.ServiceCompat
 import com.example.minilauncher.ui.theme.LauncherBackground
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 
 // 2일차 오후 과제 "컵라면 타이머" 앱에서 고치지 않고 그대로 쓰는 부분입니다.
@@ -98,10 +106,30 @@ fun RamenTimerScreen(remaining: Int?, service: Class<out Service>) {
     val context = LocalContext.current
     // 알림 권한을 묻는 창. Android 13 부터는 사용자가 허락해야 알림이 보입니다
     val askNotification = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {}
+    // 버튼을 누른 횟수. 누른 뒤 숫자가 안 바뀌면 아직 안 채운 칸을 화면에 알려 줍니다
+    var presses by remember { mutableIntStateOf(0) }
+    var hint by remember { mutableStateOf<String?>(null) }
     fun start(seconds: Int) {
         if (Build.VERSION.SDK_INT >= 33) askNotification.launch(Manifest.permission.POST_NOTIFICATIONS)
         val intent = Intent(context, service).putExtra(RamenTimer.EXTRA_SECONDS, seconds)
         context.startForegroundService(intent)
+        hint = null
+        presses++
+    }
+    // 누르고 2.5초가 지나도 남은 시간이 안 들어오면, 알림이 떠 있는지로 [1] 과 [2] 중 무엇이 비었는지 알려 줍니다
+    LaunchedEffect(presses) {
+        if (presses == 0) return@LaunchedEffect
+        delay(2500)
+        if (RamenTimer.remaining.value != null) return@LaunchedEffect
+        val notified = context.getSystemService(NotificationManager::class.java)
+            .activeNotifications.any { it.id == RamenTimer.NOTIFICATION }
+        hint = if (!notified) {
+            "[1] 이 비어 있어요. 알림 없이 시작해서 10초쯤 뒤 앱이 꺼집니다.\n" +
+                "RamenTimer.kt 의 [1] 에 startForegroundWithNotification(total) 을 적어 주세요"
+        } else {
+            "[1] 은 됐어요. 알림은 떴는데 숫자가 그대로예요.\n" +
+                "RamenTimer.kt 의 [2] 에서 1초마다 showLeft 를 부르고, 다 세면 finishTimer 를 불러 주세요"
+        }
     }
     Column(
         modifier = Modifier.fillMaxSize().background(LauncherBackground).safeDrawingPadding().padding(24.dp),
@@ -124,5 +152,14 @@ fun RamenTimerScreen(remaining: Int?, service: Class<out Service>) {
         }
         Spacer(Modifier.height(16.dp))
         Text("시작한 뒤 홈으로 나가 화면 위쪽을 끌어내려 보세요")
+        hint?.let {
+            Spacer(Modifier.height(24.dp))
+            Text(
+                it,
+                color = Color(0xFFB3261E),
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.background(Color(0xFFFCEEEE)).padding(12.dp),
+            )
+        }
     }
 }
