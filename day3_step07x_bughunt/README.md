@@ -1,10 +1,10 @@
 # 오후 과제: 버그 세 개 찾아 고치기
 
-3일차 14:00~15:00 (3-2 Logcat 로그 분석) | [전체 일정으로](../README.md)
+3일차 14:00~15:00 (3-2 런처 손보기와 버그 찾기) | [전체 일정으로](../README.md)
 
 `day3_step07x_bughunt` 폴더를 열고 시작합니다.
 
-오후 과제 폴더입니다. [day3_step07_launcher](../day3_step07_launcher)에 버그 세 개를 일부러 넣은 버전입니다. 로그 찍기 연습(4교시)은 [day3_step07x_logcat](../day3_step07x_logcat)에 있습니다. 코드를 먼저 읽지 않고, 앱을 실행해서 Logcat만 보고 원인을 찾습니다.
+오후 과제 폴더입니다. [day3_step07_launcher](../day3_step07_launcher)에 버그 세 개를 일부러 넣은 버전입니다. Logcat 검색칸 쓰는 법은 [전체 README의 Logcat 빠르게 쓰기](../README.md#logcat-빠르게-쓰기)에 있습니다. 코드를 먼저 읽지 않고, 앱을 실행해서 Logcat만 보고 원인을 찾습니다.
 
 ## 준비
 
