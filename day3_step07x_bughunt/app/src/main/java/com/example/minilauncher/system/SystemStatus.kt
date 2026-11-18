@@ -92,6 +92,8 @@ private fun describe(caps: NetworkCapabilities): String = when {
 }
 
 // 1초마다 바뀌는 시계. produceState 안의 코루틴은 화면이 사라지면 같이 멈춥니다
+// 시스템 시각 방송(ACTION_TIME_TICK)은 1분에 한 번만 와서 초를 못 보여 줍니다.
+// 초 단위처럼 내가 정한 박자는 브로드캐스트가 아니라 코루틴으로 셉니다
 @Composable
 fun rememberClock(): String {
     val clock by produceState(now()) {

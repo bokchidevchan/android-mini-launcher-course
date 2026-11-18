@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.minilauncher.data.FakeAppRepository
+import com.example.minilauncher.practice.AsyncPracticeViewModel
+import com.example.minilauncher.practice.AwaitBlockPracticeViewModel
 import com.example.minilauncher.practice.myThreadPractice
 import com.example.minilauncher.practice.threadPractice
 import com.example.minilauncher.ui.AppsContent
@@ -30,12 +33,24 @@ import com.example.minilauncher.ui.theme.MiniLauncherTheme
 private const val TAG = "Lifecycle"
 
 class MainActivity : ComponentActivity() {
+    // async/await 실습용 ViewModel. by viewModels() 는 화면을 돌려도 같은 ViewModel 을 돌려줍니다
+    private val asyncVm: AsyncPracticeViewModel by viewModels()
+    // await 가 모든 걸 막는지 확인하는 실습용 ViewModel
+    private val blockVm: AwaitBlockPracticeViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate (복원 데이터 ${if (savedInstanceState == null) "없음" else "있음"})")
         // 스레드 실습: 숫자를 1부터 6까지 바꿔 가며 Run 합니다. Logcat 검색창에 tag:Thread 를 넣습니다. 0 이면 건너뜁니다
         threadPractice(this, step = 1)
         // myThreadPractice(this, step = 1)   // 직접 쓴 코드(ThreadPractice_My.kt)를 실행하려면 위 줄 대신 이 줄을 씁니다
+        // async/await 실습: 숫자를 1부터 9까지 바꿔 가며 Run 합니다. Logcat 검색창에 tag:Async 를 넣습니다.
+        // 화면을 돌릴 때마다 다시 돌지 않게, 처음 만들어질 때(savedInstanceState == null)만 부릅니다
+        if (savedInstanceState == null) {
+            asyncVm.run(step = 9)
+            // await 가 모든 걸 막나 실습: 1부터 5까지. Logcat 검색창에 tag:Await 를 넣습니다
+            blockVm.run(step = 1)
+        }
         // 실패 확률을 바꿔 보고 싶으면: adb shell am start -n com.example.minilauncher/.MainActivity --ef fail_rate 1.0
         // failRate: 앱 목록을 불러올 때 일부러 실패하게 만드는 확률입니다 (실패 화면을 보려는 연습용).
         // 뒤의 숫자가 기본값입니다. 스레드 실습에 방해되지 않게 0 (실패하지 않음)으로 둡니다

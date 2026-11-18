@@ -37,7 +37,8 @@ fun receiverPractice(activity: ComponentActivity, step: Int) {
 
 // 방송을 받기 시작하고, 화면이 끝날 때(onDestroy) 알아서 그만 받게 합니다.
 // 그만 받는 것(unregisterReceiver)을 빼먹으면 3일차 버그 2의 "has leaked
-// IntentReceiver" 가 찍힙니다
+// IntentReceiver" 가 찍힙니다. 등록하자마자 해제하는 게 아니라, 화면이 살아 있는 동안은
+// 계속 받다가 화면이 끝날 때 한 번 해제합니다
 fun listenWhileAlive(activity: ComponentActivity, filter: IntentFilter, onReceive: (Intent) -> Unit) {
     val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) = onReceive(intent)

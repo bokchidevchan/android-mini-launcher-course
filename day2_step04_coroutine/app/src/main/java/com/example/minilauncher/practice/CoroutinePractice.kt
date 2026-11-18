@@ -192,6 +192,9 @@ private fun step08Flow(scope: CoroutineScope) {
 // StateFlow 는 항상 최신 값 하나를 들고 있습니다. 같은 값을 다시 넣으면 알리지 않습니다
 private fun step09StateFlow(scope: CoroutineScope) {
     val count = MutableStateFlow(0)
+    // collect 는 StateFlow 를 끝없이 지켜보는 suspend 함수라 스스로 끝나지 않습니다.
+    // 그래서 지켜보는 일은 launch 하나에 따로 맡기고, 값을 바꾸는 일은 아래 launch 가 합니다.
+    // 한 launch 안에 collect 와 count.value = 1 을 같이 쓰면 collect 에서 멈춰 0 만 찍힙니다
     val job = scope.launch {
         count.collect { show("화면에 보여 줄 값: $it") }
     }
@@ -201,7 +204,7 @@ private fun step09StateFlow(scope: CoroutineScope) {
         delay(200); count.value = 2
         delay(200)
         show("지금 들고 있는 값: ${count.value}")
-        job.cancel()
+        job.cancel()                       // 지켜보기는 혼자 안 끝나서 직접 멈춥니다. 화면에서는 lifecycle 이 대신 멈춰 줍니다
     }
     // 바꿔 보면: 두 번째 count.value = 1 을 count.value = 5 로 바꾸면 화면에 보여 줄
     // 값: 5 가 한 줄 더 찍힙니다. 값이 달라졌기 때문입니다
