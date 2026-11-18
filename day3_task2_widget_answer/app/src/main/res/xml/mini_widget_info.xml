@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 위젯 설명서. minWidth, minHeight: 최소 크기. targetCell*: 홈 화면 칸 수(Android 12부터).
+     updatePeriodMillis="0": 자동 갱신 안 함(새로고침으로만) -->
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:minWidth="180dp"
     android:minHeight="110dp"

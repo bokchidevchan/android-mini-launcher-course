@@ -8,7 +8,7 @@
 // practice/FavoritesViewModel.kt
 init {
     viewModelScope.launch {                                       // [1] 처음 한 번, 코루틴으로
-        apps = InstalledAppRepository(getApplication()).loadApps()
+        apps = loadInstalledApps(getApplication())
     }
 }
 
@@ -30,3 +30,5 @@ fun FavoriteAppsScreen(vm: FavoritesViewModel = viewModel()) {
     )
 }
 ```
+
+별 몇 개를 누르고 에뮬레이터를 가로로 돌려 봅니다. 즐겨찾기가 그대로 남습니다.

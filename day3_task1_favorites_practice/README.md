@@ -13,6 +13,7 @@ File > Open으로 이 폴더를 열고 Run 하면 즐겨찾기 서랍 화면이 
 | `practice/FavoritesViewModel.kt` | 화면 뒤의 사무실. 설치된 앱 목록(`apps`)과 즐겨찾기(`favorites`)를 들고 있음. 화면을 돌려도 그대로 남음 |
 | `practice/FavoriteApps.kt` | 화면. ViewModel의 값을 그리고, 누른 일은 ViewModel에 알림 |
 | `practice/FavoriteAppsLayout.kt` | 목록과 별 모양을 그림. 고치지 않음 |
+| `practice/InstalledApps.kt` | 앱 목록 읽기(`loadInstalledApps`)와 앱 열기(`launchApp`). 1, 2교시 코드를 옮겨 온 것. 고치지 않음 |
 
 ```
 ViewModel 이 만들어짐 → [1] 설치된 앱 목록을 읽어 apps 에 넣음 → 화면에 목록이 보임
@@ -25,16 +26,16 @@ ViewModel 이 만들어짐 → [1] 설치된 앱 목록을 읽어 apps 에 넣�
 ```kotlin
 init {
     viewModelScope.launch {                                    // 오래 걸릴 수 있어 코루틴으로
-        apps = InstalledAppRepository(getApplication()).______()
+        apps = ______(getApplication())
     }
 }
 ```
 
-힌트: 1교시에 본 `InstalledAppRepository`의 `loadApps()`. 확인: 화면에 "설치된 앱 ○○개"와 목록이 보입니다.
+힌트: `InstalledApps.kt`의 `loadInstalledApps`. 확인: 화면에 "설치된 앱 ○○개"와 목록이 보입니다.
 
 ## [2] 별을 누르면 넣거나 빼기 (`FavoritesViewModel.kt`의 `toggle`)
 
-힌트: `favorites = if (app.packageName in favorites) favorites - app.packageName else favorites + app.packageName`. 확인: ☆이 ★로 바뀌고 위쪽 줄에 담깁니다.
+힌트: `favorites = if (app.packageName in favorites) favorites ___ app.packageName else favorites ___ app.packageName`. 빼기는 `-`, 넣기는 `+`. 확인: ☆이 ★로 바뀌고 위쪽 줄에 담깁니다.
 
 ## [3] 앱을 누르면 열기 (`FavoriteApps.kt`의 `onOpen`)
 
@@ -42,6 +43,14 @@ init {
 
 ## 다 했으면
 
-별 몇 개를 누르고 에뮬레이터를 가로로 돌려 봅니다. 값이 ViewModel에 있어서 즐겨찾기가 그대로 남습니다.
+별 몇 개를 누르고 에뮬레이터를 가로로 돌려 봅니다(회전이 안 되면 빠른 설정에서 자동 회전을 켭니다). 값이 ViewModel에 있어서 즐겨찾기가 그대로 남습니다.
+
+회색 import, 회색 변수는 빈칸을 채우면 쓰입니다. 지우지 않습니다.
+
+## 먼저 끝났으면
+
+- [5] 즐겨찾기한 앱을 목록 맨 위로: `apps = vm.apps.sortedByDescending { it.packageName in vm.favorites }`
+- [6] 즐겨찾기는 5개까지: `toggle`을 `when`으로 세 갈래(있으면 빼기, 5개면 Toast로 안내, 아니면 넣기)
+- [7] Logcat으로 확인: `Log.d("Favorites", "즐겨찾기 ${favorites.size}개: $favorites")`
 
 막히면 [day3_task1_favorites_answer](../day3_task1_favorites_answer)를 엽니다.

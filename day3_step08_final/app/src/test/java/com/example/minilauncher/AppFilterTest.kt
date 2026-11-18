@@ -19,7 +19,7 @@ class AppFilterTest {
     }
 
     @Test
-    fun 도크는_있는_앱만_정해진_순서로() {
+    fun 아래_고정_줄은_있는_앱만_정해진_순서로() {
         val apps = listOf(AppInfo("Camera", "c"), AppInfo("Phone", "p"), AppInfo("Maps", "m"))
         assertEquals(listOf("Phone", "Camera"), dockApps(apps).map { it.label })
     }

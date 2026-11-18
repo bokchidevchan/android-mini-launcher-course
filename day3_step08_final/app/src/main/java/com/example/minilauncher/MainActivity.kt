@@ -99,7 +99,7 @@ fun LauncherScreen(vm: LauncherViewModel) {
 
     @Composable
     fun LauncherColumn(modifier: Modifier) {
-        // 픽셀 런처 배치: 앱 목록, 그 아래 도크, 맨 아래 검색창
+        // 픽셀 런처 배치: 앱 목록, 그 아래 고정 줄, 맨 아래 검색창
         Column(modifier) {
             val shown = state.apps.let { if (it is AppsState.Success) AppsState.Success(filterApps(it.apps, state.query)) else it }
             AppsContent(
@@ -111,13 +111,13 @@ fun LauncherScreen(vm: LauncherViewModel) {
                 modifier = Modifier.weight(1f),
             )
             Dock(dockApps(allApps), onAppClick)
-            SearchField(state.query, vm::search, onSyncClick = startSync)
+            SearchField(query = state.query, onQueryChange = vm::search, onSyncClick = startSync)
         }
     }
 
     Box(Modifier.fillMaxSize().background(LauncherBackground).safeDrawingPadding()) {
         if (LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            // 가로: 왼쪽 정보 패널 + 오른쪽 검색, 앱, 도크
+            // 가로: 왼쪽 정보 패널 + 오른쪽 검색, 앱, 아래 고정 줄
             Row(Modifier.fillMaxSize()) {
                 InfoPanel(status, sync)
                 LauncherColumn(Modifier.weight(1f).fillMaxHeight())

@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.drawable.toBitmap
-import com.example.minilauncher.model.AppInfo
 import com.example.minilauncher.ui.theme.LauncherBackground
 
 // 3일차 오전 과제 "즐겨찾기 서랍" 에서 고치지 않고 그대로 쓰는 화면입니다.
@@ -52,6 +51,7 @@ fun FavoriteAppsLayout(
 
         // 위쪽: 즐겨찾기한 앱만
         val favoriteApps = apps.filter { it.packageName in favorites }
+        // 위쪽 줄은 칸이 좁아서 앞의 5개만 보여 줍니다. 6개째부터는 ★만 켜지고 여기엔 안 나옵니다
         if (favoriteApps.isEmpty()) {
             Text("별을 눌러 자주 쓰는 앱을 담아 보세요", modifier = Modifier.height(56.dp))
         } else {
@@ -67,7 +67,7 @@ fun FavoriteAppsLayout(
 
         // 아래쪽: 전체 목록
         LazyColumn {
-            items(apps, key = { it.packageName + it.className }) { app ->
+            items(apps, key = { it.packageName + it.className }) { app ->   // key: 줄마다 붙이는 이름표
                 Row(
                     modifier = Modifier.fillMaxWidth().clickable { onOpen(app) }.padding(vertical = 6.dp),
                     verticalAlignment = Alignment.CenterVertically,
@@ -88,6 +88,7 @@ fun FavoriteAppsLayout(
 @Composable
 fun AppIconImage(app: AppInfo, size: Dp) {
     val context = LocalContext.current
+    // remember: 아이콘은 한 번만 만들어 두고 다시 그릴 때 재사용.  runCatching: 못 가져와도 앱이 꺼지지 않고 null
     val bitmap = remember(app.packageName) {
         runCatching { context.packageManager.getApplicationIcon(app.packageName).toBitmap().asImageBitmap() }.getOrNull()
     }

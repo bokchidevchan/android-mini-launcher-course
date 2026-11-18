@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 
-// 픽셀 런처처럼 회색 계열만 씁니다. 파랑은 진행률처럼 꼭 필요한 곳에만 나옵니다
+// 회색 계열만 씁니다. 파랑(primary)은 버튼처럼 눌러야 할 곳에만 씁니다
 private val LauncherColors = lightColorScheme(
     primary = Color(0xFF1A73E8),
     onPrimary = Color.White,

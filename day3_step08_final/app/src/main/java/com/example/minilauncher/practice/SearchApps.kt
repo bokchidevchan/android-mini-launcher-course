@@ -20,20 +20,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.minilauncher.data.InstalledAppRepository
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.minilauncher.launchApp
-import com.example.minilauncher.model.AppInfo
 import com.example.minilauncher.ui.AppIconImage
 import com.example.minilauncher.ui.theme.LauncherBackground
 import com.example.minilauncher.ui.theme.MiniLauncherTheme
@@ -58,6 +51,7 @@ fun SearchAppsScreen(vm: SearchAppsViewModel = viewModel()) {
     val query = vm.query    // 검색어 (ViewModel 에 있어서 화면을 돌려도 남음)
 
     // [1] 검색어가 이름에 든 앱만 남깁니다. 검색어가 비어 있으면 contains("") 가 항상 참이라 전부 남습니다
+    //     filter { 조건 }: 조건이 true 인 앱만 남김.  ignoreCase = true: 대소문자 무시 ("c" 로 "Chrome" 도 찾음)
     val shown = apps.filter { it.label.contains(query, ignoreCase = true) }
 
     Column(Modifier.fillMaxSize().background(LauncherBackground).safeDrawingPadding().padding(16.dp)) {
@@ -65,7 +59,7 @@ fun SearchAppsScreen(vm: SearchAppsViewModel = viewModel()) {
         // [2] 입력창은 값을 스스로 기억하지 않습니다. query 를 보여 주고, 글자가 바뀌면 query 를 바꿉니다
         OutlinedTextField(
             value = query,
-            onValueChange = { vm.search(it) },
+            onValueChange = { vm.search(it) },   // 글자가 바뀔 때마다 불림. it 이 새 글자
             label = { Text("앱 이름") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),

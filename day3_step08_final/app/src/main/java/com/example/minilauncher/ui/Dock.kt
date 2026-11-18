@@ -28,7 +28,7 @@ fun Dock(apps: List<AppInfo>, onAppClick: (AppInfo) -> Unit) {
         apps.forEach { app ->
             Box(
                 Modifier.clip(CircleShape).clickable { onAppClick(app) }
-                    .semantics { contentDescription = "도크 ${app.label}" },
+                    .semantics { contentDescription = "아래 고정 줄 ${app.label}" },
             ) {
                 AppIconImage(app, size = 56.dp)
             }
