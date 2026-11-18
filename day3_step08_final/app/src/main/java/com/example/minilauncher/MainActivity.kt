@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalConfiguration
 import com.example.minilauncher.model.AppInfo
@@ -89,8 +88,6 @@ fun LauncherScreen(vm: LauncherViewModel) {
     }
     BackHandler { }
 
-    // rememberSaveable: 화면을 돌려도 검색어가 남습니다 (remember 와 비교해 보기)
-    var query by rememberSaveable { mutableStateOf("") }
     // 부팅 시각은 파일(SharedPreferences)에 있어서 IO 스레드에서 읽습니다 (3일차 버그 3 의 고친 모양)
     val boot by produceState<String?>(null) {
         value = withContext(Dispatchers.IO) { BootReceiver.lastBoot(context) }
@@ -104,7 +101,7 @@ fun LauncherScreen(vm: LauncherViewModel) {
     fun LauncherColumn(modifier: Modifier) {
         // 픽셀 런처 배치: 앱 목록, 그 아래 도크, 맨 아래 검색창
         Column(modifier) {
-            val shown = state.apps.let { if (it is AppsState.Success) AppsState.Success(filterApps(it.apps, query)) else it }
+            val shown = state.apps.let { if (it is AppsState.Success) AppsState.Success(filterApps(it.apps, state.query)) else it }
             AppsContent(
                 state = shown,
                 selected = state.selected,
@@ -114,7 +111,7 @@ fun LauncherScreen(vm: LauncherViewModel) {
                 modifier = Modifier.weight(1f),
             )
             Dock(dockApps(allApps), onAppClick)
-            SearchField(query, { query = it }, onSyncClick = startSync)
+            SearchField(state.query, vm::search, onSyncClick = startSync)
         }
     }
 

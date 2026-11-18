@@ -23,7 +23,7 @@
 
 | 파일 | 볼 점 |
 |---|---|
-| `MainActivity.kt` | 검색어는 `rememberSaveable`이라 화면을 돌려도 남습니다. 1일차의 `remember`와 비교합니다. 가로, 세로에 따라 배치를 나눕니다 |
+| `MainActivity.kt` | 검색어는 `LauncherViewModel`이 들고 있어서 화면을 돌려도 남습니다. 가로, 세로에 따라 배치를 나눕니다 |
 | `model/AppFilter.kt` | 검색과 도크를 고르는 함수입니다. 화면과 떨어져 있어서 `AppFilterTest`로 테스트합니다 |
 | `ui/Dock.kt`, `ui/SearchField.kt`, `ui/InfoPanel.kt` | 새로 더한 화면 조각입니다 |
 
@@ -34,7 +34,7 @@
 | 화면에 보이는 값 | 들고 있는 곳 | 화면을 돌리면 | 앱을 닫으면 |
 |---|---|---|---|
 | 선택한 앱 | `LauncherViewModel`의 StateFlow | 남음 | 사라짐 |
-| 검색어 | `rememberSaveable` | 남음 | 사라짐 |
+| 검색어 | `LauncherViewModel` | 남음 | 사라짐 |
 | 앱 목록 | `LauncherViewModel` (처음 한 번 불러옴) | 남음 | 다시 불러옴 |
 | 배터리, 네트워크 | 화면이 있는 동안 등록한 Receiver와 콜백 | 다시 등록 | 해제 |
 | 동기화 진행률 | `SyncService`의 StateFlow | 남음 | Service가 끝날 때까지 남음 |
@@ -114,12 +114,12 @@ modifier = Modifier.fillMaxWidth().clickable { ______________ }.padding(vertical
 val shown = apps.filter { it.label.contains(query, ignoreCase = true) }
 ```
 
-[2] 입력창은 `query`를 보여 주고, 글자가 바뀌면 `query`를 바꿉니다. `query`가 바뀌면 화면이 다시 그려지면서 [1]의 `shown`도 다시 계산됩니다.
+[2] 입력창은 `query`를 보여 주고, 글자가 바뀌면 `vm.search(it)`로 ViewModel의 검색어를 바꿉니다. `query`가 바뀌면 화면이 다시 그려지면서 [1]의 `shown`도 다시 계산됩니다.
 
 ```kotlin
 OutlinedTextField(
     value = query,
-    onValueChange = { query = it },
+    onValueChange = { vm.search(it) },
     label = { Text("앱 이름") },
     singleLine = true,
     modifier = Modifier.fillMaxWidth(),

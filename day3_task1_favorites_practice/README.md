@@ -4,81 +4,44 @@
 
 설치된 앱 목록에서 별을 누르면 위쪽 줄에 담기고, 앱을 누르면 그 앱이 열리는 앱입니다. 화면은 만들어져 있습니다.
 
-File > Open으로 이 폴더를 열고 Run 하면 즐겨찾기 서랍 화면이 바로 뜹니다. 아래 [1]부터 차례로 채우고, 채울 때마다 Run 합니다. 채우는 곳은 `practice/FavoriteApps.kt` 하나이고, 파일 안에 `[1] 여기를 채웁니다`처럼 자리가 표시되어 있습니다.
+File > Open으로 이 폴더를 열고 Run 하면 즐겨찾기 서랍 화면이 바로 뜹니다. 아래 [1]부터 차례로 채우고, 채울 때마다 Run 합니다. 파일 안에 `[1] 여기를 채웁니다`처럼 자리와 힌트가 적혀 있습니다.
 
-전체 흐름은 이렇습니다.
+## 누가 무엇을 하나
+
+| 파일 | 하는 일 |
+|---|---|
+| `practice/FavoritesViewModel.kt` | 화면 뒤의 사무실. 설치된 앱 목록(`apps`)과 즐겨찾기(`favorites`)를 들고 있음. 화면을 돌려도 그대로 남음 |
+| `practice/FavoriteApps.kt` | 화면. ViewModel의 값을 그리고, 누른 일은 ViewModel에 알림 |
+| `practice/FavoriteAppsLayout.kt` | 목록과 별 모양을 그림. 고치지 않음 |
 
 ```
-화면이 뜸 → [1] 설치된 앱 목록을 읽어 apps 에 넣음 → 화면에 목록이 보임
+ViewModel 이 만들어짐 → [1] 설치된 앱 목록을 읽어 apps 에 넣음 → 화면에 목록이 보임
 별을 누름 → [2] favorites 에 넣거나 뺌 → 위쪽 줄이 바뀜
 앱을 누름 → [3] 그 앱을 엶
 ```
 
-화면에서 쓰는 값 두 개가 파일 위쪽에 있습니다.
-- `apps`: 설치된 앱 전체 목록
-- `favorites`: 즐겨찾기한 앱의 패키지 이름 목록
-
-이 두 값을 바꾸면 화면(`FavoriteAppsLayout`)이 알아서 다시 그려집니다.
-
-## [1] 화면이 뜰 때 설치된 앱 목록 읽기
-
-**하는 일**: 화면이 처음 뜰 때 한 번, 기기에 설치된 앱 목록을 읽어 `apps`에 넣습니다.
-
-**채울 곳**: `[1] 여기를 채웁니다` 아래.
+## [1] 처음 한 번 설치된 앱 목록 읽기 (`FavoritesViewModel.kt`의 `init`)
 
 ```kotlin
-LaunchedEffect(Unit) {          // 화면이 뜰 때 한 번 코루틴을 시작함
-    apps = ______________       // 설치된 앱 목록
+init {
+    viewModelScope.launch {                                    // 오래 걸릴 수 있어 코루틴으로
+        apps = InstalledAppRepository(getApplication()).______()
+    }
 }
 ```
 
-**힌트**
-- `LaunchedEffect(Unit) { }`는 화면이 처음 뜰 때 한 번, 그 안의 코드를 코루틴으로 실행하는 Compose 함수입니다.
-- 설치된 앱 목록은 오늘 1교시에 본 `InstalledAppRepository`의 `loadApps()`로 읽습니다. 만들 때 `context.applicationContext`를 넘깁니다.
+힌트: 1교시에 본 `InstalledAppRepository`의 `loadApps()`. 확인: 화면에 "설치된 앱 ○○개"와 목록이 보입니다.
 
-**확인**: 화면에 "설치된 앱 ○○개"와 앱 목록이 보입니다.
+## [2] 별을 누르면 넣거나 빼기 (`FavoritesViewModel.kt`의 `toggle`)
 
-## [2] 별을 누르면 즐겨찾기에 넣거나 빼기
+힌트: `favorites = if (app.packageName in favorites) favorites - app.packageName else favorites + app.packageName`. 확인: ☆이 ★로 바뀌고 위쪽 줄에 담깁니다.
 
-**하는 일**: 별을 누른 앱이 이미 즐겨찾기에 있으면 빼고, 없으면 넣습니다.
+## [3] 앱을 누르면 열기 (`FavoriteApps.kt`의 `onOpen`)
 
-**채울 곳**: `onToggle = { app -> ... }` 안의 `[2] 여기를 채웁니다` 아래. 한 줄입니다.
+힌트: 2교시의 `launchApp(context, app)` 한 줄. 확인: 앱을 누르면 그 앱이 열립니다.
 
-**힌트**
-- 앱의 패키지 이름은 `app.packageName`입니다.
-- 목록에 들어 있는지는 `in`으로 물어봅니다. 예: `app.packageName in favorites`
-- 목록에서 빼기는 `favorites - 값`, 넣기는 `favorites + 값`입니다. 결과를 다시 `favorites`에 넣습니다.
-- `if (조건) A else B`로 한 줄에 쓸 수 있습니다.
+## 다 했으면
 
-**확인**: 별을 누르면 ☆이 ★로 바뀌고 위쪽 줄에 아이콘이 담깁니다. 다시 누르면 빠집니다.
+별 몇 개를 누르고 에뮬레이터를 가로로 돌려 봅니다. 값이 ViewModel에 있어서 즐겨찾기가 그대로 남습니다.
 
-## [3] 앱을 누르면 그 앱 열기
-
-**하는 일**: 목록이나 위쪽 줄에서 앱을 누르면 그 앱을 엽니다.
-
-**채울 곳**: `onOpen = { app -> ... }` 안의 `[3] 여기를 채웁니다` 아래. 한 줄입니다.
-
-**힌트**: 오늘 2교시에 본 `launchApp(context, 앱)`을 씁니다. 패키지와 화면 이름을 적은 명시적 Intent로 그 앱을 엽니다.
-
-**확인**: 앱을 누르면 그 앱이 열립니다.
-
-## [4] 화면을 돌려도 즐겨찾기가 남게 하기
-
-**하는 일**: 지금은 화면을 돌리면 즐겨찾기가 비워집니다. 돌려도 남게 합니다.
-
-**채울 곳**: 파일 위쪽 `favorites` 줄(`[4] 여기를 고칩니다`)의 `remember` 한 단어를 바꿉니다.
-
-**힌트**: 1일차에 화면을 돌리면 `remember`의 값이 처음으로 돌아가는 것을 봤습니다. 같은 날 본, 값을 저장해 뒀다가 돌려주는 `remember`의 다른 버전으로 바꿉니다.
-
-**확인**: 별을 몇 개 누른 뒤 에뮬레이터를 가로로 돌려도 위쪽 줄이 그대로입니다.
-
-## 그대로 쓰는 파일
-
-| 파일 | 내용 |
-|---|---|
-| `practice/FavoriteAppsLayout.kt` | 화면. `apps`와 `favorites`를 받아 그리기만 하고, 별을 누르면 `onToggle`, 앱을 누르면 `onOpen`을 부름 |
-| `data/InstalledAppRepository.kt` | 설치된 앱 목록 읽기 (1교시) |
-| `AppLauncher.kt` | `launchApp`: 앱 열기 (2교시) |
-| `model/AppInfo.kt` | 앱 하나의 이름, 패키지 이름, 화면 이름 |
-
-막히면 [day3_task1_favorites_answer](../day3_task1_favorites_answer)를 엽니다. 같은 파일의 같은 자리에 [1] [2] [3] [4]가 채워져 있고, README에 단계별 정답이 있습니다.
+막히면 [day3_task1_favorites_answer](../day3_task1_favorites_answer)를 엽니다.

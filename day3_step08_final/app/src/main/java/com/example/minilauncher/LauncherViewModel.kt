@@ -20,6 +20,7 @@ sealed interface AppsState {
 data class LauncherUiState(
     val apps: AppsState = AppsState.Loading,
     val selected: String? = null,
+    val query: String = "",          // 검색어. ViewModel 에 있어서 화면을 돌려도 남음
 )
 
 // 2일차와 달라진 곳은 생성자 한 줄뿐입니다: FakeAppRepository 대신 AppRepository
@@ -47,5 +48,10 @@ class LauncherViewModel(private val repository: AppRepository) : ViewModel() {
 
     fun select(app: AppInfo) {
         _uiState.update { it.copy(selected = app.packageName) }
+    }
+
+    // 검색창에 글자를 넣을 때마다 화면이 부름
+    fun search(text: String) {
+        _uiState.update { it.copy(query = text) }
     }
 }

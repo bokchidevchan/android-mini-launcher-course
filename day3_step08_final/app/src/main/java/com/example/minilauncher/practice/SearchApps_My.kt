@@ -24,7 +24,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,14 +51,10 @@ class MySearchAppsActivity : ComponentActivity() {
 }
 
 @Composable
-fun MySearchAppsScreen() {
+fun MySearchAppsScreen(vm: SearchAppsViewModel = viewModel()) {
     val context = LocalContext.current
-    var apps by remember { mutableStateOf<List<AppInfo>>(emptyList()) }     // 설치된 앱 전체
-    var query by rememberSaveable { mutableStateOf("") }                    // 검색어
-
-    LaunchedEffect(Unit) {
-        apps = InstalledAppRepository(context.applicationContext).loadApps()
-    }
+    val apps = vm.apps      // 설치된 앱 전체 (ViewModel 이 처음 한 번 읽어 둠)
+    val query = vm.query    // 검색어. 바꿀 때는 vm.search(새 글자)
 
     val shown = apps    // [1] 여기를 고칩니다: 검색어가 이름에 든 앱만 남기기
 
