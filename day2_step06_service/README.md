@@ -50,5 +50,5 @@ D/SyncService: onDestroy
 - 알림이 안 보임: 권한을 거부했거나 Silent 칸을 펼치지 않은 경우입니다.
 - `onDestroy`가 안 찍힘: 앱 화면이 아직 열려 있으면 정상입니다. 뒤로 가기로 닫습니다.
 
-다음: [3-1 HomeScreen(Launcher) 만들기](../day3_step07_launcher)
+다음: [3-1 HomeScreen(Launcher) 만들기](../day3_step07a_warmup_applist)
 

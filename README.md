@@ -57,9 +57,10 @@ C++나 다른 언어로 개발해 본 분을 기준으로 만들었습니다. �
 | | 13:00~15:00 | 2-2 시스템 이벤트 감지 (BroadcastReceiver) | [day2_step05_receiver](day2_step05_receiver) |
 | | 15:00~17:00 | 2-3 백그라운드 처리 (Service, Notification) | [day2_step06_service](day2_step06_service) |
 | | 16:00~ | 오후 과제: 컵라면 타이머 만들기 | 뼈대 [day2_task2_timer_practice](day2_task2_timer_practice), 완성 [day2_task2_timer_answer](day2_task2_timer_answer) |
-| 3일차 | 09:00~12:00 | 3-1 HomeScreen(Launcher) 만들기 | [day3_step07_launcher](day3_step07_launcher) |
+| 3일차 | 09:00~09:50 | 3-1 HomeScreen(Launcher) 만들기 (1교시: 몸풀기, 앱 목록 읽기) | [day3_step07a_warmup_applist](day3_step07a_warmup_applist) |
+| | 10:00~10:50 | 3-1 (2교시: 다른 앱 열기, 상세 화면, 기본 홈 앱 등록) | [day3_step07b_open_home](day3_step07b_open_home) |
 | | 11:00~ | 오전 과제: 즐겨찾기 서랍 만들기 | 뼈대 [day3_task1_favorites_practice](day3_task1_favorites_practice), 완성 [day3_task1_favorites_answer](day3_task1_favorites_answer) |
-| | 13:00~14:00 | 3-2 런처 손보기와 위젯 만들기 (4교시: 내 런처 손보기 6단계) | [day3_step07_launcher](day3_step07_launcher) |
+| | 13:00~14:00 | 3-2 런처 손보기와 위젯 만들기 (4교시: 내 런처 손보기 6단계) | [day3_step07c_tune](day3_step07c_tune) |
 | | 14:00~15:00 | 오후 과제: 홈 화면 위젯 만들기 | 뼈대 [day3_task2_widget_practice](day3_task2_widget_practice), 완성 [day3_task2_widget_answer](day3_task2_widget_answer) |
 | | 15:00~17:00 | 3-3 미니 런처 완성과 코드 리뷰 | [day3_step08_final](day3_step08_final) |
 
