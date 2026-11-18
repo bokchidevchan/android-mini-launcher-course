@@ -4,9 +4,11 @@
 
 `day2_step06_service` 폴더를 열고 시작합니다.
 
-화면이 꺼져도 계속 도는 작업을 Foreground Service로 만들고, 진행률을 알림과 상태 영역에 함께 보여 줍니다.
+화면이 꺼져도 계속 도는 작업을 Foreground Service로 만들고, 진행률을 알림과 화면에 함께 보여 줍니다.
 
-<p><img src="../docs/images/s06_syncing.png" alt="상태 영역 진행률" width="260">
+이 폴더에는 이번 시간에 쓰는 코드만 있습니다. `service/SyncService.kt`(동기화 Service), `service/SyncConnection.kt`(화면이 Service에 붙어 진행률을 받는 통로), `practice/NotificationPractice.kt`(알림 실습 5단계), 그리고 버튼 하나와 진행률만 있는 `MainActivity.kt`입니다.
+
+<p><img src="../docs/images/s06_syncing.png" alt="화면의 진행률" width="260">
 <img src="../docs/images/s06_notification.png" alt="알림창의 진행 막대" width="260">
 <img src="../docs/images/s06_done.png" alt="동기화 완료" width="260"></p>
 
@@ -21,8 +23,8 @@
 ## 따라 하기
 
 1. 앱을 실행하고 "동기화 시작"을 누릅니다.
-2. 알림 권한을 묻는 창이 뜨면 "허용"을 누릅니다. 두 번 거부하면 창이 다시 뜨지 않으니, 그때는 에뮬레이터의 Settings > Apps > Mini Launcher > Notifications에서 켭니다.
-3. 상태 영역에 진행률(%)이 올라갑니다. 약 20초 뒤 "동기화 완료"가 됩니다.
+2. 알림 권한을 묻는 창이 뜨면 "허용"을 누릅니다. 두 번 거부하면 창이 다시 뜨지 않으니, 그때는 에뮬레이터의 Settings > Apps > 이 앱 > Notifications에서 켭니다.
+3. 화면의 진행률(%)이 올라갑니다. 약 20초 뒤 "동기화 완료"가 됩니다.
 4. 진행 중에 에뮬레이터 위쪽을 끌어내립니다. 동기화 알림은 중요도를 낮게 둬서 아래쪽 Silent 칸에 들어 있습니다. 펼치면 진행 막대가 보입니다.
 5. Logcat 검색칸에 `tag:SyncService`를 넣고, 완료된 뒤 도구막대의 ◁(Back)으로 앱 화면을 닫아 봅니다. 앱을 열 때 이미 `onBind`와 "화면이 Service 에 연결됨"이 찍혀 있고, 동기화 시작부터는 이렇게 이어집니다.
 
