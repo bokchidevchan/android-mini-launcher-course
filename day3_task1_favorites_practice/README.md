@@ -47,10 +47,4 @@ init {
 
 회색 import, 회색 변수는 빈칸을 채우면 쓰입니다. 지우지 않습니다.
 
-## 먼저 끝났으면
-
-- [5] 즐겨찾기한 앱을 목록 맨 위로: `apps = vm.apps.sortedByDescending { it.packageName in vm.favorites }`
-- [6] 즐겨찾기는 5개까지: `toggle`을 `when`으로 세 갈래(있으면 빼기, 5개면 Toast로 안내, 아니면 넣기)
-- [7] Logcat으로 확인: `Log.d("Favorites", "즐겨찾기 ${favorites.size}개: $favorites")`
-
 막히면 [day3_task1_favorites_answer](../day3_task1_favorites_answer)를 엽니다.
