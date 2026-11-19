@@ -1,6 +1,6 @@
 # 3-2 런처 손보기 (4교시)
 
-3일차 13:00~13:50 | [전체 일정으로](../README.md) | 다음: [day3_task2_widget_practice](../day3_task2_widget_practice)
+3일차 13:00~13:50 | [전체 일정으로](../README.md) | 완성본: [day3_step07c_tune_answer](../day3_step07c_tune_answer) | 다음: [day3_task2_widget_practice](../day3_task2_widget_practice)
 
 2교시 런처에서 연습 코드를 뺀 시작본입니다. 한 단계씩 고친 뒤 Run 합니다. 앞 단계를 되돌리지 않고 쌓아 갑니다. 막히면 Edit > Undo로 그 단계만 되돌립니다.
 
