@@ -1,6 +1,6 @@
 # 3-2 런처 손보기 (4교시)
 
-3일차 13:00~13:50 | [전체 일정으로](../README.md) | 완성본: [day3_step07c_tune_answer](../day3_step07c_tune_answer) | 다음: [day3_task2_widget_practice](../day3_task2_widget_practice)
+3일차 13:00~13:50 | [전체 일정으로](../README.md) | 완성본: [day3_step07c_tune_answer](../day3_step07c_tune_answer) | 다음: [day3_task2_widget_answer](../day3_task2_widget_answer)
 
 2교시 런처에서 연습 코드를 뺀 시작본입니다. 한 단계씩 고친 뒤 Run 합니다. 앞 단계를 되돌리지 않고 쌓아 갑니다. 막히면 Edit > Undo로 그 단계만 되돌립니다.
 
@@ -85,4 +85,4 @@ override fun onResume() {
 }
 ```
 
-빨간 글자(`mutableStateOf`, `by`, `HomeFrame`, `isMyAppDefaultHome`)는 Alt+Enter로 import 합니다. Home app을 Mini Launcher로 바꾸면 초록 테두리가 생기고, 확인했으면 Pixel Launcher로 되돌립니다(5교시 위젯은 Pixel Launcher 화면에 붙임).
+빨간 글자(`mutableStateOf`, `by`, `HomeFrame`, `isMyAppDefaultHome`)는 Alt+Enter로 import 합니다. Home app을 Mini Launcher로 바꾸면 초록 테두리가 생기고, 확인했으면 Pixel Launcher로 되돌립니다(5교시 위젯 설명은 Pixel Launcher 화면에서 봄).

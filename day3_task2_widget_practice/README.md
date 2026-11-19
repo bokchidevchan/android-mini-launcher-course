@@ -1,4 +1,6 @@
-# 오후 과제: 홈 화면 위젯 만들기 (뼈대)
+# 홈 화면 위젯 만들기 (뼈대, 선택)
+
+> 수업에서는 하지 않습니다. 5교시는 [day3_task2_widget_answer](../day3_task2_widget_answer)로 설명만 합니다. 혼자 해 보고 싶을 때 쓰는 폴더입니다.
 
 3일차 14:00~ | [전체 일정으로](../README.md) | 완성: [day3_task2_widget_answer](../day3_task2_widget_answer)
 
